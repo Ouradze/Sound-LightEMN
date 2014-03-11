@@ -1,37 +1,42 @@
 package processing;
 
+import java.io.File;
+import java.nio.file.attribute.DosFileAttributes;
 import java.util.ArrayList;
 
-import processing.core.*;
-import ddf.minim.*;
-import ddf.minim.analysis.*;
+import processing.core.PApplet;
+import ddf.minim.AudioPlayer;
+import ddf.minim.Minim;
+import ddf.minim.analysis.BeatDetect;
 
 public class MyProcessingSketch extends PApplet{
+	
+	private String path;
 	
 	Minim minim;
 	AudioPlayer song;
 	BeatDetect beat;
 
-	ArrayList<Stripe> slist = new ArrayList<Stripe>();  
+	ArrayList<Stripe> slist = new ArrayList<Stripe>(); 
 	
-	/*public void setup() {
-	    size(600, 600);
-	    background(0);
-	  }
-	  public void draw() {
-	    background(0);
-	    fill(200);
-	    ellipseMode(CENTER);
-	    ellipse(mouseX,mouseY,40,40);
-	  }*/
+	public MyProcessingSketch(String path){
+		this.path = path;
+	}
 
 	public void setup() {
 		size(600,600);
 
 		minim = new Minim(this);
+		File f = new File(path);
+		//File f = new File("./Music/Flute.mp3");
+		File root = new File("./");
+		System.out.println(root.getAbsolutePath());
+		System.out.println(f.isFile());
 		
-
-		song = minim.loadFile("../Music/Flute.mp3");
+		song = minim.loadFile("./Music/Flute.mp3");
+		
+		System.out.println(song.bufferSize());
+		
 		song.play();
 		beat = new BeatDetect();
 	}
@@ -54,7 +59,7 @@ public class MyProcessingSketch extends PApplet{
 			}
 		}
 		
-		System.out.println(slist.size());
+		//System.out.println(slist.size());
 
 	}
 

@@ -6,8 +6,6 @@ import ddf.minim.analysis.BeatDetect;
 
 public abstract class Design {
 	
-	
-
 	public abstract void Maj();
 
 }
