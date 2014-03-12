@@ -1,13 +1,15 @@
 package processing;
 
 import java.io.File;
-import java.nio.file.attribute.DosFileAttributes;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import sound.Fourier;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.BeatDetect;
+import design.Rond;
+import design.Stripe;
 
 public class MyProcessingSketch extends PApplet{
 	
@@ -17,11 +19,19 @@ public class MyProcessingSketch extends PApplet{
 	AudioPlayer song;
 	BeatDetect beat;
 
-	ArrayList<Stripe> slist = new ArrayList<Stripe>(); 
-	
-	public MyProcessingSketch(String path){
-		this.path = path;
-	}
+	int nbr = 200; // nombre de barres
+
+	ArrayList<Stripe> slistcercle = new ArrayList<Stripe>();
+	Fourier fourier;
+	Barre b;
+	Rond rg;
+	Rond rd;
+	Stripe sg;
+	Stripe sd;
+	Stripe sg1;
+	Stripe sd1;
+	Stripe sg2;
+	Stripe sd2;
 
 	public void setup() {
 		size(600,600);
@@ -36,38 +46,43 @@ public class MyProcessingSketch extends PApplet{
 		song = minim.loadFile("./Music/Flute.mp3");
 		
 		System.out.println(song.bufferSize());
+
+		song = minim.loadFile("./Music/Flute.mp3");
+		fourier = new Fourier(song, this);
+		rg = new Rond(this, 1, this.width/2,(int) (2.5*this.height/4));
+		rd = new Rond(this,-1, this.width/2,(int) (2.5*this.height/4));
+		sd = new Stripe(this, 1, this.width/2,this.height/4);
+		sg = new Stripe(this,-1, this.width/2,this.height/4);
 		
+		song.rewind();
 		song.play();
-		beat = new BeatDetect();
+		b = new Barre(this, song);
+		
 	}
 
 	public void draw() {
 		background(100);
-		beat.detect(song.mix);
-
-		// Move and display all "stripes"
-		if(beat.isOnset()){
-			Stripe s = new Stripe(this);
-			slist.add(s);
-		}
-		for(int i=0;i<slist.size();i++){
-			slist.get(i).move();
-			slist.get(i).display();
-			
-			if(slist.get(i).x> this.size().getWidth()){
-				slist.remove(i);
-			}
-		}
+		fourier.majBuff(song);
+		b.display();
 		
-		//System.out.println(slist.size());
-
+		
+		
+		
+		sg.maj(fourier.getFreqg());
+		sd.maj(fourier.getFreqd());
+		
+		sg.display();
+		sd.display();
+		
+		rg.maj(fourier.getFreqg());
+		rd.maj(fourier.getFreqd());
+		rg.display();
+		rd.display();
+			
+		
 	}
 
 
-	public void moveBis(){
-		Stripe s = new Stripe(this);
-		s.move();
-		s.display();
-	}
+	
 
 }
