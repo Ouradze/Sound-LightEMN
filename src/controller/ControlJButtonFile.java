@@ -34,6 +34,7 @@ public class ControlJButtonFile implements Observer, ActionListener{
 	            //This is where a real application would open the file.
 	            //log.append("Opening: " + file.getName() + "." + newline);
 	            
+	            file.getName();
 	        } else {
 	            //log.append("Open command cancelled by user." + newline);
 	        }
