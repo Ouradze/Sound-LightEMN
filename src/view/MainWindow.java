@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import processing.MyProcessingSketch;
+import processing.MainProcessing;
 import processing.core.PApplet;
 
 public class MainWindow extends JFrame{
@@ -18,7 +18,7 @@ public MainWindow(){
 
 	JPanel panel = new JPanel();
 	
-	PApplet test = new MyProcessingSketch();
+	PApplet test = new MainProcessing();
 	
 	panel.add(test);
 	this.add(panel);

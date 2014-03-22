@@ -14,6 +14,7 @@ public class Fourier {
 	public int buffersize;
 	public AudioBuffer gauche;
 	public AudioBuffer droite;
+	public AudioBuffer centre;
 
 	public PApplet parent;
 
@@ -22,6 +23,7 @@ public class Fourier {
 		this.buffersize = s.bufferSize();
 		this.gauche = s.left;
 		this.droite = s.right;
+		this.centre = s.mix;
 
 		this.parent = p;
 
@@ -33,7 +35,7 @@ public class Fourier {
 
 	}
 
-	public float[] getFreqg() {
+	public float[] getFreqgauche() {
 		FFT fourierg = new FFT(buffersize, samplerate);
 		fourierg.window(FFT.HAMMING);
 		fourierg.logAverages(60, 10);
@@ -50,8 +52,25 @@ public class Fourier {
 		return freqg;
 
 	}
+	public float[] getFreqcentre() {
+		FFT fourierc = new FFT(buffersize, samplerate);
+		fourierc.window(FFT.HAMMING);
+		fourierc.logAverages(60, 10);
 
-	public float[] getFreqd() {
+		fourierc.forward(this.centre);
+
+		float[] freqg = new float[fourierc.avgSize()];
+
+		for (int i = 0; i < fourierc.avgSize(); i++) {
+			freqg[i] = fourierc.getAvg(i);
+
+		}
+
+		return freqg;
+
+	}
+
+	public float[] getFreqdroite() {
 		FFT fourierd = new FFT(buffersize, samplerate);
 		fourierd.window(FFT.BARTLETT);
 		fourierd.logAverages(60, 10);
