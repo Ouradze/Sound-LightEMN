@@ -20,6 +20,7 @@ public class MainProcessing extends PApplet{
 
 	Fourier fourier;
 	Stripes3D barres;
+	Barre b;
 	
 
 	public void setup() {
@@ -28,10 +29,10 @@ public class MainProcessing extends PApplet{
 		minim = new Minim(this);
 		
 
-		song = minim.loadFile("./Music/Flute.mp3");
+		song = minim.loadFile("./Music/deadmau5.mp3");
 		fourier = new Fourier(song, this);
 		barres = new Stripes3D(this, 1, this.width/2, this.height/2);
-		
+		b = new Barre(this,song);
 		song.rewind();
 		song.play();
 		
@@ -44,6 +45,7 @@ public class MainProcessing extends PApplet{
 		fourier.majBuff(song);
 		barres.maj(fourier.getFreqcentre());
 		barres.display();
+		b.display();
 		
 		
 		
