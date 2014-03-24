@@ -3,19 +3,11 @@ package design;
 import processing.core.PApplet;
 import sound.Fourier;
 
-public class Rond {
+public class Rond  extends Design{
 	
-	public float[] freq;
-	public PApplet parent;
-	public int sens;
-	public int positionX;
-	public int positionY;
 	
 	public Rond(PApplet p, int s, int x, int y){
-		this.sens=s;
-		this.parent = p;
-		this.positionX = x;
-		this.positionY = y ;	 
+		super(p,s,x,y);	 
 		 
 	}
 	
