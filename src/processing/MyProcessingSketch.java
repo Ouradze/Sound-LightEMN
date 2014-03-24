@@ -8,8 +8,7 @@ import sound.Fourier;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.analysis.BeatDetect;
-import design.Rond;
-import design.Stripe;
+import design.*;
 
 public class MyProcessingSketch extends PApplet{
 	
@@ -32,6 +31,11 @@ public class MyProcessingSketch extends PApplet{
 	Stripe sd1;
 	Stripe sg2;
 	Stripe sd2;
+	
+	public MyProcessingSketch(String path){
+		super();
+		this.path=path;
+	}
 
 	public void setup() {
 		size(600,600);
@@ -68,14 +72,14 @@ public class MyProcessingSketch extends PApplet{
 		
 		
 		
-		sg.maj(fourier.getFreqg());
-		sd.maj(fourier.getFreqd());
+		sg.maj(fourier.getFreqgauche());
+		sd.maj(fourier.getFreqdroite());
 		
 		sg.display();
 		sd.display();
 		
-		rg.maj(fourier.getFreqg());
-		rd.maj(fourier.getFreqd());
+		rg.maj(fourier.getFreqgauche());
+		rd.maj(fourier.getFreqdroite());
 		rg.display();
 		rd.display();
 			

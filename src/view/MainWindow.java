@@ -5,12 +5,8 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-<<<<<<< HEAD
 import model.MusicFile;
 import processing.MyProcessingSketch;
-=======
-import processing.MainProcessing;
->>>>>>> b1afe9b50c60777deb9c73328311f997eead4456
 import processing.core.PApplet;
 
 public class MainWindow extends JFrame{
@@ -34,16 +30,4 @@ public class MainWindow extends JFrame{
 		test.init();
 	}
 
-<<<<<<< HEAD
-=======
-	JPanel panel = new JPanel();
-	
-	PApplet test = new MainProcessing();
-	
-	panel.add(test);
-	this.add(panel);
-	test.init();
-}
-	
->>>>>>> b1afe9b50c60777deb9c73328311f997eead4456
 }

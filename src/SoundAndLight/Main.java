@@ -1,5 +1,6 @@
 package SoundAndLight;
 
+import processing.MainProcessing;
 import processing.MyProcessingSketch;
 import processing.core.PApplet;
 import model.MusicFile;
@@ -11,7 +12,7 @@ public class Main {
 	public static void main(String[] args){
 		
 		MusicFile file = new MusicFile("./Music/Flute.mp3");
-		PApplet test = new MyProcessingSketch(file.getPath());
+		PApplet test = new MainProcessing();
 
 		MainWindow window = new MainWindow(file, test);
 		window.setVisible(true);
