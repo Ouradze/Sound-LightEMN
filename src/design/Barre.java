@@ -34,18 +34,18 @@ public class Barre {
 				x=parent.mouseX;
 				parent.stroke(255);
 				parent.rect(x, parent.height-h, (float) (parent.width*0.01), h);
-				
-				song.cue((int) (x*l/parent.width));
+								song.cue((int) (x*l/parent.width));
 			}
 		}
 		else{
 			parent.stroke(0);
 			parent.rect(song.position()*parent.width/l, parent.height-h, (float) (parent.width*0.01), h);
+			parent.noStroke();
 			
 		}
 		
 		
-		
+		parent.noStroke();
 	}
 	
 
