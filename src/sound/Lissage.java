@@ -13,7 +13,7 @@ public class Lissage {
 			for(int j=0; j<3;j++){
 				somme+=f[i+j-2]*Lissage.coefs[j];
 			}
-			freq[i]=somme;
+			freq[i]=somme+1-1;
 		}
 		
 		return freq;
