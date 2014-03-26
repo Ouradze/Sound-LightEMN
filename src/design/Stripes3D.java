@@ -8,7 +8,7 @@ public class Stripes3D extends Design {
 
 	public Stripes3D(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
-		this.file = new FileFreq(25);
+		this.file = new FileFreq(50);
 	}
 
 	public void display() {
@@ -25,9 +25,9 @@ public class Stripes3D extends Design {
 
 				parent.stroke(0);
 				parent.fill(255);
-				
+				if(f[i]>5){
 					parent.box(10, 2 * f[i], 30);
-				
+				}
 				parent.stroke(0);
 				parent.fill(255);
 

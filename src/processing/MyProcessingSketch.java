@@ -72,14 +72,14 @@ public class MyProcessingSketch extends PApplet{
 		
 		
 		
-		sg.maj(fourier.getFreqgauche());
-		sd.maj(fourier.getFreqdroite());
+		sg.maj(fourier.getFreq(Fourier.GAUCHE));
+		sd.maj(fourier.getFreq(Fourier.DROITE));
 		
 		sg.display();
 		sd.display();
 		
-		rg.maj(fourier.getFreqgauche());
-		rd.maj(fourier.getFreqdroite());
+		rg.maj(fourier.getFreq(Fourier.GAUCHE));
+		rd.maj(fourier.getFreq(Fourier.DROITE));
 		rg.display();
 		rd.display();
 			

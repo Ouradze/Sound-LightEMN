@@ -1,10 +1,7 @@
 package sound;
 
-
-
 import ddf.minim.*;
 import ddf.minim.analysis.*;
-
 
 import processing.core.PApplet;
 
@@ -15,6 +12,9 @@ public class Fourier {
 	public AudioBuffer gauche;
 	public AudioBuffer droite;
 	public AudioBuffer centre;
+	public static final int DROITE = 1;
+	public static final int CENTRE = 0;
+	public static final int GAUCHE = -1;
 
 	public PApplet parent;
 
@@ -32,64 +32,41 @@ public class Fourier {
 	public void majBuff(AudioSource s) {
 		this.gauche = s.left;
 		this.droite = s.right;
+		this.centre = s.mix;
 
 	}
 
-	public float[] getFreqgauche() {
-		FFT fourierg = new FFT(buffersize, samplerate);
-		fourierg.window(FFT.HAMMING);
-		fourierg.logAverages(60, 10);
+	public float[] getFreq(int sortie) {
+		FFT fourier = new FFT(buffersize, samplerate);
+		fourier.window(FFT.HAMMING);
+		fourier.logAverages(60, 10);
 
-		fourierg.forward(this.gauche);
+		switch (sortie) {
+		case Fourier.GAUCHE:
+			fourier.forward(this.gauche);
+			break;
+		case Fourier.CENTRE:
+			fourier.forward(this.centre);
+			break;
+		case Fourier.DROITE:
+			fourier.forward(this.droite);
+			break;
+		}
 
-		float[] freqg = new float[fourierg.avgSize()];
+		float[] freq = new float[fourier.avgSize()];
 
-		for (int i = 0; i < fourierg.avgSize(); i++) {
-			freqg[i] = fourierg.getAvg(i);
+		for (int i = 0; i < fourier.avgSize(); i++) {
+			freq[i] = fourier.getAvg(i);
 
 		}
 
-		return freqg;
-
-	}
-	public float[] getFreqcentre() {
-		FFT fourierc = new FFT(buffersize, samplerate);
-		fourierc.window(FFT.HAMMING);
-		fourierc.logAverages(60, 10);
-
-		fourierc.forward(this.centre);
-
-		float[] freqg = new float[fourierc.avgSize()];
-
-		for (int i = 0; i < fourierc.avgSize(); i++) {
-			freqg[i] = fourierc.getAvg(i);
-
-		}
-
-		return freqg;
+		return freq;
 
 	}
 
-	public float[] getFreqdroite() {
-		FFT fourierd = new FFT(buffersize, samplerate);
-		fourierd.window(FFT.BARTLETT);
-		fourierd.logAverages(60, 10);
-
-		fourierd.forward(this.droite);
-
-		float[] freqd = new float[fourierd.avgSize()];
-
-		for (int i = 0; i < fourierd.avgSize(); i++) {
-			freqd[i] = fourierd.getAvg(i);
-
-		}
-
-		return freqd;
-
-	}
-
-	//Diminue les "pics" d'intensité : si l'amplitude dépasse  a*moyenne, celle-ci est amortie de b fois la distance à la moyenne
-	//Par conséquent : a>=1 et 0 <= b <=1 pour rester cohérent
+	// Diminue les "pics" d'intensité : si l'amplitude dépasse a*moyenne,
+	// celle-ci est amortie de b fois la distance à la moyenne
+	// Par conséquent : a>=1 et 0 <= b <=1 pour rester cohérent
 	public static float[] scaling(float[] f, double a, double b) {
 		float[] nf = new float[f.length];
 
@@ -108,39 +85,41 @@ public class Fourier {
 		return nf;
 
 	}
-	
-	//Rapporte les amplitudes en fontion de la racine carrée de leur position sur le spectre (amortissement des basses, cf courbe de la fction)
+
+	// Rapporte les amplitudes en fontion de la racine carrée de leur position
+	// sur le spectre (amortissement des basses, cf courbe de la fction)
 	public static float[] QuadScaling(float[] f) {
 		float[] nf = new float[f.length];
 
 		for (int i = 0; i < f.length; i++) {
 			float quot = (float) ((float) (i) / (float) (f.length));
-			
+
 			nf[i] = (float) (f[i] * (Math.sqrt(quot)));
 
 		}
 		return nf;
 	}
-	
+
 	public static float[] ExpScaling(float[] f) {
 		float[] nf = new float[f.length];
 
 		for (int i = 0; i < f.length; i++) {
 			float quot = (float) ((float) (i) / (float) (f.length));
-			
-			nf[i] = (float) (f[i] * (1-Math.exp(-quot)));
+
+			nf[i] = (float) (f[i] * (1 - Math.exp(-quot)));
 
 		}
 		return nf;
 	}
-	public static float[] CutScaling(float[] f, float a){
+
+	public static float[] CutScaling(float[] f, float a) {
 		float[] nf = new float[f.length];
 
 		float moyenne = moyenne(f);
 
 		for (int i = 0; i < f.length; i++) {
 			if (f[i] > a * moyenne) {
-				nf[i] = (f[i]-a*moyenne);
+				nf[i] = (f[i] - a * moyenne);
 			} else {
 				nf[i] = 0;
 			}
@@ -149,6 +128,26 @@ public class Fourier {
 
 		return nf;
 	}
+
+	public static float[] StandardScaling(float[] f, double a, double b, boolean quad) {
+		float[] nf = new float[f.length];
+		float moyenne = moyenne(f);
+		for (int i = 0; i < f.length; i++) {
+			if (f[i] > a * moyenne) {
+				nf[i] = (float) ((f[i] - a * moyenne)*b);
+			} else {
+				nf[i] = 0;
+			}
+			if(quad){
+			float quot = (float) ((float) (i) / (float) (f.length));
+
+			nf[i] = (float) (nf[i] * (Math.sqrt(quot)));
+			}
+
+		}
+		return nf;
+	}
+
 	public static float moyenne(float[] f) {
 		float moyenne = 0;
 		for (int i = 0; i < f.length; i++) {
