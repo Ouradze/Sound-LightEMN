@@ -17,7 +17,7 @@ public class MainWindow extends JFrame{
 	public MainWindow(MusicFile file, PApplet test){
 		super("Sound & Light");
 
-		this.setSize(600, 600);
+		this.setSize(700, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		this.file = file;

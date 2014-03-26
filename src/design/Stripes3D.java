@@ -25,7 +25,7 @@ public class Stripes3D extends Design {
 
 				parent.stroke(0);
 				parent.fill(255);
-				if (f[i] > 5) {
+				if(f[i]>5){
 					parent.box(10, 2 * f[i], 30);
 				}
 				parent.stroke(0);
@@ -42,7 +42,7 @@ public class Stripes3D extends Design {
 
 	public void maj(float[] freq) {
 		this.freq = Fourier.scaling(Fourier.CutScaling(freq,(float) 0.75), 1.9, 0.1);
-		this.file.maj(freq);
+		this.file.maj(Fourier.scaling(Fourier.CutScaling(freq,(float) 0.75), 1.9, 0.1));
 	}
 
 }
