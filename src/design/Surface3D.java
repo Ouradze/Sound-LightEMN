@@ -8,7 +8,7 @@ public class Surface3D extends Design {
 
 	public Surface3D(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
-		this.file = new FileFreq(25);
+		this.file = new FileFreq(100);
 	}
 
 	public void display() {
