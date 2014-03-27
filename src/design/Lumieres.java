@@ -40,5 +40,23 @@ public class Lumieres {
 				parent.height / 2, 400);
 		
 	}
+	
+	public void rouge(){
+		parent.pointLight(255,0,0, parent.width / 2,
+				parent.height / 2, 400);
+		
+	}
+	public void vert(){
+		parent.pointLight(0,255,0, parent.width / 2,
+				parent.height / 2, 400);
+		
+	}
+	public void bleu(){
+		parent.pointLight(0,0,255, parent.width / 2,
+				parent.height / 2, 400);
+		
+	}
+	
+	
 
 }

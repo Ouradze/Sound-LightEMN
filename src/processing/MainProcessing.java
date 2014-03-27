@@ -15,20 +15,20 @@ public class MainProcessing extends PApplet {
 	AudioPlayer song;
 
 	Fourier fourier;
-	Hypercube cube;
+	Surface3D cube;
 	Lumieres l;
 	int i;
 	Barre b;
 
 	public void setup() {
-		size(700, 700, P3D);
+		size(900, 900, P3D);
 
 		minim = new Minim(this);
 
 		song = minim.loadFile("./Music/House.mp3");
 
 		fourier = new Fourier(song, this);
-		cube = new Hypercube(this, 1, this.width / 2, this.height / 2);
+		cube = new Surface3D(this, 1, this.width / 2, this.height / 2);
 		l =  new Lumieres(this);
 		song.rewind();
 		song.play();
@@ -38,8 +38,7 @@ public class MainProcessing extends PApplet {
 
 	public void draw() {
 		i++;
-		pointLight(0,0,255, width / 2,
-				height / 2, 400);
+		
 		
 		l.alterne(i);
 		background(100);
