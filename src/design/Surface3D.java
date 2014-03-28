@@ -8,15 +8,15 @@ public class Surface3D extends Design {
 
 	public Surface3D(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
-		this.file = new FileFreq(25);
+		this.file = new FileFreq(80);
 	}
 
 	public void display() {
-		int largeur = 10;
+		int largeur = parent.width/this.file.getIndex(0).length;
 		int l = this.freq.length;
 		parent.pushMatrix();
-		parent.rotateY(PApplet.radians(-10));
-		parent.translate(0, (float) (positionY * 1.5), -400);
+		parent.rotateY(PApplet.radians(-50));
+		parent.translate(-largeur, (float) (positionY * 1.5), -200);
 		if (file.getsize() > 1) {
 			for (int k = 0; k < this.file.getsize() - 1; k++) {
 				float[] f1 = this.file.getIndex(k);

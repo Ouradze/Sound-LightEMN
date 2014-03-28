@@ -13,41 +13,41 @@ public class MainProcessing extends PApplet {
 	private static final long serialVersionUID = 1L;
 	Minim minim;
 	AudioPlayer song;
-	AudioInput input;
 
 	Fourier fourier;
 	Surface3D cube;
-	
+	Lumieres l;
+	int i;
 	Barre b;
 
 	public void setup() {
-		size(600,600, P3D);
+		size(900, 900, P3D);
 
 		minim = new Minim(this);
 
 		song = minim.loadFile("./Music/House.mp3");
-		input =  minim.getLineIn();
+
 		fourier = new Fourier(song, this);
 		cube = new Surface3D(this, 1, this.width / 2, this.height / 2);
 		//b = new Barre(this, song);
+		l =  new Lumieres(this);
+
 		song.rewind();
 		song.play();
-	    
+		i = 0;
 
 	}
 
 	public void draw() {
+		i++;
 		
-		pointLight(255, 0, 0, width/2, height/2, 400);
+		
+		l.alterne(i);
 		background(100);
 		fourier.majBuff(song);
 		cube.maj(fourier.getFreq(Fourier.CENTRE));
 		cube.display();
-		
-		
-		
-		
-		
+
 	}
 
 }
