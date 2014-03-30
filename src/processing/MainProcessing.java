@@ -25,7 +25,7 @@ public class MainProcessing extends PApplet {
 
 		minim = new Minim(this);
 
-		song = minim.loadFile("./Music/House.mp3");
+		song = minim.loadFile("./Music/rise.mp3");
 
 		fourier = new Fourier(song, this);
 		cube = new Surface3D(this, 1, this.width / 2, this.height / 2);
@@ -41,10 +41,15 @@ public class MainProcessing extends PApplet {
 		
 		
 		l.alterne(i);
-		background(100);
+		background(0);
 		fourier.majBuff(song);
 		cube.maj(fourier.getFreq(Fourier.CENTRE));
 		cube.display();
+		
+		
+		
+		
+		
 
 	}
 
