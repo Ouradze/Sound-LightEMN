@@ -29,7 +29,9 @@ public class MainProcessing extends PApplet {
 
 		fourier = new Fourier(song, this);
 		cube = new Surface3D(this, 1, this.width / 2, this.height / 2);
+		//b = new Barre(this, song);
 		l =  new Lumieres(this);
+
 		song.rewind();
 		song.play();
 		i = 0;
