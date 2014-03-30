@@ -22,7 +22,7 @@ public class Hypercube extends Design {
 	}
 
 	public void maj(float[] freq) {
-		float[] f = Lissage.Lisser(freq);
+		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
 		this.mat= new Matrice(f,n);
 		

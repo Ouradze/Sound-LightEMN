@@ -15,7 +15,7 @@ public class MainProcessing extends PApplet {
 	AudioPlayer song;
 
 	Fourier fourier;
-	Surface3D cube;
+	Surface3D surface;
 	Lumieres l;
 	int i;
 	Barre b;
@@ -25,10 +25,10 @@ public class MainProcessing extends PApplet {
 
 		minim = new Minim(this);
 
-		song = minim.loadFile("./Music/rise.mp3");
+		song = minim.loadFile("./Music/m4sonic.mp3");
 
 		fourier = new Fourier(song, this);
-		cube = new Surface3D(this, 1, this.width / 2, this.height / 2);
+		surface = new Surface3D(this, 1, this.width / 2, this.height / 2);
 		//b = new Barre(this, song);
 		l =  new Lumieres(this);
 
@@ -45,8 +45,8 @@ public class MainProcessing extends PApplet {
 		l.alterne(i);
 		background(0);
 		fourier.majBuff(song);
-		cube.maj(fourier.getFreq(Fourier.CENTRE));
-		cube.display();
+		surface.maj(fourier.getFreq(Fourier.CENTRE));
+		surface.display();
 		
 		
 		
