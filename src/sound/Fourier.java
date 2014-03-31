@@ -148,7 +148,7 @@ public class Fourier {
 		}
 		return nf;
 	}
-<<<<<<< HEAD
+
 
 	public static float[] regrouper(float[] f, int n) {
 
@@ -165,24 +165,7 @@ public class Fourier {
 		return freq;
 	}
 
-=======
-	public static float[] regrouper(float[] f, int n){
-		
-		int l = f.length/n;
-		float[] freq =  new float[n];
-		float[] temp = new float[l];
-		for(int i=0; i<n;i++){
-			for(int j=0; j<l;j++){
-				temp[j]= f[j+i*l];
-				
-			}
-			freq[i]=Fourier.moyenne(temp);
-		}
-		return freq;
-	}
-	
-	
->>>>>>> origin/HEAD
+
 	public static float moyenne(float[] f) {
 		float moyenne = 0;
 		for (int i = 0; i < f.length; i++) {

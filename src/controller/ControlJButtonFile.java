@@ -8,18 +8,19 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 
-import view.MainWindow;
+import processing.MainProcessing;
 
 public class ControlJButtonFile implements Observer, ActionListener {
 
 	private Frame parent;
+	public MainProcessing p;
 
 	final JFileChooser fc = new JFileChooser();
 
-	public ControlJButtonFile(Frame parent) {
+	public ControlJButtonFile(Frame parent, MainProcessing p) {
 		this.parent = parent;
+		this.p = p;
 	}
 
 	@Override
@@ -33,7 +34,9 @@ public class ControlJButtonFile implements Observer, ActionListener {
 				File file = fc.getSelectedFile();
 				// This is where a real application would open the file.
 				// log.append("Opening: " + file.getName() + "." + newline);
-
+				
+				p.majSong(file.getPath());
+				
 				file.getName();
 			} else {
 				// log.append("Open command cancelled by user." + newline);

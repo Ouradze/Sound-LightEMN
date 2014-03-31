@@ -7,9 +7,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import processing.core.PApplet;
 import controller.ControlJButtonDefinedForm;
 import controller.ControlJButtonFile;
+import controller.ControlJButtonStream;
 
 public class ControlWindow extends JFrame {
 
@@ -35,7 +35,7 @@ public class ControlWindow extends JFrame {
 		JPanel panelForm = new JPanel();
 
 		JButton definedForm = new JButton("Defined");
-		ControlJButtonDefinedForm controlDefinedForm = new ControlJButtonDefinedForm();
+		ControlJButtonDefinedForm controlDefinedForm = new ControlJButtonDefinedForm(this.window.getApplet());
 		definedForm.addActionListener(controlDefinedForm);
 		panelForm.add(definedForm);
 
@@ -46,10 +46,12 @@ public class ControlWindow extends JFrame {
 		JPanel panelSound = new JPanel();
 
 		JCheckBox file = new JCheckBox("File");
-		ControlJButtonFile controlFile = new ControlJButtonFile(this);
+		ControlJButtonFile controlFile = new ControlJButtonFile(this,this.window.getApplet());
 		file.addActionListener(controlFile);
 
 		JCheckBox stream = new JCheckBox("Stream");
+		ControlJButtonStream controlStream = new ControlJButtonStream(this,this.window.getApplet());
+		stream.addActionListener(controlStream);
 
 		panelSound.add(file);
 		panelSound.add(stream);

@@ -1,73 +1,102 @@
 package processing;
 
-import java.util.ArrayList;
+import java.awt.Container;
+import java.awt.Frame;
 
+import processing.core.PApplet;
+import sound.Fourier;
+import ddf.minim.AudioInput;
+import ddf.minim.AudioPlayer;
+import ddf.minim.AudioSource;
+import ddf.minim.Minim;
 import design.*;
-import sound.*;
-import processing.core.*;
-import ddf.minim.*;
-import ddf.minim.analysis.BeatDetect;
 
 public class MainProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
+	private Container parent;
 	Minim minim;
 	AudioPlayer song;
+	AudioInput input;
+	private String path;
+	AudioSource audio;
 
 	Fourier fourier;
-	Surface3D surface;
+	Design form;
 	Lumieres l;
 	int i;
 	Barre b;
 
+	public MainProcessing(Container parent) {
+		super();
+		this.parent = parent;
+	}
+
+	public void majSong(String path) {
+		// System.out.println("AUDIO : " + audio.bufferSize());
+		song = minim.loadFile(path);
+		audio = song;
+		song.play();
+	}
+
+	public void majInput() {
+		// System.out.println("SONG : " + song.bufferSize());
+		song.close();
+
+		audio = input;
+
+	}
+
+	public void majForme(String s) {
+
+		switch (s) {
+		case "1" :
+			form  = new Surface3D(this, 1, this.width / 2, this.height / 2);
+			
+			break;
+		case "2" :
+			form  = new Stripes3D(this, 1, this.width / 2, this.height / 2);
+			break;
+		case "3" :
+			break;
+		case "4" :
+			break;
+		case "5" :
+			break;
+			
+		}
+
+	}
+
 	public void setup() {
-		size(900, 900, P3D);
+		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		minim = new Minim(this);
 
-<<<<<<< HEAD
-		song = minim.loadFile("./Music/Flute.mp3");
+		input = minim.getLineIn();
+		audio = input;
 
-		fourier = new Fourier(song, this);
-		surface = new Surface3D(this, 1, this.width / 2, this.height / 2);
+		fourier = new Fourier(audio, this);
+		//this.majForme("1");
 		// b = new Barre(this, song);
 		l = new Lumieres(this);
-=======
-		song = minim.loadFile("./Music/m4sonic.mp3");
 
-		fourier = new Fourier(song, this);
-		surface = new Surface3D(this, 1, this.width / 2, this.height / 2);
-		//b = new Barre(this, song);
-		l =  new Lumieres(this);
->>>>>>> origin/HEAD
-
-		song.rewind();
-		song.play();
 		i = 0;
 
 	}
 
 	public void draw() {
 		i++;
-<<<<<<< HEAD
 
-=======
-		
-		
->>>>>>> origin/HEAD
+		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 		l.alterne(i);
 		background(0);
-		fourier.majBuff(song);
-		surface.maj(fourier.getFreq(Fourier.CENTRE));
-		surface.display();
-<<<<<<< HEAD
-=======
+		fourier.majBuff(audio);
 		
-		
-		
-		
-		
->>>>>>> origin/HEAD
+		if (form != null) {
+			form.maj(fourier.getFreq(Fourier.CENTRE));
+			form.display();
+		}
 
 	}
 
