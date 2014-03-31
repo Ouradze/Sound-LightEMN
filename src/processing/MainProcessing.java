@@ -25,12 +25,21 @@ public class MainProcessing extends PApplet {
 
 		minim = new Minim(this);
 
+<<<<<<< HEAD
 		song = minim.loadFile("./Music/Flute.mp3");
 
 		fourier = new Fourier(song, this);
 		surface = new Surface3D(this, 1, this.width / 2, this.height / 2);
 		// b = new Barre(this, song);
 		l = new Lumieres(this);
+=======
+		song = minim.loadFile("./Music/m4sonic.mp3");
+
+		fourier = new Fourier(song, this);
+		surface = new Surface3D(this, 1, this.width / 2, this.height / 2);
+		//b = new Barre(this, song);
+		l =  new Lumieres(this);
+>>>>>>> origin/HEAD
 
 		song.rewind();
 		song.play();
@@ -40,12 +49,25 @@ public class MainProcessing extends PApplet {
 
 	public void draw() {
 		i++;
+<<<<<<< HEAD
 
+=======
+		
+		
+>>>>>>> origin/HEAD
 		l.alterne(i);
 		background(0);
 		fourier.majBuff(song);
 		surface.maj(fourier.getFreq(Fourier.CENTRE));
 		surface.display();
+<<<<<<< HEAD
+=======
+		
+		
+		
+		
+		
+>>>>>>> origin/HEAD
 
 	}
 

@@ -24,12 +24,18 @@ public class Hypercube extends Design {
 	public void maj(float[] freq) {
 		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
+<<<<<<< HEAD
 		this.mat = new Matrice(f, n);
 
+=======
+		this.mat= new Matrice(f,n);
+		
+>>>>>>> origin/HEAD
 	}
 
 	@Override
 	public void display() {
+<<<<<<< HEAD
 
 		parent.pushMatrix();
 		parent.translate(parent.width / 2 + largeur / 2, -hauteur / 2,
@@ -38,6 +44,15 @@ public class Hypercube extends Design {
 		parent.pushMatrix();
 		parent.rotateY(PApplet.radians(360 * parent.mouseX / parent.width));
 
+=======
+		
+		parent.pushMatrix();
+		parent.translate(parent.width/2+largeur/2,-hauteur/2, -profondeur/2-1000);
+		
+		parent.pushMatrix();
+		parent.rotateY(PApplet.radians(360*parent.mouseX/parent.width));
+	
+>>>>>>> origin/HEAD
 		for (int j = 0; j < n; j++) {
 			parent.pushMatrix();
 			parent.translate(0, 0, -j * profondeur);
@@ -60,6 +75,7 @@ public class Hypercube extends Design {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				parent.pushMatrix();
+<<<<<<< HEAD
 				parent.translate((i - ((float) (n) / (float) (2))) * largeur,
 						parent.width / 2 + (j - ((float) (n) / (float) (2)))
 								* hauteur, -n * profondeur);
@@ -72,6 +88,19 @@ public class Hypercube extends Design {
 				parent.box(largeur, hauteur, profondeur + this.mat.get(i, j)
 						* 2);
 
+=======
+				parent.translate((i - ((float) (n) / (float) (2))) * largeur, parent.width
+						/ 2 + (j - ((float) (n) / (float) (2))) * hauteur, -n * profondeur);
+				parent.noStroke();
+				int v1 =  (int) (Math.random()*255);
+				int v2 =  (int) (Math.random()*255);
+				int v3 =  (int) (Math.random()*255);
+				parent.fill(v1, v2, v3);
+				
+				parent.box(largeur, hauteur, profondeur+this.mat.get(i,j)*2);
+
+				
+>>>>>>> origin/HEAD
 				parent.fill(255);
 
 				parent.popMatrix();
@@ -88,8 +117,17 @@ public class Hypercube extends Design {
 
 			parent.translate((i - ((float) (n) / (float) (2))) * largeur, 0, 0);
 			parent.noStroke();
+<<<<<<< HEAD
 
 			parent.box(largeur, hauteur + this.mat.get(i, j) * 2, profondeur);
+=======
+			
+
+			parent.box(largeur, hauteur+this.mat.get(i,j)*2, profondeur);
+
+			
+			
+>>>>>>> origin/HEAD
 
 			parent.popMatrix();
 		}
@@ -98,16 +136,26 @@ public class Hypercube extends Design {
 
 	public void bas(int j) {
 		parent.pushMatrix();
+<<<<<<< HEAD
 		parent.translate(0, parent.height + hauteur, 0);
 		this.cote(j);
 
+=======
+		parent.translate(0, parent.height+hauteur, 0);
+		this.cote(j);
+		
+>>>>>>> origin/HEAD
 		parent.popMatrix();
 	}
 
 	public void gauche(int j) {
 		parent.pushMatrix();
+<<<<<<< HEAD
 		parent.translate(-largeur - parent.width / 2, hauteur + parent.height
 				/ 2, 0);
+=======
+		parent.translate(-largeur-parent.width/2, hauteur+parent.height/2, 0);
+>>>>>>> origin/HEAD
 		parent.rotateZ(PApplet.radians(90));
 		this.cote(j);
 		parent.popMatrix();
@@ -115,7 +163,11 @@ public class Hypercube extends Design {
 
 	public void droite(int j) {
 		parent.pushMatrix();
+<<<<<<< HEAD
 		parent.translate(parent.width / 2, hauteur + parent.height / 2, 0);
+=======
+		parent.translate(parent.width/2, hauteur+parent.height/2, 0);
+>>>>>>> origin/HEAD
 		parent.rotateZ(PApplet.radians(90));
 		this.cote(j);
 		parent.popMatrix();
