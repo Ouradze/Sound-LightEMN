@@ -13,7 +13,7 @@ public class Surface3D extends Design {
 	private static final String Surface = "ADBC";
 	private static final String Lignes = "BACD";
 	private float[][] points;
-	private static final int[] seq = { 0, 3, 1, 2 };
+	private static final int[] seq = { 0,3,1,2};
 
 	public Surface3D(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
@@ -36,13 +36,11 @@ public class Surface3D extends Design {
 
 				for (int i = 0; i < this.taille - 1; i++) {
 
-					this.creerUniteSurface(i, k, Surface3D.Surface);
+					this.creerUniteSurface(i, k, Surface3D.Lignes);
 
 				}
 				
 			}
-
-			
 			parent.endShape();
 
 			for (int i = 0; i < this.taille - 1; i++) {
@@ -74,14 +72,14 @@ public class Surface3D extends Design {
 
 		switch (ordre) {
 		case Surface3D.Surface: // ADBC
-			parent.vertex(this.points[0][0], this.points[0][1],
-					this.points[0][2]);
-			parent.vertex(this.points[3][0], this.points[3][1],
-					this.points[3][2]);
-			parent.vertex(this.points[1][0], this.points[1][1],
-					this.points[1][2]);
-			parent.vertex(this.points[2][0], this.points[2][1],
-					this.points[2][2]);
+			parent.vertex(this.points[Surface3D.seq[0]][0], this.points[Surface3D.seq[0]][1],
+					this.points[Surface3D.seq[0]][2]);
+			parent.vertex(this.points[Surface3D.seq[1]][0], this.points[Surface3D.seq[1]][1],
+					this.points[Surface3D.seq[1]][2]);
+			parent.vertex(this.points[Surface3D.seq[2]][0], this.points[Surface3D.seq[2]][1],
+					this.points[Surface3D.seq[2]][2]);
+			parent.vertex(this.points[Surface3D.seq[3]][0], this.points[Surface3D.seq[3]][1],
+					this.points[Surface3D.seq[3]][2]);
 
 		case Surface3D.Lignes:
 			parent.vertex(this.points[0][0], this.points[0][1],
@@ -115,12 +113,14 @@ public class Surface3D extends Design {
 
 	}
 
-	public void maj(float[] freq) {
+	public void maj(float[] freq,int x, int y) {
 		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
 		this.file.maj(f);
 		this.taille = f.length;
 		this.largeur = parent.width / this.taille;
+		this.positionX = x;
+		this.positionY = y;
 
 	}
 

@@ -2,6 +2,7 @@ package design;
 
 import processing.core.PApplet;
 import sound.FileFreq;
+import sound.Fourier;
 import sound.Lissage;
 import sound.Matrice;
 
@@ -21,11 +22,14 @@ public class Hypercube extends Design {
 
 	}
 
-	public void maj(float[] freq) {
+	public void maj(float[] freq,int x, int y) {
 		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
 
 		this.mat= new Matrice(f,n);
+		 
+			this.positionX = x;
+			this.positionY = y;
 		
 
 	}

@@ -10,11 +10,7 @@ public class Rond extends Design {
 
 	}
 
-	public void maj(float[] freq) {
-		// Mise à l'échelle adéquate des valeurs de la FFT (à adapter en
-		// fonction du graphisme)
-		this.freq = Fourier.QuadScaling(Fourier.scaling(freq, 1.5, 0.8));
-	}
+	
 
 	public void display() {
 		for (int i = 1; i < freq.length; i++) {
@@ -30,6 +26,13 @@ public class Rond extends Design {
 
 			parent.popMatrix();
 		}
+	}
+
+	@Override
+	public void maj(float[] freq, int x, int y) {
+		this.freq = Fourier.QuadScaling(Fourier.scaling(freq, 1.5, 0.8));
+		this.positionX = x;
+		this.positionY = y;
 	}
 
 }

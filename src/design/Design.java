@@ -20,7 +20,7 @@ public abstract class Design {
 
 	}
 
-	public abstract void maj(float[] freq);
+	public abstract void maj(float[] freq, int x, int y);
 
 	public abstract void display();
 
