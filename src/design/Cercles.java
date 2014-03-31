@@ -2,7 +2,7 @@ package design;
 
 import processing.core.PApplet;
 
-public class Cercles extends Design{
+public class Cercles extends Design {
 
 	public Cercles(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
@@ -12,13 +12,13 @@ public class Cercles extends Design{
 	@Override
 	public void maj(float[] freq) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void display() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

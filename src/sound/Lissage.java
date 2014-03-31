@@ -8,7 +8,7 @@ public class Lissage {
 	public static final float[] coefsquad = { (float) (-21) / 231,
 			(float) (14) / 231, (float) (39) / 231, (float) (54) / 231,
 			(float) (59) / 231, (float) (54) / 231, (float) (39) / 231,
-			(float) (14) /231, (float) (-21) / 231 };
+			(float) (14) / 231, (float) (-21) / 231 };
 
 	public static float[] Lissercubique(float[] f) {
 
@@ -27,7 +27,7 @@ public class Lissage {
 	public static float[] Lisserquad(float[] f) {
 
 		float[] freq = new float[f.length];
-		for (int i = 1; i < freq.length -1; i++) {
+		for (int i = 1; i < freq.length - 1; i++) {
 			if (i < 8 || i >= freq.length - 8) {
 				freq[i] = f[i];
 			} else {

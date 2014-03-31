@@ -9,14 +9,14 @@ import view.MainWindow;
 
 public class Main {
 
-	public static void main(String[] args){
-		
+	public static void main(String[] args) {
+
 		MusicFile file = new MusicFile("./Music/Flute.mp3");
 		PApplet test = new MainProcessing();
 
 		MainWindow window = new MainWindow(file, test);
 		window.setVisible(true);
-		
+
 		ControlWindow controlWin = new ControlWindow(window);
 		controlWin.setVisible(true);
 	}

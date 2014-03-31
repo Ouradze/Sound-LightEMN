@@ -12,40 +12,40 @@ import javax.swing.JOptionPane;
 
 import view.MainWindow;
 
-public class ControlJButtonFile implements Observer, ActionListener{
+public class ControlJButtonFile implements Observer, ActionListener {
 
 	private Frame parent;
-	
+
 	final JFileChooser fc = new JFileChooser();
-	
-	public ControlJButtonFile(Frame parent){
+
+	public ControlJButtonFile(Frame parent) {
 		this.parent = parent;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	
-		//Handle open button action.
-	    if (true) {
-	        int returnVal = fc.showOpenDialog(this.parent);
 
-	        if (returnVal == JFileChooser.APPROVE_OPTION) {
-	            File file = fc.getSelectedFile();
-	            //This is where a real application would open the file.
-	            //log.append("Opening: " + file.getName() + "." + newline);
-	            
-	            file.getName();
-	        } else {
-	            //log.append("Open command cancelled by user." + newline);
-	        }
-	   }
-		
+		// Handle open button action.
+		if (true) {
+			int returnVal = fc.showOpenDialog(this.parent);
+
+			if (returnVal == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+				// This is where a real application would open the file.
+				// log.append("Opening: " + file.getName() + "." + newline);
+
+				file.getName();
+			} else {
+				// log.append("Open command cancelled by user." + newline);
+			}
+		}
+
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

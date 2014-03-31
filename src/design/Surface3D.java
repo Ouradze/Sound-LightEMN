@@ -12,7 +12,7 @@ public class Surface3D extends Design {
 	private static final String Surface = "ADBC";
 	private static final String Lignes = "BACD";
 	private float[][] points;
-	private static final int[] seq = {0,3,1,2};
+	private static final int[] seq = { 0, 3, 1, 2 };
 
 	public Surface3D(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
@@ -70,13 +70,17 @@ public class Surface3D extends Design {
 
 		switch (ordre) {
 		case Surface3D.Surface: // ADBC
-			parent.vertex(this.points[Surface3D.seq[0]][0], this.points[Surface3D.seq[0]][1],
+			parent.vertex(this.points[Surface3D.seq[0]][0],
+					this.points[Surface3D.seq[0]][1],
 					this.points[Surface3D.seq[0]][2]);
-			parent.vertex(this.points[Surface3D.seq[1]][0], this.points[Surface3D.seq[1]][1],
+			parent.vertex(this.points[Surface3D.seq[1]][0],
+					this.points[Surface3D.seq[1]][1],
 					this.points[Surface3D.seq[1]][2]);
-			parent.vertex(this.points[Surface3D.seq[2]][0], this.points[Surface3D.seq[2]][1],
+			parent.vertex(this.points[Surface3D.seq[2]][0],
+					this.points[Surface3D.seq[2]][1],
 					this.points[Surface3D.seq[2]][2]);
-			parent.vertex(this.points[Surface3D.seq[3]][0], this.points[Surface3D.seq[3]][1],
+			parent.vertex(this.points[Surface3D.seq[3]][0],
+					this.points[Surface3D.seq[3]][1],
 					this.points[Surface3D.seq[3]][2]);
 			break;
 
