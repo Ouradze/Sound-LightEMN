@@ -22,14 +22,17 @@ public class Hypercube extends Design {
 	}
 
 	public void maj(float[] freq) {
-		float[] f = Lissage.Lisser(freq);
+		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
+
 		this.mat= new Matrice(f,n);
 		
+
 	}
 
 	@Override
 	public void display() {
+
 		
 		parent.pushMatrix();
 		parent.translate(parent.width/2+largeur/2,-hauteur/2, -profondeur/2-1000);
@@ -37,6 +40,7 @@ public class Hypercube extends Design {
 		parent.pushMatrix();
 		parent.rotateY(PApplet.radians(360*parent.mouseX/parent.width));
 	
+
 		for (int j = 0; j < n; j++) {
 			parent.pushMatrix();
 			parent.translate(0, 0, -j * profondeur);
@@ -59,6 +63,7 @@ public class Hypercube extends Design {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
 				parent.pushMatrix();
+
 				parent.translate((i - ((float) (n) / (float) (2))) * largeur, parent.width
 						/ 2 + (j - ((float) (n) / (float) (2))) * hauteur, -n * profondeur);
 				parent.noStroke();
@@ -70,6 +75,7 @@ public class Hypercube extends Design {
 				parent.box(largeur, hauteur, profondeur+this.mat.get(i,j)*2);
 
 				
+
 				parent.fill(255);
 
 				parent.popMatrix();
@@ -86,12 +92,14 @@ public class Hypercube extends Design {
 
 			parent.translate((i - ((float) (n) / (float) (2))) * largeur, 0, 0);
 			parent.noStroke();
+
 			
 
 			parent.box(largeur, hauteur+this.mat.get(i,j)*2, profondeur);
 
 			
 			
+
 
 			parent.popMatrix();
 		}
@@ -100,15 +108,19 @@ public class Hypercube extends Design {
 
 	public void bas(int j) {
 		parent.pushMatrix();
+
 		parent.translate(0, parent.height+hauteur, 0);
 		this.cote(j);
 		
+
 		parent.popMatrix();
 	}
 
 	public void gauche(int j) {
 		parent.pushMatrix();
+
 		parent.translate(-largeur-parent.width/2, hauteur+parent.height/2, 0);
+
 		parent.rotateZ(PApplet.radians(90));
 		this.cote(j);
 		parent.popMatrix();
@@ -116,7 +128,9 @@ public class Hypercube extends Design {
 
 	public void droite(int j) {
 		parent.pushMatrix();
+
 		parent.translate(parent.width/2, hauteur+parent.height/2, 0);
+
 		parent.rotateZ(PApplet.radians(90));
 		this.cote(j);
 		parent.popMatrix();

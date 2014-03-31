@@ -1,7 +1,8 @@
 package SoundAndLight;
 
+import javax.swing.JFrame;
+
 import processing.MainProcessing;
-import processing.MyProcessingSketch;
 import processing.core.PApplet;
 import model.MusicFile;
 import view.ControlWindow;
@@ -9,14 +10,11 @@ import view.MainWindow;
 
 public class Main {
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		
-		MusicFile file = new MusicFile("./Music/Flute.mp3");
-		PApplet test = new MainProcessing();
-
-		MainWindow window = new MainWindow(file, test);
+		MainWindow window = new MainWindow();
 		window.setVisible(true);
-		
+
 		ControlWindow controlWin = new ControlWindow(window);
 		controlWin.setVisible(true);
 	}

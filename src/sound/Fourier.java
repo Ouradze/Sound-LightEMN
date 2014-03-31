@@ -129,40 +129,43 @@ public class Fourier {
 		return nf;
 	}
 
-	public static float[] StandardScaling(float[] f, double a, double b, boolean quad) {
+	public static float[] StandardScaling(float[] f, double a, double b,
+			boolean quad) {
 		float[] nf = new float[f.length];
 		float moyenne = moyenne(f);
 		for (int i = 0; i < f.length; i++) {
 			if (f[i] > a * moyenne) {
-				nf[i] = (float) ((f[i] - a * moyenne)*b);
+				nf[i] = (float) ((f[i] - a * moyenne) * b);
 			} else {
 				nf[i] = 0;
 			}
-			if(quad){
-			float quot = (float) ((float) (i) / (float) (f.length));
+			if (quad) {
+				float quot = (float) ((float) (i) / (float) (f.length));
 
-			nf[i] = (float) (nf[i] * (Math.sqrt(quot)));
+				nf[i] = (float) (nf[i] * (Math.sqrt(quot)));
 			}
 
 		}
 		return nf;
 	}
-	public static float[] regrouper(float[] f, int n){
-		
-		int l = f.length/n;
-		float[] freq =  new float[n];
+
+
+	public static float[] regrouper(float[] f, int n) {
+
+		int l = f.length / n;
+		float[] freq = new float[n];
 		float[] temp = new float[l];
-		for(int i=0; i<n;i++){
-			for(int j=0; j<l;j++){
-				temp[j]= f[j+i*l];
-				
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < l; j++) {
+				temp[j] = f[j + i * l];
+
 			}
-			freq[i]=Fourier.moyenne(temp);
+			freq[i] = Fourier.moyenne(temp);
 		}
 		return freq;
 	}
-	
-	
+
+
 	public static float moyenne(float[] f) {
 		float moyenne = 0;
 		for (int i = 0; i < f.length; i++) {

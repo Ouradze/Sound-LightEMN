@@ -1,26 +1,23 @@
 package view;
 
-import java.awt.BorderLayout;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import model.MusicFile;
-import processing.MyProcessingSketch;
-import processing.core.PApplet;
+import processing.MainProcessing;
 
-public class MainWindow extends JFrame{
+public class MainWindow extends JFrame {
 
-	private MusicFile file;
-	private PApplet test;
-	
-	public MainWindow(MusicFile file, PApplet test){
+	private MainProcessing test;
+
+	public MainWindow() {
 		super("Sound & Light");
-
-		this.setSize(900, 900);
+		this.setSize(900,900);
+		//this.setSize(this.getParent().getSize());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		this.file = file;
+		MainProcessing test = new MainProcessing(this);
 		this.test = test;
 
 		JPanel panel = new JPanel();
@@ -28,6 +25,10 @@ public class MainWindow extends JFrame{
 		panel.add(test);
 		this.add(panel);
 		test.init();
+	}
+	
+	public MainProcessing getApplet(){
+		return this.test;
 	}
 
 }
