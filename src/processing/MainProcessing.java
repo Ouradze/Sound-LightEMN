@@ -80,7 +80,7 @@ public class MainProcessing extends PApplet {
 		//this.majForme("1");
 		// b = new Barre(this, song);
 		l = new Lumieres(this);
-
+		
 		i = 0;
 
 	}
@@ -94,7 +94,7 @@ public class MainProcessing extends PApplet {
 		fourier.majBuff(audio);
 		
 		if (form != null) {
-			form.maj(fourier.getFreq(Fourier.CENTRE));
+			form.maj(fourier.getFreq(Fourier.CENTRE),this.width/2,this.height/2-50);
 			form.display();
 		}
 

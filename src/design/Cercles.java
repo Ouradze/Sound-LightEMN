@@ -10,7 +10,7 @@ public class Cercles extends Design {
 	}
 
 	@Override
-	public void maj(float[] freq) {
+	public void maj(float[] freq,int x, int y) {
 		// TODO Auto-generated method stub
 
 	}

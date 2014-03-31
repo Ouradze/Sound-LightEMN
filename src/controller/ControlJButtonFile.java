@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import processing.MainProcessing;
 
@@ -21,6 +22,9 @@ public class ControlJButtonFile implements Observer, ActionListener {
 	public ControlJButtonFile(Frame parent, MainProcessing p) {
 		this.parent = parent;
 		this.p = p;
+		File dir = new File("./Music/");
+		fc.setCurrentDirectory(dir);
+		fc.setFileFilter(new FileNameExtensionFilter("MPEG-Layer 3 file", "mp3"));
 	}
 
 	@Override

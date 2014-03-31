@@ -7,6 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import view.MainWindow;
 import controller.ControlJButtonDefinedForm;
 import controller.ControlJButtonFile;
 import controller.ControlJButtonStream;
@@ -47,6 +48,7 @@ public class ControlWindow extends JFrame {
 
 		JCheckBox file = new JCheckBox("File");
 		ControlJButtonFile controlFile = new ControlJButtonFile(this,this.window.getApplet());
+		
 		file.addActionListener(controlFile);
 
 		JCheckBox stream = new JCheckBox("Stream");

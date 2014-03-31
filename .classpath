@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/core.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/tritonus_share.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/tritonus_aos.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/mp3spi1.9.4.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/minim.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/jsminim.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/jl1.0.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/jogl-all-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/jogl-all.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/gluegen-rt-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="/home/mehdi/Documents/PIST/gluegen-rt.jar"/>
-=======
->>>>>>> origin/HEAD
 	<classpathentry kind="lib" path="C:/Users/Guillaume/workspace/Oselib/core.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Guillaume/workspace/Oselib/gluegen-rt.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Guillaume/workspace/Oselib/gluegen-rt-natives-windows-amd64.jar"/>
@@ -29,9 +12,6 @@
 	<classpathentry kind="lib" path="C:/Users/Guillaume/workspace/Oselib/mp3spi1.9.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Guillaume/workspace/Oselib/tritonus_aos.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Guillaume/workspace/Oselib/tritonus_share.jar"/>
-<<<<<<< HEAD
-=======
->>>>>>> 1e60bbbeb5ebda9c28a328e3d7cbbe0fdcec3f14
->>>>>>> origin/HEAD
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

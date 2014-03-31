@@ -40,11 +40,13 @@ public class Stripes3D extends Design {
 
 	}
 
-	public void maj(float[] freq) {
+	public void maj(float[] freq, int x, int y) {
 		this.freq = Fourier.scaling(Fourier.CutScaling(freq, (float) 0.75),
 				1.9, 0.1);
 		this.file.maj(Fourier.scaling(Fourier.CutScaling(freq, (float) 0.75),
 				1.9, 0.1));
+		this.positionX = x;
+		this.positionY = y;
 	}
 
 }
