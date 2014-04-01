@@ -33,7 +33,10 @@ public class MainProcessing extends PApplet {
 	}
 
 	public void majSong(String path) {
-		// System.out.println("AUDIO : " + audio.bufferSize());
+		
+		if(song!=null){
+			song.close();
+		}
 		song = minim.loadFile(path);
 		audio = song;
 		song.play();
@@ -42,7 +45,7 @@ public class MainProcessing extends PApplet {
 	public void majInput() {
 		// System.out.println("SONG : " + song.bufferSize());
 		song.close();
-
+		
 		audio = input;
 
 	}
@@ -72,6 +75,7 @@ public class MainProcessing extends PApplet {
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		minim = new Minim(this);
+		
 
 		input = minim.getLineIn();
 		audio = input;
