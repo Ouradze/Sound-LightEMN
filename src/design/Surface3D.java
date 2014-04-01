@@ -17,7 +17,7 @@ public class Surface3D extends Design {
 
 	public Surface3D(PApplet p, int s, int x, int y) {
 		super(p, s, x, y);
-		this.file = new FileFreq(300);
+		this.file = new FileFreq(100);
 		
 	}
 
@@ -32,6 +32,7 @@ public class Surface3D extends Design {
 			parent.fill(255);
 
 			parent.beginShape(PApplet.TRIANGLE_STRIP);
+			
 			for (int k = 0; k < this.file.getsize() - 1; k++) {
 
 				for (int i = 0; i < this.taille - 1; i++) {
@@ -80,7 +81,7 @@ public class Surface3D extends Design {
 					this.points[Surface3D.seq[2]][2]);
 			parent.vertex(this.points[Surface3D.seq[3]][0], this.points[Surface3D.seq[3]][1],
 					this.points[Surface3D.seq[3]][2]);
-
+			break;
 		case Surface3D.Lignes:
 			parent.vertex(this.points[0][0], this.points[0][1],
 					this.points[0][2]);
@@ -90,6 +91,7 @@ public class Surface3D extends Design {
 					this.points[3][2]);
 			parent.vertex(this.points[2][0], this.points[2][1],
 					this.points[2][2]);
+			break;
 
 		}
 
