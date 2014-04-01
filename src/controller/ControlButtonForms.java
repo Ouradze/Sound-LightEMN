@@ -30,11 +30,11 @@ public class ControlButtonForms implements Observer, ActionListener{
 				break;
 			case "2": p.majForme("2");
 				break;
-			case "3": System.out.println(command);
+			case "3": p.majForme("3");
 				break;
-			case "4": System.out.println(command);
+			case "4": p.majForme("4");
 				break;
-			case "5": System.out.println(command);
+			case "5": p.majForme("5");
 				break;
 		} 
 		

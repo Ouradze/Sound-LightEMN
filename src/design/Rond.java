@@ -6,7 +6,7 @@ import sound.Fourier;
 public class Rond extends Design {
 
 	public Rond(PApplet p, int s, int x, int y) {
-		super(p, s, x, y);
+		super(p, s, x, y,0);
 
 	}
 
@@ -29,7 +29,7 @@ public class Rond extends Design {
 	}
 
 	@Override
-	public void maj(float[] freq, int x, int y) {
+	public void maj(float[] freq, int x, int y,int z) {
 		this.freq = Fourier.QuadScaling(Fourier.scaling(freq, 1.5, 0.8));
 		this.positionX = x;
 		this.positionY = y;

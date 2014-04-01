@@ -6,8 +6,8 @@ import sound.*;
 public class Stripes3D extends Design {
 	public FileFreq file;
 
-	public Stripes3D(PApplet p, int s, int x, int y) {
-		super(p, s, x, y);
+	public Stripes3D(PApplet p, int s, int x, int y,int z) {
+		super(p, s, x, y, z);
 		this.file = new FileFreq(50);
 	}
 
@@ -15,7 +15,7 @@ public class Stripes3D extends Design {
 		int l = this.freq.length;
 		parent.pushMatrix();
 		parent.rotateY(PApplet.radians(0));
-		parent.translate(0, (float) (positionY * 1.5), -400);
+		parent.translate(0, (float) (positionY * 1.5), this.positionZ);
 		for (int k = 0; k < this.file.getsize(); k++) {
 			float[] f = this.file.getIndex(k);
 			for (int i = 0; i < l; i++) {
@@ -40,13 +40,14 @@ public class Stripes3D extends Design {
 
 	}
 
-	public void maj(float[] freq, int x, int y) {
+	public void maj(float[] freq, int x, int y, int z) {
 		this.freq = Fourier.scaling(Fourier.CutScaling(freq, (float) 0.75),
 				1.9, 0.1);
 		this.file.maj(Fourier.scaling(Fourier.CutScaling(freq, (float) 0.75),
 				1.9, 0.1));
 		this.positionX = x;
 		this.positionY = y;
+		this.positionZ = z;
 	}
 
 }

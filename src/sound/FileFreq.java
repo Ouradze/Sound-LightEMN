@@ -1,11 +1,6 @@
 package sound;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
-import java.util.Stack;
-
+import java.util.*;
 public class FileFreq {
 
 	private ArrayList<float[]> list;
