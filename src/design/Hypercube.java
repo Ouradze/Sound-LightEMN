@@ -1,10 +1,8 @@
 package design;
 
 import processing.core.PApplet;
-import sound.FileFreq;
-import sound.Fourier;
-import sound.Lissage;
-import sound.Matrice;
+import sound.*;
+
 
 public class Hypercube extends Design {
 	public static final int n = 20;
@@ -13,8 +11,8 @@ public class Hypercube extends Design {
 	public int profondeur;
 	public Matrice mat;
 
-	public Hypercube(PApplet p, int s, int x, int y) {
-		super(p, s, x, y);
+	public Hypercube(PApplet p, int s, int x, int y, int z) {
+		super(p, s, x, y,z);
 		largeur = (int) ((float) (parent.width) / (float) (n));
 		hauteur = (int) ((float) (parent.height) / (float) (n));
 		profondeur = largeur;
@@ -22,7 +20,7 @@ public class Hypercube extends Design {
 
 	}
 
-	public void maj(float[] freq,int x, int y) {
+	public void maj(float[] freq,int x, int y, int z) {
 		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
 
@@ -30,6 +28,7 @@ public class Hypercube extends Design {
 		 
 			this.positionX = x;
 			this.positionY = y;
+			this.positionZ =  z;
 		
 
 	}
@@ -71,10 +70,7 @@ public class Hypercube extends Design {
 				parent.translate((i - ((float) (n) / (float) (2))) * largeur, parent.width
 						/ 2 + (j - ((float) (n) / (float) (2))) * hauteur, -n * profondeur);
 				parent.noStroke();
-				int v1 =  (int) (Math.random()*255);
-				int v2 =  (int) (Math.random()*255);
-				int v3 =  (int) (Math.random()*255);
-				parent.fill(v1, v2, v3);
+				parent.fill(255);
 				
 				parent.box(largeur, hauteur, profondeur+this.mat.get(i,j)*2);
 

@@ -1,14 +1,10 @@
 package processing;
 
-import java.awt.Container;
-import java.awt.Frame;
+import java.awt.*;
 
 import processing.core.PApplet;
 import sound.Fourier;
-import ddf.minim.AudioInput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.AudioSource;
-import ddf.minim.Minim;
+import ddf.minim.*;
 import design.*;
 
 public class MainProcessing extends PApplet {
@@ -18,8 +14,9 @@ public class MainProcessing extends PApplet {
 	Minim minim;
 	AudioPlayer song;
 	AudioInput input;
-	private String path;
+
 	AudioSource audio;
+	protected boolean troisD;
 
 	Fourier fourier;
 	Design form;
@@ -34,6 +31,9 @@ public class MainProcessing extends PApplet {
 
 	public void majSong(String path) {
 		// System.out.println("AUDIO : " + audio.bufferSize());
+		if(song!=null){
+			song.close();
+		}
 		song = minim.loadFile(path);
 		audio = song;
 		song.play();
@@ -50,25 +50,34 @@ public class MainProcessing extends PApplet {
 	public void majForme(String s) {
 
 		switch (s) {
-		case "1" :
-			form  = new Surface3D(this, 1, this.width / 2, this.height / 2);
-			
+		case "1":
+			this.troisD = true;
+			form = new Surface3D(this, 1, this.width / 2, this.height / 2, 0);
+
 			break;
-		case "2" :
-			form  = new Stripes3D(this, 1, this.width / 2, this.height / 2);
+		case "2":
+			this.troisD = true;
+			form = new Stripes3D(this, 1, this.width / 2, this.height / 2,0);
 			break;
-		case "3" :
+		case "3":
+			this.troisD = true;
+			form = new Hypercube(this, 1, this.width / 2, this.height / 2,0);
 			break;
-		case "4" :
+		case "4":
+			this.troisD = false;
+			form = new Rond(this, 1, this.width / 2, this.height / 2);
 			break;
-		case "5" :
+		case "5":
+			form = new Stripe(this, 1, this.width / 2, this.height / 2);
+			this.troisD = false;
 			break;
-			
+
 		}
 
 	}
 
 	public void setup() {
+		this.troisD = true;
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		minim = new Minim(this);
@@ -77,24 +86,27 @@ public class MainProcessing extends PApplet {
 		audio = input;
 
 		fourier = new Fourier(audio, this);
-		//this.majForme("1");
+		// this.majForme("1");
 		// b = new Barre(this, song);
 		l = new Lumieres(this);
-		
+
 		i = 0;
 
 	}
 
 	public void draw() {
 		i++;
-
-		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+		
+		
+			size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+		
 		l.alterne(i);
 		background(0);
 		fourier.majBuff(audio);
-		
+
 		if (form != null) {
-			form.maj(fourier.getFreq(Fourier.CENTRE),this.width/2,this.height/2-50);
+			form.maj(fourier.getFreq(Fourier.CENTRE), this.width / 2,
+					this.height / 2,0);
 			form.display();
 		}
 

@@ -11,16 +11,18 @@ public abstract class Design {
 						// droite (1), utile en cas de symétrie
 	public int positionX; // position du centre du graphique
 	public int positionY; // position du centre du graphique
+	public int positionZ;
 
-	public Design(PApplet p, int s, int x, int y) {
+	public Design(PApplet p, int s, int x, int y, int z) {
 		this.sens = s;
 		this.parent = p;
 		this.positionX = x;
 		this.positionY = y;
+		this.positionZ = z;
 
 	}
 
-	public abstract void maj(float[] freq, int x, int y);
+	public abstract void maj(float[] freq, int x, int y, int z);
 
 	public abstract void display();
 
