@@ -15,7 +15,7 @@ public class Stripes3D extends Design {
 		int l = this.freq.length;
 		parent.pushMatrix();
 		parent.rotateY(PApplet.radians(0));
-		parent.translate(0, (float) (positionY * 1.5), this.positionZ);
+		parent.translate(0, (float) (positionY * 1.5), this.positionZ-50);
 		for (int k = 0; k < this.file.getsize(); k++) {
 			float[] f = this.file.getIndex(k);
 			for (int i = 0; i < l; i++) {
@@ -41,13 +41,12 @@ public class Stripes3D extends Design {
 	}
 
 	public void maj(float[] freq, int x, int y, int z) {
-		this.freq = Fourier.scaling(Fourier.CutScaling(freq, (float) 0.75),
-				1.9, 0.1);
-		this.file.maj(Fourier.scaling(Fourier.CutScaling(freq, (float) 0.75),
-				1.9, 0.1));
+		float[] f = Lissage.Lissercubique(freq);
+		this.freq = f;
+		this.file.maj(f);
 		this.positionX = x;
 		this.positionY = y;
-		this.positionZ = z;
+		this.positionZ = z ;
 	}
 
 }
