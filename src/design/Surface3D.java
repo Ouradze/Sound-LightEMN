@@ -1,8 +1,6 @@
 package design;
 
-import processing.core.PApplet;
-import processing.core.PConstants;
-import processing.opengl.PShader;
+import processing.core.*;
 import sound.*;
 
 public class Surface3D extends Design {
@@ -15,8 +13,8 @@ public class Surface3D extends Design {
 	private float[][] points;
 	private static final int[] seq = { 0,3,1,2};
 
-	public Surface3D(PApplet p, int s, int x, int y) {
-		super(p, s, x, y);
+	public Surface3D(PApplet p, int s, int x, int y, int z) {
+		super(p, s, x, y,z);
 		this.file = new FileFreq(100);
 		
 	}
@@ -37,7 +35,7 @@ public class Surface3D extends Design {
 
 				for (int i = 0; i < this.taille - 1; i++) {
 
-					this.creerUniteSurface(i, k, Surface3D.Lignes);
+					this.creerUniteSurface(i, k, Surface3D.Surface);
 
 				}
 				
@@ -115,14 +113,15 @@ public class Surface3D extends Design {
 
 	}
 
-	public void maj(float[] freq,int x, int y) {
+	public void maj(float[] freq,int x, int y, int z) {
 		float[] f = Lissage.Lissercubique(freq);
 		this.freq = f;
 		this.file.maj(f);
 		this.taille = f.length;
 		this.largeur = parent.width / this.taille;
 		this.positionX = x;
-		this.positionY = y;
+		this.positionY = y-50;
+		this.positionZ = z ;
 
 	}
 

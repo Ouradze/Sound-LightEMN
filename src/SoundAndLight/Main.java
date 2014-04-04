@@ -1,10 +1,6 @@
 package SoundAndLight;
 
-import javax.swing.JFrame;
 
-import processing.MainProcessing;
-import processing.core.PApplet;
-import model.MusicFile;
 import view.ControlWindow;
 import view.MainWindow;
 
