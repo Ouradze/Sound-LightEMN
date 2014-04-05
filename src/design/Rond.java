@@ -35,4 +35,14 @@ public class Rond extends Design {
 		this.positionY = y;
 	}
 
+
+
+	@Override
+	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
+		this.freq = Fourier.QuadScaling(Fourier.scaling(freqd, 1.5, 0.8));
+		this.positionX = x;
+		this.positionY = y;
+		
+	}
+
 }

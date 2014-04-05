@@ -52,6 +52,15 @@ public class Stripe extends Design{
 
 	}
 
+	@Override
+	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
+		this.freq = Fourier.QuadScaling(Fourier.scaling(freqd, 1.9, 0.1));
+		this.positionX = x;
+		this.positionY = y;
+		this.positionZ = z;
+		
+	}
+
 	
 
 }

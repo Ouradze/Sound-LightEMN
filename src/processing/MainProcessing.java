@@ -61,7 +61,7 @@ public class MainProcessing extends PApplet {
 			break;
 		case "3":
 			this.troisD = true;
-			form = new Hypercube(this, 1, this.width / 2, this.height / 2,0);
+			form = new Hypercube(this, 1, this.width / 2, this.height / 2,-1000);
 			break;
 		case "4":
 			this.troisD = false;
@@ -105,7 +105,7 @@ public class MainProcessing extends PApplet {
 		fourier.majBuff(audio);
 
 		if (form != null) {
-			form.maj(fourier.getFreq(Fourier.CENTRE), this.width / 2,
+			form.maj(fourier.getFreq(Fourier.GAUCHE),fourier.getFreq(Fourier.DROITE), this.width / 2,
 					this.height / 2,0);
 			form.display();
 		}

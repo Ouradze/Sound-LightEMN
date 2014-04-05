@@ -100,17 +100,17 @@ public class Fourier {
 		return nf;
 	}
 
-	public static float[] ExpScaling(float[] f) {
-		float[] nf = new float[f.length];
-
-		for (int i = 0; i < f.length; i++) {
-			float quot = (float) ((float) (i) / (float) (f.length));
-
-			nf[i] = (float) (f[i] * (1 - Math.exp(-quot)));
-
-		}
-		return nf;
-	}
+	// public static float[] ExpScaling(float[] f) {
+	// float[] nf = new float[f.length];
+	//
+	// for (int i = 0; i < f.length; i++) {
+	// float quot = (float) ((float) (i) / (float) (f.length));
+	//
+	// nf[i] = (float) (f[i] * (1 - Math.exp(-quot)));
+	//
+	// }
+	// return nf;
+	// }
 
 	public static float[] CutScaling(float[] f, float a) {
 		float[] nf = new float[f.length];
@@ -149,9 +149,9 @@ public class Fourier {
 		return nf;
 	}
 
-
 	public static float[] regrouper(float[] f, int n) {
-
+		// Réduit la taille du tableau à f à un tableau de taille n comportant
+		// les moyennes des n sections de f.
 		int l = f.length / n;
 		float[] freq = new float[n];
 		float[] temp = new float[l];
@@ -165,7 +165,6 @@ public class Fourier {
 		return freq;
 	}
 
-
 	public static float moyenne(float[] f) {
 		float moyenne = 0;
 		for (int i = 0; i < f.length; i++) {
@@ -174,4 +173,6 @@ public class Fourier {
 		moyenne = moyenne / f.length;
 		return moyenne;
 	}
+
+	
 }
