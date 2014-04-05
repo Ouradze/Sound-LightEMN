@@ -41,7 +41,7 @@ public class Hypercube extends Design {
 		parent.translate(parent.width/2+largeur/2,-hauteur/2, -profondeur/2-1000);
 		
 		parent.pushMatrix();
-		parent.rotateY(PApplet.radians(360*parent.mouseX/parent.width));
+		//parent.rotateY(PApplet.radians(360*parent.mouseX/parent.width));
 	
 
 		for (int j = 0; j < n; j++) {

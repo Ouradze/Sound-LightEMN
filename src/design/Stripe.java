@@ -36,7 +36,7 @@ public class Stripe extends Design{
 
 			
 
-			parent.fill(255);
+			parent.fill(0);
 			parent.stroke(255);
 			parent.rect( i * (largeur + espace), -freq[i], largeur,
 					2 * freq[i] + 2);
