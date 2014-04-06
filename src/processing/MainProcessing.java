@@ -96,10 +96,10 @@ public class MainProcessing extends PApplet {
 
 	public void draw() {
 		i++;
-		
-		
-			size(this.parent.getWidth(), this.parent.getHeight(), P3D);
-		
+
+
+		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+
 		l.alterne(i);
 		background(0);
 		fourier.majBuff(audio);
