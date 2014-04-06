@@ -21,7 +21,7 @@ public class Hypercube extends Design {
 	}
 
 	public void maj(float[] freq,int x, int y, int z) {
-		float[] f = Fourier.CutScaling(Lissage.Lissercubique(freq),(float) 0.8);
+		float[] f = CalculFourier.CutScaling(Lissage.Lissercubique(freq),(float) 0.8);
 		this.freq = f;
 
 		this.mat= new Matrice(f,n);
@@ -147,7 +147,7 @@ public class Hypercube extends Design {
 
 	@Override
 	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		float[] f = Fourier.CutScaling(Lissage.Lissercubique(freqg),(float) 0.8);
+		float[] f = CalculFourier.CutScaling(Lissage.Lissercubique(freqg),(float) 0.8);
 		this.freq = f;
 
 		this.mat= new Matrice(f,n);

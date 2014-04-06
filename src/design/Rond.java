@@ -1,7 +1,7 @@
 package design;
 
 import processing.core.PApplet;
-import sound.Fourier;
+import sound.CalculFourier;
 
 public class Rond extends Design {
 
@@ -30,7 +30,7 @@ public class Rond extends Design {
 
 	@Override
 	public void maj(float[] freq, int x, int y,int z) {
-		this.freq = Fourier.QuadScaling(Fourier.scaling(freq, 1.5, 0.8));
+		this.freq = CalculFourier.QuadScaling(CalculFourier.scaling(freq, 1.5, 0.8));
 		this.positionX = x;
 		this.positionY = y;
 	}
@@ -39,7 +39,7 @@ public class Rond extends Design {
 
 	@Override
 	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		this.freq = Fourier.QuadScaling(Fourier.scaling(freqd, 1.5, 0.8));
+		this.freq = CalculFourier.QuadScaling(CalculFourier.scaling(freqd, 1.5, 0.8));
 		this.positionX = x;
 		this.positionY = y;
 		

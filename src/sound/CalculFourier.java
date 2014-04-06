@@ -5,7 +5,7 @@ import ddf.minim.analysis.*;
 
 import processing.core.PApplet;
 
-public class Fourier {
+public class CalculFourier {
 
 	public float samplerate;
 	public int buffersize;
@@ -18,7 +18,7 @@ public class Fourier {
 
 	public PApplet parent;
 
-	public Fourier(AudioSource s, PApplet p) {
+	public CalculFourier(AudioSource s, PApplet p) {
 		this.samplerate = s.sampleRate();
 		this.buffersize = s.bufferSize();
 		this.gauche = s.left;
@@ -42,13 +42,13 @@ public class Fourier {
 		fourier.logAverages(60, 10);
 
 		switch (sortie) {
-		case Fourier.GAUCHE:
+		case CalculFourier.GAUCHE:
 			fourier.forward(this.gauche);
 			break;
-		case Fourier.CENTRE:
+		case CalculFourier.CENTRE:
 			fourier.forward(this.centre);
 			break;
-		case Fourier.DROITE:
+		case CalculFourier.DROITE:
 			fourier.forward(this.droite);
 			break;
 		}
@@ -160,7 +160,7 @@ public class Fourier {
 				temp[j] = f[j + i * l];
 
 			}
-			freq[i] = Fourier.moyenne(temp);
+			freq[i] = CalculFourier.moyenne(temp);
 		}
 		return freq;
 	}
