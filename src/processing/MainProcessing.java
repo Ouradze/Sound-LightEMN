@@ -3,7 +3,8 @@ package processing;
 import java.awt.*;
 
 import processing.core.PApplet;
-import sound.Fourier;
+import sound.AudioHandler;
+import sound.CalculFourier;
 import ddf.minim.*;
 import design.*;
 
@@ -11,14 +12,12 @@ public class MainProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
 	private Container parent;
-	Minim minim;
-	AudioPlayer song;
-	AudioInput input;
-
-	AudioSource audio;
+	
+	AudioHandler audio;
+    
 	protected boolean troisD;
 
-	Fourier fourier;
+	CalculFourier fourier;
 	Design form;
 	Lumieres l;
 	int i;
@@ -31,19 +30,13 @@ public class MainProcessing extends PApplet {
 
 	public void majSong(String path) {
 		// System.out.println("AUDIO : " + audio.bufferSize());
-		if(song!=null){
-			song.close();
-		}
-		song = minim.loadFile(path);
-		audio = song;
-		song.play();
+		audio.majSong(path);
+		audio.switchToSong();
 	}
 
 	public void majInput() {
 		// System.out.println("SONG : " + song.bufferSize());
-		song.close();
-
-		audio = input;
+		audio.switchToInput();
 
 	}
 
@@ -61,7 +54,7 @@ public class MainProcessing extends PApplet {
 			break;
 		case "3":
 			this.troisD = true;
-			form = new Hypercube(this, 1, this.width / 2, this.height / 2,0);
+			form = new Hypercube(this, 1, this.width / 2, this.height / 2,-1000);
 			break;
 		case "4":
 			this.troisD = false;
@@ -80,14 +73,13 @@ public class MainProcessing extends PApplet {
 		this.troisD = true;
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
-		minim = new Minim(this);
+		
+		audio = new AudioHandler(this);
+		
+		
 
-		input = minim.getLineIn();
-		audio = input;
-
-		fourier = new Fourier(audio, this);
-		// this.majForme("1");
-		// b = new Barre(this, song);
+		fourier = new CalculFourier(audio.getAudio(), this);
+		
 		l = new Lumieres(this);
 
 		i = 0;
@@ -102,10 +94,10 @@ public class MainProcessing extends PApplet {
 
 		l.alterne(i);
 		background(0);
-		fourier.majBuff(audio);
+		fourier.majBuff(audio.getAudio());
 
 		if (form != null) {
-			form.maj(fourier.getFreq(Fourier.CENTRE), this.width / 2,
+			form.maj(fourier.getFreq(CalculFourier.GAUCHE),fourier.getFreq(CalculFourier.DROITE), this.width / 2,
 					this.height / 2,0);
 			form.display();
 		}

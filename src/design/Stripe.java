@@ -1,7 +1,7 @@
 package design;
 
 import processing.core.PApplet;
-import sound.Fourier;
+import sound.CalculFourier;
 
 public class Stripe extends Design{
 	
@@ -17,7 +17,7 @@ public class Stripe extends Design{
 
 	@Override
 	public void maj(float[] freq, int x, int y,int z) {
-		this.freq = Fourier.QuadScaling(Fourier.scaling(freq, 1.9, 0.1));
+		this.freq = CalculFourier.QuadScaling(CalculFourier.scaling(freq, 1.9, 0.1));
 		this.positionX = x;
 		this.positionY = y;
 		this.positionZ = z;
@@ -36,7 +36,7 @@ public class Stripe extends Design{
 
 			
 
-			parent.fill(255);
+			parent.fill(0);
 			parent.stroke(255);
 			parent.rect( i * (largeur + espace), -freq[i], largeur,
 					2 * freq[i] + 2);
@@ -50,6 +50,15 @@ public class Stripe extends Design{
 		}
 		parent.popMatrix();
 
+	}
+
+	@Override
+	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
+		this.freq = CalculFourier.QuadScaling(CalculFourier.scaling(freqd, 1.9, 0.1));
+		this.positionX = x;
+		this.positionY = y;
+		this.positionZ = z;
+		
 	}
 
 	
