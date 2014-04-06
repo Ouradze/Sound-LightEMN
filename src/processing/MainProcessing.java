@@ -79,8 +79,7 @@ public class MainProcessing extends PApplet {
 		
 
 		fourier = new CalculFourier(audio.getAudio(), this);
-		// this.majForme("1");
-		// b = new Barre(this, song);
+		
 		l = new Lumieres(this);
 
 		i = 0;
