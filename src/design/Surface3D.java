@@ -35,7 +35,7 @@ public class Surface3D extends Design {
 
 				for (int i = 0; i < this.taille - 1; i++) {
 
-					this.creerUniteSurface(i, k, Surface3D.Surface);
+					this.creerUniteSurface(i, k, Surface3D.Lignes);
 
 				}
 				
