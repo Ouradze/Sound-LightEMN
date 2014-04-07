@@ -114,7 +114,7 @@ public class Surface3D extends Design {
 	}
 
 	public void maj(float[] freq,int x, int y, int z) {
-		float[] f = Lissage.Lissercubique(freq);
+		float[] f = (Lissage.Lissercubique(freq));
 		this.freq = f;
 		this.file.maj(f);
 		this.taille = f.length;
@@ -123,6 +123,19 @@ public class Surface3D extends Design {
 		this.positionY = y-50;
 		this.positionZ = z ;
 
+	}
+
+	@Override
+	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
+		float[] f = (Lissage.Lissercubique(freqd));
+		this.freq = f;
+		this.file.maj(f);
+		this.taille = f.length;
+		this.largeur = parent.width / this.taille;
+		this.positionX = x;
+		this.positionY = y-50;
+		this.positionZ = z ;
+		
 	}
 
 }

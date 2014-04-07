@@ -5,8 +5,8 @@ import java.awt.Frame;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.MusicFile;
 import processing.MainProcessing;
+import sound.MusicFile;
 
 public class MainWindow extends JFrame {
 
