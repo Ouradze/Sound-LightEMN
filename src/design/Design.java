@@ -1,9 +1,11 @@
 package design;
 
 import processing.core.PApplet;
+import sound.FileFreq;
 import sound.Fourier;
 
 public abstract class Design {
+	public FileFreq file;
 	public float[] freq;
 	public float[] freqgauche; // valeurs des amplitudes correpondant à chaque
 	public float[] freqdroite;						// fréquence
@@ -25,9 +27,18 @@ public abstract class Design {
 		
 	}
 
-	public abstract void maj(float[] freq, int x, int y, int z);
+	public abstract void scale();
 	
-	public abstract void maj(Fourier f, int x, int y, int z);
+	public void maj(Fourier f, int x, int y, int z){
+		this.freqcentre = f.getCentre();
+		this.freqgauche =  f.getGauche();
+		this.freqdroite =  f.getDroite();
+		this.positionX = x;
+		this.positionY = y;
+		this.positionZ = z;
+		
+		this.scale();
+	}
 
 	public abstract void display();
 

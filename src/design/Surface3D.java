@@ -5,7 +5,7 @@ import sound.*;
 
 public class Surface3D extends Design {
 
-	private FileFreq file;
+	public FileFreq file;
 	private int largeur;
 	private int taille;
 	private static final String Surface = "ADBC";
@@ -20,7 +20,7 @@ public class Surface3D extends Design {
 	}
 
 	public void display() {
-
+		this.majFile();
 		parent.pushMatrix();
 		parent.rotateY(PApplet.radians(0));
 		parent.translate(0, (float) (2*positionY), 0);
@@ -55,7 +55,7 @@ public class Surface3D extends Design {
 
 	public void creerLigne(int i) {
 
-		float[] f = this.freq;
+		float[] f = this.freqcentre;
 		int l = this.taille;
 		parent.stroke(255);
 		parent.beginShape(PApplet.LINES);
@@ -113,29 +113,20 @@ public class Surface3D extends Design {
 
 	}
 
-	public void maj(float[] freq,int x, int y, int z) {
-		float[] f = (Lissage.Lissercubique(freq));
-		this.freq = f;
-		this.file.maj(f);
-		this.taille = f.length;
-		this.largeur = parent.width / this.taille;
-		this.positionX = x;
-		this.positionY = y-50;
-		this.positionZ = z ;
-
-	}
+	
 
 	@Override
-	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		float[] f = (Lissage.Lissercubique(freqd));
-		this.freq = f;
-		this.file.maj(f);
-		this.taille = f.length;
-		this.largeur = parent.width / this.taille;
-		this.positionX = x;
-		this.positionY = y-50;
-		this.positionZ = z ;
+	public void scale() {
+		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
+		this.freqgauche = Lissage.Lissercubique(this.freqcentre);
+		this.freqdroite = Lissage.Lissercubique(this.freqcentre);
 		
 	}
+	
+	public void majFile(){
+		this.file.maj(this.freqcentre);
+	}
+
+	
 
 }

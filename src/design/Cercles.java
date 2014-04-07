@@ -1,6 +1,7 @@
 package design;
 
 import processing.core.PApplet;
+import sound.Fourier;
 
 public class Cercles extends Design {
 
@@ -9,11 +10,7 @@ public class Cercles extends Design {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void maj(float[] freq,int x, int y, int z) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	@Override
 	public void display() {
@@ -21,10 +18,11 @@ public class Cercles extends Design {
 
 	}
 
-	@Override
-	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		// TODO Auto-generated method stub
+	
+	public void scale() {
+		
 		
 	}
+
 
 }

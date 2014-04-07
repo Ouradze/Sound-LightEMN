@@ -15,15 +15,22 @@ public class Fourier {
 	}
 
 	public float[] getGauche() {
-		return this.cFourier.getFreq(CalculFourier.GAUCHE);
+		return this.freqgauche;
 	}
 
 	public float[] getCentre() {
-		return this.cFourier.getFreq(CalculFourier.CENTRE);
+		return this.freqcentre;
 	}
 
 	public float[] getDroite() {
-		return this.cFourier.getFreq(CalculFourier.DROITE);
+		return this.freqdroite;
+	}
+	
+	public void maj(){
+		cFourier.majBuff(audio.getAudio());
+		this.freqgauche = this.cFourier.getFreq(CalculFourier.GAUCHE);
+		this.freqcentre = this.cFourier.getFreq(CalculFourier.CENTRE);
+		this.freqdroite = this.cFourier.getFreq(CalculFourier.DROITE);
 	}
 
 }

@@ -16,27 +16,13 @@ public class Hypercube extends Design {
 		cote = 400;
 		coteElem = (int) (cote / (float) (n));
 		profondeur = coteElem;
-		;
+	
 
 	}
 
-	public void maj(float[] freq,int x, int y, int z) {
-		float[] f = CalculFourier.CutScaling(Lissage.Lissercubique(freq),(float) 0.8);
-		this.freq = f;
 
-		this.mat= new Matrice(f,n);
-		 
-			this.positionX = x;
-			this.positionY = y;
-			this.positionZ =  z;
-		
-
-	}
-
-	@Override
 	public void display() {
-
-		
+		this.majMatrice();		
 		parent.pushMatrix();
 		parent.translate(this.positionX,this.positionY, this.positionZ-300);
 		
@@ -146,16 +132,19 @@ public class Hypercube extends Design {
 	}
 
 	@Override
-	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		float[] f = CalculFourier.CutScaling(Lissage.Lissercubique(freqg),(float) 0.8);
-		this.freq = f;
-
-		this.mat= new Matrice(f,n);
-		 
-			this.positionX = x;
-			this.positionY = y;
-			this.positionZ =  z;
+	public void scale() {
+		this.freqcentre = CalculFourier.QuadScaling(Lissage.Lissercubique(this.freqcentre));
+		this.freqgauche = CalculFourier.QuadScaling(Lissage.Lissercubique(this.freqgauche));
+		this.freqdroite =  CalculFourier.QuadScaling(Lissage.Lissercubique(this.freqdroite));
 		
 	}
+	
+	public void majMatrice(){
+		this.mat = new Matrice(this.freqcentre,n);
+	}
+
+	
+
+	
 
 }

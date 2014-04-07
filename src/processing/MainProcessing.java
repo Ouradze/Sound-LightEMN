@@ -3,8 +3,7 @@ package processing;
 import java.awt.*;
 
 import processing.core.PApplet;
-import sound.AudioHandler;
-import sound.CalculFourier;
+import sound.*;
 import ddf.minim.*;
 import design.*;
 
@@ -12,12 +11,11 @@ public class MainProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
 	private Container parent;
-	
-	AudioHandler audio;
-    
-	protected boolean troisD;
 
-	CalculFourier fourier;
+	AudioHandler audio;
+
+	protected boolean troisD;
+	Fourier fourier;
 	Design form;
 	Lumieres l;
 	int i;
@@ -50,11 +48,12 @@ public class MainProcessing extends PApplet {
 			break;
 		case "2":
 			this.troisD = true;
-			form = new Stripes3D(this, 1, this.width / 2, this.height / 2,0);
+			form = new Stripes3D(this, 1, this.width / 2, this.height / 2, 0);
 			break;
 		case "3":
 			this.troisD = true;
-			form = new Hypercube(this, 1, this.width / 2, this.height / 2,-1000);
+			form = new Hypercube(this, 1, this.width / 2, this.height / 2,
+					-1000);
 			break;
 		case "4":
 			this.troisD = false;
@@ -73,13 +72,10 @@ public class MainProcessing extends PApplet {
 		this.troisD = true;
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
-		
 		audio = new AudioHandler(this);
-		
-		
 
-		fourier = new CalculFourier(audio.getAudio());
-		
+		fourier = new Fourier(audio);
+
 		l = new Lumieres(this);
 
 		i = 0;
@@ -88,17 +84,15 @@ public class MainProcessing extends PApplet {
 
 	public void draw() {
 		i++;
-		
-		
-			size(this.parent.getWidth(), this.parent.getHeight(), P3D);
-		
+
+		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+
 		l.alterne(i);
 		background(0);
-		fourier.majBuff(audio.getAudio());
+		fourier.maj();
 
 		if (form != null) {
-			form.maj(fourier.getFreq(CalculFourier.GAUCHE),fourier.getFreq(CalculFourier.DROITE), this.width / 2,
-					this.height / 2,0);
+			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
 

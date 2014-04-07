@@ -2,6 +2,7 @@ package design;
 
 import processing.core.PApplet;
 import sound.CalculFourier;
+import sound.Lissage;
 
 public class Stripe extends Design{
 	
@@ -15,36 +16,29 @@ public class Stripe extends Design{
 
 	}
 
-	@Override
-	public void maj(float[] freq, int x, int y,int z) {
-		this.freq = CalculFourier.QuadScaling(CalculFourier.scaling(freq, 1.9, 0.1));
-		this.positionX = x;
-		this.positionY = y;
-		this.positionZ = z;
-
-	}
+	
 
 	public void display() {
 
 		espace = (float) 0.5;
 		
 
-		largeur = (float) (parent.getWidth() / (2 * this.freq.length)) + espace;
+		largeur = (float) (parent.getWidth() / (2 * this.freqcentre.length)) + espace;
 		parent.pushMatrix();
 		parent.translate(positionX, positionY,-100);
-		for (int i = 1; i < freq.length; i++) {
+		for (int i = 1; i < this.freqcentre.length; i++) {
 
 			
 
 			parent.fill(0);
 			parent.stroke(255);
-			parent.rect( i * (largeur + espace), -freq[i], largeur,
-					2 * freq[i] + 2);
+			parent.rect( i * (largeur + espace), -freqcentre[i], largeur,
+					2 * freqcentre[i] + 2);
 
 			parent.fill(255);
 			parent.stroke(255);
-			parent.rect(-i * (largeur + espace), -freq[i], largeur,
-					2 * freq[i] + 2);
+			parent.rect(-i * (largeur + espace), -freqcentre[i], largeur,
+					2 * freqcentre[i] + 2);
 
 			
 		}
@@ -53,13 +47,14 @@ public class Stripe extends Design{
 	}
 
 	@Override
-	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		this.freq = CalculFourier.QuadScaling(CalculFourier.scaling(freqd, 1.9, 0.1));
-		this.positionX = x;
-		this.positionY = y;
-		this.positionZ = z;
+	public void scale() {
+		this.freqcentre = CalculFourier.CutScaling(Lissage.Lissercubique(this.freqcentre),(float) 0.8);
+		this.freqgauche = CalculFourier.CutScaling(Lissage.Lissercubique(this.freqgauche),(float) 0.8);
+		this.freqdroite =CalculFourier.CutScaling(Lissage.Lissercubique(this.freqdroite),(float) 0.8);
 		
 	}
+
+	
 
 	
 
