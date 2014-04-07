@@ -1,11 +1,13 @@
 package design;
 
 import processing.core.PApplet;
+import sound.Fourier;
 
 public abstract class Design {
 	public float[] freq;
 	public float[] freqgauche; // valeurs des amplitudes correpondant à chaque
 	public float[] freqdroite;						// fréquence
+	public float[] freqcentre;
 	public PApplet parent;
 	public int sens; // permet de définir la sortie stéréo gauche (-1) ou
 						// droite (1), utile en cas de symétrie
@@ -25,7 +27,7 @@ public abstract class Design {
 
 	public abstract void maj(float[] freq, int x, int y, int z);
 	
-	public abstract void maj(float[] freqg, float[] freqd, int x, int y, int z);
+	public abstract void maj(Fourier f, int x, int y, int z);
 
 	public abstract void display();
 
