@@ -21,9 +21,10 @@ public class Surface3D extends Design {
 
 	public void display() {
 		this.majFile();
+		
 		parent.pushMatrix();
-		parent.rotateY(PApplet.radians(0));
-		parent.translate(0, (float) (2*positionY), 0);
+		
+		parent.translate(0, (float) (2*positionY)-70, 0);
 		if (file.getsize() > 1) {
 
 			parent.noStroke();
@@ -42,9 +43,10 @@ public class Surface3D extends Design {
 			}
 			parent.endShape();
 
-			for (int i = 0; i < this.taille - 1; i++) {
-				this.creerLigne(i);
-			}
+			
+		}
+		for (int i = 0; i < this.taille - 1; i++) {
+			this.creerLigne(i);
 		}
 
 		parent.popMatrix();
@@ -118,13 +120,15 @@ public class Surface3D extends Design {
 	@Override
 	public void scale() {
 		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
-		this.freqgauche = Lissage.Lissercubique(this.freqcentre);
-		this.freqdroite = Lissage.Lissercubique(this.freqcentre);
-		
+		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
+		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
+		this.taille = this.freqcentre.length;
+		this.largeur = 10;
 	}
 	
 	public void majFile(){
 		this.file.maj(this.freqcentre);
+		
 	}
 
 	

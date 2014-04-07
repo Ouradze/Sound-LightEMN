@@ -20,6 +20,7 @@ public class MainProcessing extends PApplet {
 	Lumieres l;
 	int i;
 	Barre b;
+	long timer;
 
 	public MainProcessing(Container parent) {
 		super();
@@ -79,11 +80,18 @@ public class MainProcessing extends PApplet {
 		l = new Lumieres(this);
 
 		i = 0;
+		timer =0;
 
 	}
 
 	public void draw() {
 		i++;
+		
+		
+		long tps = System.currentTimeMillis() - this.timer;
+		System.out.println(1000/tps);
+		
+		
 
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
@@ -92,9 +100,13 @@ public class MainProcessing extends PApplet {
 		fourier.maj();
 
 		if (form != null) {
-			form.maj(fourier, this.width / 2, this.height / 2, 0);
+			form.maj(fourier, this.width / 2, this.height / 2, -500);
 			form.display();
 		}
+
+		
+		
+		this.timer = System.currentTimeMillis();
 
 	}
 

@@ -5,8 +5,8 @@ import sound.FileFreq;
 import sound.Fourier;
 
 public abstract class Design {
-	public FileFreq file;
-	public float[] freq;
+	
+
 	public float[] freqgauche; // valeurs des amplitudes correpondant à chaque
 	public float[] freqdroite;						// fréquence
 	public float[] freqcentre;
@@ -16,7 +16,6 @@ public abstract class Design {
 	public int positionX; // position du centre du graphique
 	public int positionY; // position du centre du graphique
 	public int positionZ;
-	
 
 	public Design(PApplet p, int s, int x, int y, int z) {
 		this.sens = s;

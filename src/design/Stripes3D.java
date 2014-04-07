@@ -20,7 +20,7 @@ public class Stripes3D extends Design {
 
 		parent.translate(this.positionX, (float) (positionY * 1.5),
 				this.positionZ - 50);
-		parent.pushMatrix();
+		
 		parent.rotateY(PApplet.radians(0));
 		for (int k = 0; k < sizeFile; k++) {
 			parent.pushMatrix();
@@ -61,8 +61,8 @@ public class Stripes3D extends Design {
 	
 	public void scale() {
 		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
-		this.freqgauche = Lissage.Lissercubique(this.freqcentre);
-		this.freqdroite = Lissage.Lissercubique(this.freqcentre);
+		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
+		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
 		
 	}
 	public void majFile(){
