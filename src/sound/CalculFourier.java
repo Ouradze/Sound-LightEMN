@@ -16,17 +16,16 @@ public class CalculFourier {
 	public static final int CENTRE = 0;
 	public static final int GAUCHE = -1;
 
-	public PApplet parent;
+	
 
-	public CalculFourier(AudioSource s, PApplet p) {
+	public CalculFourier(AudioSource s) {
 		this.samplerate = s.sampleRate();
 		this.buffersize = s.bufferSize();
 		this.gauche = s.left;
 		this.droite = s.right;
 		this.centre = s.mix;
 
-		this.parent = p;
-
+	
 	}
 
 	public void majBuff(AudioSource s) {
