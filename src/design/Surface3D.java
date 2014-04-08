@@ -13,8 +13,8 @@ public class Surface3D extends Design {
 	private float[][] points;
 	private static final int[] seq = { 0,3,1,2};
 
-	public Surface3D(PApplet p, int s, int x, int y, int z) {
-		super(p, s, x, y,z);
+	public Surface3D(PApplet p,  int x, int y, int z) {
+		super(p, x, y,z);
 		this.file = new FileFreq(100);
 		
 	}

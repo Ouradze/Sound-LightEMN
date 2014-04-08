@@ -6,8 +6,8 @@ import sound.Lissage;
 
 public class Rond extends Design {
 
-	public Rond(PApplet p, int s, int x, int y) {
-		super(p, s, x, y,0);
+	public Rond(PApplet p, int x, int y) {
+		super(p, x, y,0);
 
 	}
 
@@ -19,7 +19,7 @@ public class Rond extends Design {
 			parent.pushMatrix();
 			parent.translate(positionX, positionY);
 
-			parent.rotate(sens * PApplet.radians(i * 180 / freqcentre.length));
+			parent.rotate(1 * PApplet.radians(i * 180 / freqcentre.length));
 
 			parent.fill(255);
 			parent.stroke(0);

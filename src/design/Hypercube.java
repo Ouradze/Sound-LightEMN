@@ -11,8 +11,8 @@ public class Hypercube extends Design {
 	public int profondeur;
 	public Matrice mat;
 
-	public Hypercube(PApplet p, int s, int x, int y, int z) {
-		super(p, s, x, y,z);
+	public Hypercube(PApplet p, int x, int y, int z) {
+		super(p, x, y, z);
 		cote = 400;
 		coteElem = (int) (cote / (float) (n));
 		profondeur = coteElem;
