@@ -1,4 +1,4 @@
-package model;
+package sound;
 
 public class MusicFile {
 	private String path;

@@ -7,7 +7,7 @@ public class Matrice {
 	public float[][] matrice;
 
 	public Matrice(float[] f, int i) {
-		this.freq = Fourier.regrouper(f, i);
+		this.freq = CalculFourier.regrouper(f, i);
 		this.n = i;
 		this.construireMatrice();
 	}
