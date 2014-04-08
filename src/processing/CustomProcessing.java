@@ -3,14 +3,21 @@ package processing;
 import java.awt.Container;
 
 import model.CustomShape;
+import model.ListShapes;
 import processing.core.PApplet;
 import processing.core.PShape;
+import processing.core.PVector;
 
 public class CustomProcessing extends PApplet {
 
 	private Container parent;
 
-	private PShape s;
+	CustomShape currentShape = new CustomShape();
+	PShape currentVertex = new PShape();
+
+	private ListShapes allShapes = new ListShapes(currentShape);
+
+	private CustomShape s = new CustomShape();
 
 	public CustomProcessing(Container parent) {
 		super();
@@ -20,52 +27,88 @@ public class CustomProcessing extends PApplet {
 
 	public void setup() {
 		size(this.parent.getWidth(), this.parent.getHeight(), P2D);
-
-		// Creating a custom PShape as a square, by
-		// specifying a series of vertices.
-		s = createShape();
-		s.beginShape();
-		s.fill(0, 0, 0);
-		s.noStroke();
-		s.vertex(0, 0);
-		s.vertex(0, 50);
-		s.vertex(50, 50);
-		s.vertex(50, 0);
-		s.endShape(CLOSE);
-
 	}
 
 
 	public void draw() {
-		shape(s, this.parent.getWidth(), this.parent.getHeight());
-		
-		/*for(int i = 0; i < allShapes.size();i++){
-			ListPoint s = allShapes.get(i);			
+		//shape(s, this.parent.getWidth(), this.parent.getHeight());
 
-			if(s.isComplete()){
+		this.noFill();
+		this.stroke(255);
+		if(allShapes!=null){
 
-				Path2D.Double path = new Path2D.Double();
+			PShape a = new PShape();
 
-				path.moveTo(((Line2D.Double)s.get(0)).getP1().getX(),((Line2D.Double)s.get(0)).getP1().getY());
+			a = createShape();
+			a.beginShape();
+			a.fill(0, 0, 255);
+			a.noStroke();
+			a.vertex(0, 0);
+			a.vertex(0, 50);
+			a.vertex(50, 50);
+			a.vertex(50, 0);
+			a.endShape(CLOSE);
 
-				for (int j = 0; j < allShapes.get(i).size(); j++ ){
-					g2d.draw(s.get(j));
-					path.lineTo(((Line2D.Double)s.get(j)).getP1().getX(), ((Line2D.Double)s.get(j)).getP1().getY());
+			//this.shape(s,0,0);
+			
+			for(int i = 0; i < allShapes.size();i++){
+				s = allShapes.get(i);	
 
+				if(s.isComplete()){
+					this.shape(s);
 				}
-				g2d.setColor(Color.WHITE);
-				path.closePath();
-				g2d.fill(path);
-			}
-			else{
-				for (int j = 0; j < allShapes.get(i).size(); j++ ){
-					g2d.draw(s.get(j));
+				else{
+					this.shape(s);
 				}
 			}
-		}*/
+		}
 	}
-	
+
 	public PShape getShape(){
 		return s;
 	}
+
+	@Override
+	public void mouseDragged(java.awt.event.MouseEvent e) {
+		currentVertex = createShape();
+		currentVertex.beginShape();
+		currentVertex.vertex(e.getPoint().x, e.getPoint().y);
+		currentVertex.endShape();
+		currentShape.addChild(currentVertex);;
+	}
+
+	@Override
+	public void mouseMoved(java.awt.event.MouseEvent e) {
+		 
+	}
+
+	@Override
+	public void mouseClicked(java.awt.event.MouseEvent e) {
+		currentVertex = createShape();
+		currentVertex.beginShape();
+		currentVertex.vertex(e.getPoint().x, e.getPoint().y);
+		currentVertex.endShape();
+		currentShape.addChild(currentVertex);
+	}
+
+	@Override
+	public void mouseEntered(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mouseExited(java.awt.event.MouseEvent e) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent e) {
+		
+	}
+
+	@Override
+	public void mouseReleased(java.awt.event.MouseEvent e) {
+		
+	}
+
 }

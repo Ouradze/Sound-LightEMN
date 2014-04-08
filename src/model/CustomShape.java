@@ -10,12 +10,19 @@ import processing.core.*;
 
 public class CustomShape extends PShape{
 	
-private boolean complete = false;
+	private boolean complete = false;
 	
-	public boolean detect(PShape p){
-		 PShape first = this.getChild(0);		
+	public CustomShape(){
+		this.complete = false;
+	}
+	
+	public boolean detect(int x, int y){
 		
-		if(first.getVertex(0).dist(p.getChild(0).getVertex(0)) < 10.0 && this.getChildCount() > 2){
+		 PShape first = this.getChild(0);
+		 PShape p = new PShape();
+		 p.vertex(x, y);
+		
+		if(first.getVertex(0).dist(p.getVertex(0)) < 10.0 && this.getChildCount() > 2){
 			this.complete = true;
 			return true;
 		}
@@ -27,5 +34,4 @@ private boolean complete = false;
 	public boolean isComplete(){
 		return this.complete;
 	}
-
 }

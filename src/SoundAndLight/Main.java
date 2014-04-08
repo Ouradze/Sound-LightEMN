@@ -8,13 +8,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//CustomWindow custom = new CustomWindow();
-		//custom.setVisible(true);
+		CustomWindow custom = new CustomWindow();
+		custom.setVisible(true);
 		
-		MainWindow window = new MainWindow();
+		/*MainWindow window = new MainWindow();
 		window.setVisible(true);
 
 		ControlWindow controlWin = new ControlWindow(window);
-		controlWin.setVisible(true);
+		controlWin.setVisible(true);*/
 	}
 }

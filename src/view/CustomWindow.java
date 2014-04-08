@@ -15,18 +15,18 @@ public class CustomWindow extends JFrame{
 		super("Sound & Light-Custom");
 
 		this.setSize(900,900);
-		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setBackground( Color.BLACK );
 		
 		CustomProcessing test = new CustomProcessing(this);
 		
 		JPanel panel = new JPanel();
 		
-		ControlCustomWindow control = new ControlCustomWindow((CustomShape)test.getShape());
+		//ControlCustomWindow control = new ControlCustomWindow(test);
 		
-		test.addMouseListener(control);
-		test.addMouseMotionListener(control);
+		//test.addMouseListener(control);
+		//test.addMouseMotionListener(control);
 
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		panel.add(test);
 		this.add(panel);
 		test.init();
