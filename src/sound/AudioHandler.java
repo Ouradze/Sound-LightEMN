@@ -19,6 +19,9 @@ public class AudioHandler {
 	}
 	
 	public void majSong(String path) {
+		if(song!=null){
+			song.close();
+		}
 		song = minim.loadFile(path);
 		
 	}

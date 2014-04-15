@@ -15,18 +15,18 @@ public class CalculFourier {
 	public static final int DROITE = 1;
 	public static final int CENTRE = 0;
 	public static final int GAUCHE = -1;
+	public float valmax;
 
-	public PApplet parent;
+	
 
-	public CalculFourier(AudioSource s, PApplet p) {
+	public CalculFourier(AudioSource s) {
 		this.samplerate = s.sampleRate();
 		this.buffersize = s.bufferSize();
 		this.gauche = s.left;
 		this.droite = s.right;
 		this.centre = s.mix;
 
-		this.parent = p;
-
+	
 	}
 
 	public void majBuff(AudioSource s) {
@@ -59,7 +59,7 @@ public class CalculFourier {
 			freq[i] = fourier.getAvg(i);
 
 		}
-
+		//this.max(freq);
 		return freq;
 
 	}
@@ -172,6 +172,16 @@ public class CalculFourier {
 		}
 		moyenne = moyenne / f.length;
 		return moyenne;
+	}
+	
+	public void max(float[] f){
+		
+		
+		for(int i=0; i<f.length;i++){
+			this.valmax =  Math.max(this.valmax, f[i]);
+		}
+		System.out.println(""+this.valmax);
+		
 	}
 
 	

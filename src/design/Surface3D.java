@@ -5,25 +5,26 @@ import sound.*;
 
 public class Surface3D extends Design {
 
-	private FileFreq file;
-	private int largeur;
+	public FileFreq file;
+	private final int largeur = 10;
 	private int taille;
 	private static final String Surface = "ADBC";
 	private static final String Lignes = "BACD";
 	private float[][] points;
 	private static final int[] seq = { 0,3,1,2};
 
-	public Surface3D(PApplet p, int s, int x, int y, int z) {
-		super(p, s, x, y,z);
+	public Surface3D(PApplet p,  int x, int y, int z) {
+		super(p, x, y,z);
 		this.file = new FileFreq(100);
 		
 	}
 
 	public void display() {
-
+		this.majFile();
+		
 		parent.pushMatrix();
-		parent.rotateY(PApplet.radians(0));
-		parent.translate(0, (float) (2*positionY), 0);
+		
+		parent.translate(0, (float) (2*positionY)-70, 0);
 		if (file.getsize() > 1) {
 
 			parent.noStroke();
@@ -32,7 +33,7 @@ public class Surface3D extends Design {
 			parent.beginShape(PApplet.TRIANGLE_STRIP);
 			
 			for (int k = 0; k < this.file.getsize() - 1; k++) {
-
+				
 				for (int i = 0; i < this.taille - 1; i++) {
 
 					this.creerUniteSurface(i, k, Surface3D.Lignes);
@@ -42,9 +43,10 @@ public class Surface3D extends Design {
 			}
 			parent.endShape();
 
-			for (int i = 0; i < this.taille - 1; i++) {
-				this.creerLigne(i);
-			}
+			
+		}
+		for (int i = 0; i < this.taille - 1; i++) {
+			this.creerLigne(i);
 		}
 
 		parent.popMatrix();
@@ -55,7 +57,7 @@ public class Surface3D extends Design {
 
 	public void creerLigne(int i) {
 
-		float[] f = this.freq;
+		float[] f = this.freqcentre;
 		int l = this.taille;
 		parent.stroke(255);
 		parent.beginShape(PApplet.LINES);
@@ -68,7 +70,7 @@ public class Surface3D extends Design {
 	public void creerUniteSurface(int i, int k, String ordre) {
 
 		this.creerPoints(i, k);
-
+		parent.stroke(255);
 		switch (ordre) {
 		case Surface3D.Surface: // ADBC
 			parent.vertex(this.points[Surface3D.seq[0]][0], this.points[Surface3D.seq[0]][1],
@@ -93,7 +95,7 @@ public class Surface3D extends Design {
 
 		}
 
-		parent.noStroke();
+		
 	}
 
 	public void creerPoints(int i, int k) {
@@ -113,29 +115,22 @@ public class Surface3D extends Design {
 
 	}
 
-	public void maj(float[] freq,int x, int y, int z) {
-		float[] f = (Lissage.Lissercubique(freq));
-		this.freq = f;
-		this.file.maj(f);
-		this.taille = f.length;
-		this.largeur = parent.width / this.taille;
-		this.positionX = x;
-		this.positionY = y-50;
-		this.positionZ = z ;
-
-	}
+	
 
 	@Override
-	public void maj(float[] freqg, float[] freqd, int x, int y, int z) {
-		float[] f = (Lissage.Lissercubique(freqd));
-		this.freq = f;
-		this.file.maj(f);
-		this.taille = f.length;
-		this.largeur = parent.width / this.taille;
-		this.positionX = x;
-		this.positionY = y-50;
-		this.positionZ = z ;
+	public void scale() {
+		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
+		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
+		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
+		this.taille = this.freqcentre.length;
 		
 	}
+	
+	public void majFile(){
+		this.file.maj(this.freqcentre);
+		
+	}
+
+	
 
 }
