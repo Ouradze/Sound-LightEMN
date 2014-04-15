@@ -11,14 +11,14 @@ public abstract class Design {
 	public float[] freqdroite;						// fréquence
 	public float[] freqcentre;
 	public PApplet parent;
-	public int sens; // permet de définir la sortie stéréo gauche (-1) ou
+	// permet de définir la sortie stéréo gauche (-1) ou
 						// droite (1), utile en cas de symétrie
 	public int positionX; // position du centre du graphique
 	public int positionY; // position du centre du graphique
 	public int positionZ;
 
-	public Design(PApplet p, int s, int x, int y, int z) {
-		this.sens = s;
+	public Design(PApplet p, int x, int y, int z) {
+		
 		this.parent = p;
 		this.positionX = x;
 		this.positionY = y;

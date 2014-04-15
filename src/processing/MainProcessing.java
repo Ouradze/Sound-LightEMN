@@ -44,24 +44,23 @@ public class MainProcessing extends PApplet {
 		switch (s) {
 		case "1":
 			this.troisD = true;
-			form = new Surface3D(this, 1, this.width / 2, this.height / 2, 0);
+			form = new Surface3D(this, this.width / 2, this.height / 2, 0);
 
 			break;
 		case "2":
 			this.troisD = true;
-			form = new Stripes3D(this, 1, this.width / 2, this.height / 2, 0);
+			form = new Stripes3D(this, this.width / 2, this.height / 2, 0);
 			break;
 		case "3":
 			this.troisD = true;
-			form = new Hypercube(this, 1, this.width / 2, this.height / 2,
-					-1000);
+			form = new Hypercube(this, this.width / 2, this.height / 2, -1000);
 			break;
 		case "4":
 			this.troisD = false;
-			form = new Rond(this, 1, this.width / 2, this.height / 2);
+			form = new Rond(this, this.width / 2, this.height / 2);
 			break;
 		case "5":
-			form = new Stripe(this, 1, this.width / 2, this.height / 2);
+			form = new Stripe(this, this.width / 2, this.height / 2);
 			this.troisD = false;
 			break;
 
@@ -71,7 +70,7 @@ public class MainProcessing extends PApplet {
 
 	public void setup() {
 		this.troisD = true;
-		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+		size(this.parent.getWidth(), this.parent.getHeight()-50, P3D);
 
 		audio = new AudioHandler(this);
 
@@ -80,18 +79,15 @@ public class MainProcessing extends PApplet {
 		l = new Lumieres(this);
 
 		i = 0;
-		timer =0;
+		timer = 0;
 
 	}
 
 	public void draw() {
 		i++;
-		
-		
+
 		long tps = System.currentTimeMillis() - this.timer;
-		System.out.println(1000/tps);
-		
-		
+		System.out.println((float) 1000 / (float) tps);
 
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
@@ -104,8 +100,6 @@ public class MainProcessing extends PApplet {
 			form.display();
 		}
 
-		
-		
 		this.timer = System.currentTimeMillis();
 
 	}

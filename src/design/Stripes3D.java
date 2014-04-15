@@ -5,11 +5,11 @@ import sound.*;
 
 public class Stripes3D extends Design {
 	public FileFreq file;
-	public int taille;
+	public final int taille = 20;
 	public int sizeFile;
 
-	public Stripes3D(PApplet p, int s, int x, int y, int z) {
-		super(p, s, x, y, z);
+	public Stripes3D(PApplet p,  int x, int y, int z) {
+		super(p,  x, y, z);
 
 		this.file = new FileFreq(50);
 	}
@@ -64,9 +64,12 @@ public class Stripes3D extends Design {
 		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
 		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
 		
+		
+		
 	}
 	public void majFile(){
 		this.file.maj(this.freqcentre);
+		this.sizeFile = this.file.getsize();
 	}
 
 }
