@@ -2,25 +2,26 @@ package model;
 
 import java.util.ArrayList;
 
-import processing.core.*;
+import design.Design;
 
-public class ListShapes extends ArrayList<CustomShape>{
+public class ListShapes extends ArrayList<CustomDesign> {
 
-	private CustomShape currentShape;
-	
-	public ListShapes(){
+	private CustomDesign currentShape;
+
+	public ListShapes() {
 		this.currentShape = null;
 	}
-	
-	public ListShapes(CustomShape c){
+
+	public ListShapes(CustomDesign c) {
 		this.currentShape = c;
+		this.add(currentShape);
 	}
 
-	public void setCurrentShape(CustomShape p){
+	public void setCurrentShape(CustomDesign p) {
 		this.currentShape = p;
 	}
 
-	public PShape getCurrentShape(){
+	public Design getCurrentShape() {
 		return this.currentShape;
 	}
 
