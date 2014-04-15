@@ -6,7 +6,6 @@ import model.CustomShape;
 import model.ListShapes;
 import processing.core.PApplet;
 import processing.core.PShape;
-import processing.core.PVector;
 
 public class CustomProcessing extends PApplet {
 
@@ -21,7 +20,6 @@ public class CustomProcessing extends PApplet {
 
 	public CustomProcessing(Container parent) {
 		super();
-
 		this.parent = parent;
 	}
 
@@ -29,13 +27,11 @@ public class CustomProcessing extends PApplet {
 		size(this.parent.getWidth(), this.parent.getHeight(), P2D);
 	}
 
-
 	public void draw() {
-		//shape(s, this.parent.getWidth(), this.parent.getHeight());
 
 		this.noFill();
 		this.stroke(255);
-		if(allShapes!=null){
+		if (allShapes != null) {
 
 			PShape a = new PShape();
 
@@ -49,66 +45,57 @@ public class CustomProcessing extends PApplet {
 			a.vertex(50, 0);
 			a.endShape(CLOSE);
 
-			//this.shape(s,0,0);
-			
-			for(int i = 0; i < allShapes.size();i++){
-				s = allShapes.get(i);	
+			this.shape(a);
 
-				if(s.isComplete()){
+			for (int i = 0; i < allShapes.size(); i++) {
+				s = allShapes.get(i);
+
+				if (s.isComplete()) {
 					this.shape(s);
-				}
-				else{
+				} else {
 					this.shape(s);
 				}
 			}
 		}
 	}
 
-	public PShape getShape(){
+	public PShape getShape() {
 		return s;
 	}
 
 	@Override
 	public void mouseDragged(java.awt.event.MouseEvent e) {
-		currentVertex = createShape();
-		currentVertex.beginShape();
-		currentVertex.vertex(e.getPoint().x, e.getPoint().y);
-		currentVertex.endShape();
-		currentShape.addChild(currentVertex);;
+
 	}
 
 	@Override
 	public void mouseMoved(java.awt.event.MouseEvent e) {
-		 
+
 	}
 
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e) {
-		currentVertex = createShape();
-		currentVertex.beginShape();
-		currentVertex.vertex(e.getPoint().x, e.getPoint().y);
-		currentVertex.endShape();
-		currentShape.addChild(currentVertex);
+
 	}
 
 	@Override
 	public void mouseEntered(java.awt.event.MouseEvent e) {
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mouseExited(java.awt.event.MouseEvent e) {
-		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void mousePressed(java.awt.event.MouseEvent e) {
-		
+
 	}
 
 	@Override
 	public void mouseReleased(java.awt.event.MouseEvent e) {
-		
+
 	}
 
 }
