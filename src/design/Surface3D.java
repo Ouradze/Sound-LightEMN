@@ -70,7 +70,7 @@ public class Surface3D extends Design {
 	public void creerUniteSurface(int i, int k, String ordre) {
 
 		this.creerPoints(i, k);
-		parent.stroke(255);
+		//parent.stroke(255);
 		switch (ordre) {
 		case Surface3D.Surface: // ADBC
 			parent.vertex(this.points[Surface3D.seq[0]][0], this.points[Surface3D.seq[0]][1],
