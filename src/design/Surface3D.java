@@ -1,6 +1,7 @@
 package design;
 
 import processing.core.*;
+import processing.opengl.*;
 import sound.*;
 
 public class Surface3D extends Design {
@@ -12,6 +13,8 @@ public class Surface3D extends Design {
 	private static final String Lignes = "BACD";
 	private float[][] points;
 	private static final int[] seq = { 0,3,1,2};
+	PGraphicsOpenGL p;
+	
 
 	public Surface3D(PApplet p,  int x, int y, int z) {
 		super(p, x, y,z);
@@ -21,6 +24,7 @@ public class Surface3D extends Design {
 
 	public void display() {
 		this.majFile();
+		p = (PGraphicsOpenGL) parent.g;
 		
 		parent.pushMatrix();
 		
@@ -30,7 +34,7 @@ public class Surface3D extends Design {
 			parent.noStroke();
 			parent.fill(255);
 
-			parent.beginShape(PApplet.TRIANGLE_STRIP);
+			p.beginShape(PApplet.TRIANGLE_STRIP);
 			
 			for (int k = 0; k < this.file.getsize() - 1; k++) {
 				
@@ -41,7 +45,7 @@ public class Surface3D extends Design {
 				}
 				
 			}
-			parent.endShape();
+			p.endShape();
 
 			
 		}
@@ -59,11 +63,11 @@ public class Surface3D extends Design {
 
 		float[] f = this.freqcentre;
 		int l = this.taille;
-		parent.stroke(255);
-		parent.beginShape(PApplet.LINES);
-		parent.vertex(positionX + (i - l / 2) * largeur, -f[i] * 2, 0);
-		parent.vertex(positionX + (i + 1 - l / 2) * largeur, -f[i + 1] * 2, 0);
-		parent.endShape();
+		p.stroke(255);
+		p.beginShape(PApplet.LINES);
+		p.vertex(positionX + (i - l / 2) * largeur, -f[i] * 2, 0);
+		p.vertex(positionX + (i + 1 - l / 2) * largeur, -f[i + 1] * 2, 0);
+		p.endShape();
 
 	}
 
@@ -73,23 +77,23 @@ public class Surface3D extends Design {
 		//parent.stroke(255);
 		switch (ordre) {
 		case Surface3D.Surface: // ADBC
-			parent.vertex(this.points[Surface3D.seq[0]][0], this.points[Surface3D.seq[0]][1],
+			p.vertex(this.points[Surface3D.seq[0]][0], this.points[Surface3D.seq[0]][1],
 					this.points[Surface3D.seq[0]][2]);
-			parent.vertex(this.points[Surface3D.seq[1]][0], this.points[Surface3D.seq[1]][1],
+			p.vertex(this.points[Surface3D.seq[1]][0], this.points[Surface3D.seq[1]][1],
 					this.points[Surface3D.seq[1]][2]);
-			parent.vertex(this.points[Surface3D.seq[2]][0], this.points[Surface3D.seq[2]][1],
+			p.vertex(this.points[Surface3D.seq[2]][0], this.points[Surface3D.seq[2]][1],
 					this.points[Surface3D.seq[2]][2]);
-			parent.vertex(this.points[Surface3D.seq[3]][0], this.points[Surface3D.seq[3]][1],
+			p.vertex(this.points[Surface3D.seq[3]][0], this.points[Surface3D.seq[3]][1],
 					this.points[Surface3D.seq[3]][2]);
 			break;
 		case Surface3D.Lignes:
-			parent.vertex(this.points[0][0], this.points[0][1],
+			p.vertex(this.points[0][0], this.points[0][1],
 					this.points[0][2]);
-			parent.vertex(this.points[1][0], this.points[1][1],
+			p.vertex(this.points[1][0], this.points[1][1],
 					this.points[1][2]);
-			parent.vertex(this.points[3][0], this.points[3][1],
+			p.vertex(this.points[3][0], this.points[3][1],
 					this.points[3][2]);
-			parent.vertex(this.points[2][0], this.points[2][1],
+			p.vertex(this.points[2][0], this.points[2][1],
 					this.points[2][2]);
 			break;
 
