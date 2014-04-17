@@ -64,27 +64,7 @@ public class CalculFourier {
 
 	}
 
-	// Diminue les "pics" d'intensité : si l'amplitude dépasse a*moyenne,
-	// celle-ci est amortie de b fois la distance à la moyenne
-	// Par conséquent : a>=1 et 0 <= b <=1 pour rester cohérent
-	public static float[] scaling(float[] f, double a, double b) {
-		float[] nf = new float[f.length];
-
-		float moyenne = moyenne(f);
-
-		for (int i = 0; i < f.length; i++) {
-			if (f[i] > a * moyenne) {
-				float nbr = f[i] - moyenne;
-				nf[i] = (float) ((f[i] - b * nbr));
-			} else {
-				nf[i] = f[i];
-			}
-
-		}
-
-		return nf;
-
-	}
+	
 
 	// Rapporte les amplitudes en fontion de la racine carrée de leur position
 	// sur le spectre (amortissement des basses, cf courbe de la fction)
@@ -100,17 +80,7 @@ public class CalculFourier {
 		return nf;
 	}
 
-	// public static float[] ExpScaling(float[] f) {
-	// float[] nf = new float[f.length];
-	//
-	// for (int i = 0; i < f.length; i++) {
-	// float quot = (float) ((float) (i) / (float) (f.length));
-	//
-	// nf[i] = (float) (f[i] * (1 - Math.exp(-quot)));
-	//
-	// }
-	// return nf;
-	// }
+	
 
 	public static float[] CutScaling(float[] f, float a) {
 		float[] nf = new float[f.length];
@@ -129,25 +99,7 @@ public class CalculFourier {
 		return nf;
 	}
 
-	public static float[] StandardScaling(float[] f, double a, double b,
-			boolean quad) {
-		float[] nf = new float[f.length];
-		float moyenne = moyenne(f);
-		for (int i = 0; i < f.length; i++) {
-			if (f[i] > a * moyenne) {
-				nf[i] = (float) ((f[i] - a * moyenne) * b);
-			} else {
-				nf[i] = 0;
-			}
-			if (quad) {
-				float quot = (float) ((float) (i) / (float) (f.length));
-
-				nf[i] = (float) (nf[i] * (Math.sqrt(quot)));
-			}
-
-		}
-		return nf;
-	}
+	
 
 	public static float[] regrouper(float[] f, int n) {
 		// R�duit la taille du tableau � f � un tableau de taille n comportant
@@ -183,6 +135,8 @@ public class CalculFourier {
 		System.out.println(""+this.valmax);
 		
 	}
+	
+	
 
 	
 }

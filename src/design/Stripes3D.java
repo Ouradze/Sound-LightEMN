@@ -5,7 +5,7 @@ import sound.*;
 
 public class Stripes3D extends Design {
 	public FileFreq file;
-	public final int taille = 20;
+	public final int taille = 75;
 	public int sizeFile;
 
 	public Stripes3D(PApplet p,  int x, int y, int z) {
@@ -19,7 +19,7 @@ public class Stripes3D extends Design {
 		parent.pushMatrix();
 
 		parent.translate(this.positionX, (float) (positionY * 1.5),
-				this.positionZ - 50);
+				this.positionZ);
 		
 		parent.rotateY(PApplet.radians(0));
 		for (int k = 0; k < sizeFile; k++) {
@@ -36,7 +36,7 @@ public class Stripes3D extends Design {
 	public void creerRangee(int k) {
 		float[] f = this.file.getIndex(k);
 		for (int i = 0; i < this.taille; i++) {
-			if (f[i] > 5) {
+			if (f[i] > 0) {
 				parent.pushMatrix();
 
 				parent.translate((i - this.taille / 2) * 10, 0, 0);
@@ -46,8 +46,7 @@ public class Stripes3D extends Design {
 
 				parent.box(10, 2 * f[i], 30);
 
-				parent.stroke(0);
-				parent.fill(255);
+				
 
 				parent.popMatrix();
 			}

@@ -40,7 +40,7 @@ public class Surface3D extends Design {
 				
 				for (int i = 0; i < this.taille - 1; i++) {
 
-					this.creerUniteSurface(i, k, Surface3D.Lignes);
+					this.creerUniteSurface(i, k, Surface3D.Surface);
 
 				}
 				
@@ -126,7 +126,7 @@ public class Surface3D extends Design {
 		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
 		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
 		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
-		this.taille = this.freqcentre.length;
+		this.taille = 75;
 		
 	}
 	

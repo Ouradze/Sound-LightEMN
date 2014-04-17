@@ -53,7 +53,7 @@ public class MainProcessing extends PApplet {
 			break;
 		case "3":
 			this.troisD = true;
-			form = new Hypercube(this, this.width / 2, this.height / 2, -1000);
+			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
 			break;
 		case "4":
 			this.troisD = false;
