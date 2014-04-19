@@ -8,8 +8,8 @@ public class Stripes3D extends Design {
 	public final int taille = 75;
 	public int sizeFile;
 
-	public Stripes3D(PApplet p,  int x, int y, int z) {
-		super(p,  x, y, z);
+	public Stripes3D(PApplet p, int x, int y, int z) {
+		super(p, x, y, z);
 
 		this.file = new FileFreq(50);
 	}
@@ -20,17 +20,17 @@ public class Stripes3D extends Design {
 
 		parent.translate(this.positionX, (float) (positionY * 1.5),
 				this.positionZ);
-		
+
 		parent.rotateY(PApplet.radians(0));
 		for (int k = 0; k < sizeFile; k++) {
 			parent.pushMatrix();
 			parent.translate(0, 0, -30 * k);
-			
+
 			this.creerRangee(k);
 			parent.popMatrix();
 		}
 		parent.popMatrix();
-		
+
 	}
 
 	public void creerRangee(int k) {
@@ -46,27 +46,19 @@ public class Stripes3D extends Design {
 
 				parent.box(10, 2 * f[i], 30);
 
-				
-
 				parent.popMatrix();
 			}
 		}
 	}
 
-	
-
-	
-
-	
 	public void scale() {
 		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
 		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
 		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
-		
-		
-		
+
 	}
-	public void majFile(){
+
+	public void majFile() {
 		this.file.maj(this.freqcentre);
 		this.sizeFile = this.file.getsize();
 	}

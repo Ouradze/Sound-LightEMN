@@ -16,6 +16,7 @@ public class CalculFourier {
 	public static final int CENTRE = 0;
 	public static final int GAUCHE = -1;
 	public float valmax;
+	
 
 	
 
@@ -63,6 +64,8 @@ public class CalculFourier {
 		return freq;
 
 	}
+	
+	
 
 	
 

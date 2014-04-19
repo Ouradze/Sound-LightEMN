@@ -17,6 +17,7 @@ public class MainProcessing extends PApplet {
 	protected boolean troisD;
 	Fourier fourier;
 	Design form;
+	Equalizer eq;
 	Lumieres l;
 	int i;
 	Barre b;
@@ -75,32 +76,35 @@ public class MainProcessing extends PApplet {
 		audio = new AudioHandler(this);
 
 		fourier = new Fourier(audio);
-
+		fourier.maj();
 		l = new Lumieres(this);
 
 		i = 0;
 		timer = 0;
+		eq =  new Equalizer(this, 0, 100, 0, fourier);
 
 	}
 
 	public void draw() {
 		i++;
 
-		long tps = System.currentTimeMillis() - this.timer;
-		System.out.println((float) 1000 / (float) tps);
+//		long tps = System.currentTimeMillis() - this.timer;
+//		System.out.println((float) 1000 / (float) tps);
 
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
-
+		
+		
 		l.alterne(i);
 		background(0);
 		fourier.maj();
-
+		eq.display();
+		fourier.appliCoefs();
 		if (form != null) {
 			form.maj(fourier, this.width / 2, this.height / 2, -500);
 			form.display();
 		}
 
-		this.timer = System.currentTimeMillis();
+//		this.timer = System.currentTimeMillis();
 
 	}
 
