@@ -81,7 +81,7 @@ public class MainProcessing extends PApplet {
 
 		i = 0;
 		timer = 0;
-		eq =  new Equalizer(this, 0, 100, 0, fourier);
+		//eq =  new Equalizer(this, 10, 100, 0, fourier);
 
 	}
 
@@ -97,9 +97,11 @@ public class MainProcessing extends PApplet {
 		l.alterne(i);
 		background(0);
 		fourier.maj();
-		eq.display();
-		fourier.appliCoefs();
+		//eq.display();
+		//fourier.appliCoefs();
+		//System.out.println(eq.toString());
 		if (form != null) {
+			fourier.setCoefs(form.getCoefs());
 			form.maj(fourier, this.width / 2, this.height / 2, -500);
 			form.display();
 		}

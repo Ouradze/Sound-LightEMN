@@ -7,11 +7,13 @@ public class Stripes3D extends Design {
 	public FileFreq file;
 	public final int taille = 75;
 	public int sizeFile;
-
+	
 	public Stripes3D(PApplet p, int x, int y, int z) {
 		super(p, x, y, z);
 
 		this.file = new FileFreq(50);
+		this.coefs = new double[]{0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.54,0.59,0.64,0.7,0.74,0.79,0.83,0.86,0.87,0.9,0.93,0.94,0.94,0.95,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.97,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95,0.95};
+	
 	}
 
 	public void display() {
@@ -36,7 +38,7 @@ public class Stripes3D extends Design {
 	public void creerRangee(int k) {
 		float[] f = this.file.getIndex(k);
 		for (int i = 0; i < this.taille; i++) {
-			if (f[i] > 0) {
+			if (f[i] > 5) {
 				parent.pushMatrix();
 
 				parent.translate((i - this.taille / 2) * 10, 0, 0);

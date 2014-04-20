@@ -8,7 +8,7 @@ public class Fourier {
 	private float[] freqgauche;
 	private float[] freqcentre;
 	private float[] freqdroite;
-	private float[] coefs;
+	private double[] coefs;
 
 	public Fourier(AudioHandler audio) {
 		this.audio = audio;
@@ -27,11 +27,11 @@ public class Fourier {
 		return this.freqdroite;
 	}
 	
-	public float[] getCoefs(){
+	public double[] getCoefs(){
 		return this.coefs;
 	}
 	
-	public void setCoefs(float[] t){
+	public void setCoefs(double[] t){
 		this.coefs =  t.clone();
 		for(int i =0; i< t.length;i++){
 			this.coefs[i] =  this.coefs[i]*2;
@@ -48,9 +48,9 @@ public class Fourier {
 	
 	public void appliCoefs(){
 		for(int i=0; i< coefs.length;i++){
-			this.freqcentre[i] = this.coefs[i]*this.freqcentre[i];
-			this.freqgauche[i] = this.coefs[i]*this.freqgauche[i];
-			this.freqdroite[i] = this.coefs[i]*this.freqdroite[i];
+			this.freqcentre[i] = (float) (this.coefs[i]*this.freqcentre[i]);
+			this.freqgauche[i] = (float) (this.coefs[i]*this.freqgauche[i]);
+			this.freqdroite[i] = (float) (this.coefs[i]*this.freqdroite[i]);
 		}
 	}
 
