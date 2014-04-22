@@ -32,11 +32,13 @@ public class MainProcessing extends PApplet {
 		// System.out.println("AUDIO : " + audio.bufferSize());
 		audio.majSong(path);
 		audio.switchToSong();
+		System.out.println(audio.toString());
 	}
 
 	public void majInput() {
 		// System.out.println("SONG : " + song.bufferSize());
 		audio.switchToInput();
+		System.out.println(audio.toString());
 
 	}
 
@@ -44,25 +46,25 @@ public class MainProcessing extends PApplet {
 
 		switch (s) {
 		case "1":
-			this.troisD = true;
+			
 			form = new Surface3D(this, this.width / 2, this.height / 2, 0);
 
 			break;
 		case "2":
-			this.troisD = true;
+			
 			form = new Stripes3D(this, this.width / 2, this.height / 2, 0);
 			break;
 		case "3":
-			this.troisD = true;
+			
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
 			break;
 		case "4":
-			this.troisD = false;
+			
 			form = new Rond(this, this.width / 2, this.height / 2);
 			break;
 		case "5":
 			form = new Stripe(this, this.width / 2, this.height / 2);
-			this.troisD = false;
+			
 			break;
 
 		}
@@ -70,10 +72,11 @@ public class MainProcessing extends PApplet {
 	}
 
 	public void setup() {
-		this.troisD = true;
+	
 		size(this.parent.getWidth(), this.parent.getHeight()-50, P3D);
 
 		audio = new AudioHandler(this);
+		//System.out.println(audio.toString());
 
 		fourier = new Fourier(audio);
 		fourier.maj();
