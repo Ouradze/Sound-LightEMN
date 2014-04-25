@@ -7,7 +7,7 @@ import sound.*;
 public class Surface3D extends Design {
 
 	public FileFreq file;
-	private final int largeur = 10;
+	private int largeur ;
 	private int taille;
 	private static final String Surface = "ADBC";
 	private static final String Lignes = "BACD";
@@ -21,7 +21,9 @@ public class Surface3D extends Design {
 		this.file = new FileFreq(100);
 		
 		this.coefs =  new double[]{0.07,0.07,0.08,0.08,0.08,0.08,0.09,0.1,0.12,0.13,0.13,0.16,0.22,0.24,0.27,0.28,0.3,0.32,0.32,0.36,0.39,0.43,0.47,0.49,0.54,0.57,0.61,0.64,0.68,0.73,0.77,0.81,0.85,0.91,0.95,0.97,0.99,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94,0.94};
-	
+//		for(int i =0; i< this.coefs.length;i++){
+//			this.coefs[i]=0.5;
+//		}
 	}
 
 	public void display() {
@@ -125,10 +127,14 @@ public class Surface3D extends Design {
 
 	@Override
 	public void scale() {
-		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
-		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
-		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
-		this.taille = 75;
+//		this.freqcentre = Lissage.Lissercubique(this.freqcentre);
+//		this.freqgauche = Lissage.Lissercubique(this.freqgauche);
+//		this.freqdroite = Lissage.Lissercubique(this.freqdroite);
+		this.freqcentre = CalculFourier.CutScaling(Lissage.Lissercubique(CalculFourier.moyennelocale(this.freqcentre,5)),(float)0.8);
+		this.freqgauche = CalculFourier.CutScaling(Lissage.Lissercubique(CalculFourier.moyennelocale(this.freqgauche,5)),(float) 0.8);
+		this.freqdroite =CalculFourier.CutScaling(Lissage.Lissercubique(CalculFourier.moyennelocale(this.freqdroite,5)),(float) 0.8);
+		this.taille = (int) ((double)this.freqcentre.length*0.8);
+		this.largeur = parent.width/this.taille;
 		
 	}
 	

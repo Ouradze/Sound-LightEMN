@@ -45,16 +45,16 @@ public class MainProcessing extends PApplet {
 		switch (s) {
 		case "1":
 			this.troisD = true;
-			form = new Surface3D(this, this.width / 2, this.height / 2, 0);
+			form = new Surface3D(this, this.width / 2, this.height / 2, -500);
 
 			break;
 		case "2":
 			this.troisD = true;
-			form = new Stripes3D(this, this.width / 2, this.height / 2, 0);
+			form = new Stripes3D(this, this.width / 2, this.height / 2, -300);
 			break;
 		case "3":
 			this.troisD = true;
-			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
+			form = new Hypercube(this, this.width / 2, this.height / 2, -400);
 			break;
 		case "4":
 			this.troisD = false;
@@ -102,7 +102,7 @@ public class MainProcessing extends PApplet {
 		//System.out.println(eq.toString());
 		if (form != null) {
 			fourier.setCoefs(form.getCoefs());
-			form.maj(fourier, this.width / 2, this.height / 2, -500);
+			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
 
