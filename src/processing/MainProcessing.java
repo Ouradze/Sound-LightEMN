@@ -2,7 +2,9 @@ package processing;
 
 import java.awt.*;
 
+import Outils.Equalizer;
 import processing.core.PApplet;
+import processing.core.PShape;
 import sound.*;
 import ddf.minim.*;
 import design.*;
@@ -45,7 +47,7 @@ public class MainProcessing extends PApplet {
 		switch (s) {
 		case "1":
 			this.troisD = true;
-			form = new Surface3D(this, this.width / 2, this.height / 2, -500);
+			form = new Surface(this, this.width/2 , (int) (this.height *0.8), -200);
 
 			break;
 		case "2":
@@ -78,6 +80,7 @@ public class MainProcessing extends PApplet {
 		fourier = new Fourier(audio);
 		fourier.maj();
 		l = new Lumieres(this);
+		
 
 		i = 0;
 		timer = 0;
@@ -92,6 +95,7 @@ public class MainProcessing extends PApplet {
 //		System.out.println((float) 1000 / (float) tps);
 
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+		
 		
 		
 		l.alterne(i);

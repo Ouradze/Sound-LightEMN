@@ -12,6 +12,7 @@ public class Main {
 		//custom.setVisible(true);
 
 		
+		
 		 MainWindow window = new MainWindow(); window.setVisible(true);
 		 
 		 ControlWindow controlWin = new ControlWindow(window);

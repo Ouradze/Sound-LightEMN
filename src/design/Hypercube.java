@@ -1,5 +1,6 @@
 package design;
 
+import Outils.MatriceFreq;
 import processing.core.PApplet;
 import sound.*;
 
@@ -9,7 +10,7 @@ public class Hypercube extends Design {
 	public int cote;
 	public int coteElem;
 	public int profondeur;
-	public Matrice mat;
+	public MatriceFreq mat;
 
 	public Hypercube(PApplet p, int x, int y, int z) {
 		super(p, x, y, z);
@@ -141,7 +142,7 @@ public class Hypercube extends Design {
 	}
 	
 	public void majMatrice(){
-		this.mat = new Matrice(this.freqcentre,n);
+		this.mat = new MatriceFreq(this.freqcentre,n);
 	}
 
 	

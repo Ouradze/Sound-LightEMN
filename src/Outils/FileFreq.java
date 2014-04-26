@@ -1,4 +1,4 @@
-package sound;
+package Outils;
 
 import java.util.*;
 public class FileFreq {
@@ -19,11 +19,16 @@ public class FileFreq {
 	}
 
 	public float[] getIndex(int i) {
+	
 		return list.get(i);
 	}
 
 	public int getsize() {
 		return list.size();
+	}
+	
+	public int getsizeMax(){
+		return this.n;
 	}
 
 }
