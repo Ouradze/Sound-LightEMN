@@ -1,18 +1,20 @@
-package sound;
+package Outils;
 
-public class Matrice {
+import sound.CalculFourier;
+
+public class MatriceFreq {
 
 	public float[] freq;
 	public int n;
 	public float[][] matrice;
 
-	public Matrice(float[] f, int i) {
+	public MatriceFreq(float[] f, int i) {
 		this.freq = CalculFourier.regrouper(f, i);
 		this.n = i;
-		this.construireMatrice();
+		this.construireMatriceCarresConcentriques();
 	}
 
-	public void construireMatrice() {
+	public void construireMatriceCarresConcentriques() {
 		this.matrice = new float[n][n];
 		for (int i = 0; i < n; i++) {
 			for (int j = i; j < n - i; j++) {

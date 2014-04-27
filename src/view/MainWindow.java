@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import processing.MainProcessing;
+
 import sound.MusicFile;
 
 public class MainWindow extends JFrame {
@@ -19,7 +20,8 @@ public class MainWindow extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		MainProcessing test = new MainProcessing(this);
 		this.test = test;
-
+		
+		
 		JPanel panel = new JPanel();
 
 		panel.add(test);

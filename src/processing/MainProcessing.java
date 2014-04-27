@@ -2,7 +2,9 @@ package processing;
 
 import java.awt.*;
 
+import Outils.Equalizer;
 import processing.core.PApplet;
+import processing.core.PShape;
 import sound.*;
 import ddf.minim.*;
 import design.*;
@@ -46,6 +48,7 @@ public class MainProcessing extends PApplet {
 
 		switch (s) {
 		case "1":
+<<<<<<< HEAD
 			
 			form = new Surface3D(this, this.width / 2, this.height / 2, 0);
 
@@ -57,6 +60,19 @@ public class MainProcessing extends PApplet {
 		case "3":
 			
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
+=======
+			this.troisD = true;
+			form = new Surface(this, this.width/2 , (int) (this.height *0.8), -200);
+
+			break;
+		case "2":
+			this.troisD = true;
+			form = new Stripes3D(this, this.width / 2, this.height / 2, -300);
+			break;
+		case "3":
+			this.troisD = true;
+			form = new Hypercube(this, this.width / 2, this.height / 2, -400);
+>>>>>>> c2f9fe691b5bfbce38dc6a72c76ca22bd06a17a8
 			break;
 		case "4":
 			
@@ -81,6 +97,7 @@ public class MainProcessing extends PApplet {
 		fourier = new Fourier(audio);
 		fourier.maj();
 		l = new Lumieres(this);
+		
 
 		i = 0;
 		timer = 0;
@@ -97,6 +114,7 @@ public class MainProcessing extends PApplet {
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 		
 		
+		
 		l.alterne(i);
 		background(0);
 		fourier.maj();
@@ -105,7 +123,7 @@ public class MainProcessing extends PApplet {
 		//System.out.println(eq.toString());
 		if (form != null) {
 			fourier.setCoefs(form.getCoefs());
-			form.maj(fourier, this.width / 2, this.height / 2, -500);
+			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
 

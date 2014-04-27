@@ -40,7 +40,7 @@ public class CalculFourier {
 	public float[] getFreq(int sortie) {
 		FFT fourier = new FFT(buffersize, samplerate);
 		fourier.window(FFT.HAMMING);
-		fourier.logAverages(60, 10);
+		fourier.logAverages(70, 12);
 
 		switch (sortie) {
 		case CalculFourier.GAUCHE:
@@ -127,6 +127,23 @@ public class CalculFourier {
 		}
 		moyenne = moyenne / f.length;
 		return moyenne;
+	}
+	
+	public static float[] moyennelocale(float[] f, int n){
+		float[] moyennes =  new float[f.length];
+		
+		for(int i = n; i<f.length;i++){
+			float moyenne = 0;
+			for(int j=0; j<n;j++){
+				moyenne+=f[i-n+j];
+			}
+			moyenne = moyenne/(float)(n);
+			moyennes[i] = moyenne;
+		}
+		
+		
+		
+		return moyennes;
 	}
 	
 	public void max(float[] f){
