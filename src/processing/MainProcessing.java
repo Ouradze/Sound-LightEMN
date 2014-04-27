@@ -8,7 +8,7 @@ import processing.core.PShape;
 import sound.*;
 import ddf.minim.*;
 import design.*;
-
+@Deprecated
 public class MainProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;

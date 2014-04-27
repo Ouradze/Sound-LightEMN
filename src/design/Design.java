@@ -1,6 +1,5 @@
 package design;
 
-import Outils.FileFreq;
 import processing.core.PApplet;
 import sound.Fourier;
 

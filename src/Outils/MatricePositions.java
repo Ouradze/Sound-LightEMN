@@ -25,7 +25,7 @@ public class MatricePositions {
 				float[] f1 = f.getIndex(j);
 				
 				for (int i = 0; i < this.longueur; i++) {
-					this.points[j][i].y = positionY - 2 * f1[i];
+					this.points[j][i].y = (float) (positionY - 2.5 * f1[i]*this.largeur/12);
 				}
 
 			}
@@ -85,6 +85,10 @@ public class MatricePositions {
 			s += '\n';
 		}
 		return s;
+	}
+	
+	public int getLongueur(){
+		return this.longueur;
 	}
 
 }

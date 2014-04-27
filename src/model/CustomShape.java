@@ -1,12 +1,6 @@
 package model;
 
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-
-import  javax.media.opengl.GL2;
-import  java.nio.*;
-
-import processing.core.*;
+import processing.core.PShape;
 
 public class CustomShape extends PShape{
 	
