@@ -58,6 +58,8 @@ public class Hypercube extends Design {
 				parent.noStroke();
 				parent.fill(255);
 				
+				
+				
 				parent.box(coteElem, coteElem, profondeur+this.mat.get(i,j)*2);
 
 				
@@ -90,7 +92,6 @@ public class Hypercube extends Design {
 			parent.noStroke();
 
 			
-
 			parent.box(coteElem, coteElem+this.mat.get(i,j)*2, profondeur);
 
 			
