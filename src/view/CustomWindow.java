@@ -1,13 +1,9 @@
 package view;
 
-import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import model.CustomShape;
 import processing.CustomProcessing;
-import controller.ControlCustomWindow;
 
 public class CustomWindow extends JFrame{
 	

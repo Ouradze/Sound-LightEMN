@@ -1,9 +1,9 @@
 package design;
 
-import Outils.*;
 import processing.core.*;
 import processing.opengl.*;
 import sound.*;
+import utils.*;
 
 public class Surface extends Design {
 
@@ -38,6 +38,7 @@ public class Surface extends Design {
 		this.mat.majLargeur(this.largeur);
 		surface = (PShapeOpenGL) parent.createShape(PApplet.GROUP);
 		complet = false;
+		
 
 	}
 

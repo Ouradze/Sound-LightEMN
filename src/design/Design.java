@@ -5,12 +5,12 @@ import sound.Fourier;
 
 public abstract class Design {
 
-	public float[] freqgauche; // valeurs des amplitudes correpondant à chaque
-	public float[] freqdroite; // fréquence
+	public float[] freqgauche;
+	public float[] freqdroite; 
 	public float[] freqcentre;
+	public Fourier f;
 	public PApplet parent;
-	// permet de définir la sortie stéréo gauche (-1) ou
-	// droite (1), utile en cas de symétrie
+
 	public int positionX; // position du centre du graphique
 	public int positionY; // position du centre du graphique
 	public int positionZ;
@@ -31,6 +31,7 @@ public abstract class Design {
 		this.freqcentre = f.getCentre();
 		this.freqgauche = f.getGauche();
 		this.freqdroite = f.getDroite();
+		this.f = f;
 		this.positionX = x;
 		this.positionY = y;
 		this.positionZ = z;

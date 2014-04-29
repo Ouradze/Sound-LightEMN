@@ -1,4 +1,4 @@
-package Outils;
+package utils;
 
 import java.util.*;
 public class FileFreq {

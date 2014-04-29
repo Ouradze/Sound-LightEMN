@@ -1,14 +1,13 @@
 package processing;
 
-import java.awt.*;
+import java.awt.Container;
 
-import Outils.Equalizer;
 import processing.core.PApplet;
-import processing.core.PShape;
-import sound.*;
-import ddf.minim.*;
+import sound.AudioHandler;
+import sound.Fourier;
+import utils.Equalizer;
 import design.*;
-@Deprecated
+
 public class MainProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
@@ -34,11 +33,13 @@ public class MainProcessing extends PApplet {
 		// System.out.println("AUDIO : " + audio.bufferSize());
 		audio.majSong(path);
 		audio.switchToSong();
+		System.out.println(audio.toString());
 	}
 
 	public void majInput() {
 		// System.out.println("SONG : " + song.bufferSize());
 		audio.switchToInput();
+		System.out.println(audio.toString());
 
 	}
 
@@ -46,36 +47,49 @@ public class MainProcessing extends PApplet {
 
 		switch (s) {
 		case "1":
-			this.troisD = true;
-			form = new Surface(this, this.width/2 , (int) (this.height *0.8), -200);
+
+			
+			form = new Surface(this, this.width / 2, this.height / 2, 0);
 
 			break;
 		case "2":
-			this.troisD = true;
-			form = new Stripes3D(this, this.width / 2, this.height / 2, -300);
+			
+			form = new Stripes3D(this, this.width / 2, this.height / 2, 0);
 			break;
 		case "3":
+			
+			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
+
 			this.troisD = true;
-			form = new Hypercube(this, this.width / 2, this.height / 2, -400);
+			
 			break;
+		
 		case "4":
-			this.troisD = false;
-			form = new Rond(this, this.width / 2, this.height / 2);
+			form = new Rond(this, this.width/2, this.height/2);
 			break;
 		case "5":
 			form = new Stripe(this, this.width / 2, this.height / 2);
-			this.troisD = false;
+			
+			break;
+			
+		case "6":
+			form = new Cercles(this, this.width/2, this.height/2);
+			
 			break;
 
+		
+		case "7" :
+			form = new StripeAnal(this, this.width/2,this.height/2);
+			break;
 		}
-
 	}
 
 	public void setup() {
-		this.troisD = true;
+	
 		size(this.parent.getWidth(), this.parent.getHeight()-50, P3D);
 
 		audio = new AudioHandler(this);
+		//System.out.println(audio.toString());
 
 		fourier = new Fourier(audio);
 		fourier.maj();

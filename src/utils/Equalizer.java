@@ -1,4 +1,4 @@
-package Outils;
+package utils;
 
 import processing.core.PApplet;
 import sound.*;
