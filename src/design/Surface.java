@@ -59,19 +59,21 @@ public class Surface extends Design {
 			parent.shape(surface);
 		}
 		
-		this.creerLigne();
+		this.creerLigneFrontale();
 		parent.popMatrix();
 	}
 	
 	
-	public void creerLigne() {
+	public void creerLigneFrontale() {
 
-		float[] f = this.freqcentre;
+		
 		
 		parent.stroke(255);
 		parent.beginShape(PApplet.LINE_STRIP);
-		for(int i=0; i< this.taille+4;i++){
-		parent.vertex(this.positionX + (i - this.taille/2 -2)* this.largeur,this.positionY - 2*f[i] ,  this.positionZ);
+		
+		for(int i=0; i< mat.getLongueur();i++){
+		Point p = this.mat.getPoint(0, i);
+		parent.vertex(p.x,p.y ,  p.z);
 		}
 		
 		parent.endShape();
