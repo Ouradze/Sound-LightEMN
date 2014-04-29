@@ -1,7 +1,6 @@
 package SoundAndLight;
 
 import view.ControlWindow;
-import view.CustomWindow;
 import view.MainWindow;
 
 public class Main {

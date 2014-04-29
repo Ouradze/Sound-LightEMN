@@ -1,6 +1,5 @@
 package sound;
 
-import ddf.minim.*;
 
 public class MusicFile {
 	private String path;

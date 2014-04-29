@@ -1,9 +1,8 @@
 package sound;
 
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-
-import processing.core.PApplet;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioSource;
+import ddf.minim.analysis.FFT;
 
 public class CalculFourier {
 
@@ -37,7 +36,7 @@ public class CalculFourier {
 
 	}
 
-	public float[] getFreq(int sortie) {
+	public float[] getFreqAv(int sortie) {
 		FFT fourier = new FFT(buffersize, samplerate);
 		fourier.window(FFT.HAMMING);
 		fourier.logAverages(70, 12);
@@ -63,6 +62,32 @@ public class CalculFourier {
 		//this.max(freq);
 		return freq;
 
+	}
+	
+	public float[] getFreqBrut(int sortie){
+		FFT fourier = new FFT(buffersize, samplerate);
+		fourier.window(FFT.HAMMING);
+		fourier.logAverages(22, 12);
+		switch (sortie) {
+		case CalculFourier.GAUCHE:
+			fourier.forward(this.gauche);
+			break;
+		case CalculFourier.CENTRE:
+			fourier.forward(this.centre);
+			break;
+		case CalculFourier.DROITE:
+			fourier.forward(this.droite);
+			break;
+		}
+
+		float[] freq = new float[fourier.avgSize()];
+
+		for (int i = 0; i < fourier.avgSize(); i++) {
+			freq[i] = fourier.getAvg(i);
+
+		}
+		
+		return freq;
 	}
 	
 	
@@ -105,7 +130,7 @@ public class CalculFourier {
 	
 
 	public static float[] regrouper(float[] f, int n) {
-		// Réduit la taille du tableau à f à un tableau de taille n comportant
+		// Rï¿½duit la taille du tableau ï¿½ f ï¿½ un tableau de taille n comportant
 		// les moyennes des n sections de f.
 		int l = f.length / n;
 		float[] freq = new float[n];

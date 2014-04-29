@@ -1,14 +1,13 @@
 package processing;
 
-import java.awt.*;
+import java.awt.Container;
 
 import processing.core.PApplet;
-import processing.core.PShape;
-import sound.*;
+import sound.AudioHandler;
+import sound.Fourier;
 import utils.Equalizer;
-import ddf.minim.*;
 import design.*;
-@Deprecated
+
 public class MainProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
@@ -66,15 +65,23 @@ public class MainProcessing extends PApplet {
 			break;
 		
 		case "4":
-			
+			form = new Rond(this, this.width/2, this.height/2);
 			break;
 		case "5":
 			form = new Stripe(this, this.width / 2, this.height / 2);
 			
 			break;
+			
+		case "6":
+			form = new Cercles(this, this.width/2, this.height/2);
+			
+			break;
 
+		
+		case "7" :
+			form = new StripeAnal(this, this.width/2,this.height/2);
+			break;
 		}
-
 	}
 
 	public void setup() {
