@@ -1,8 +1,8 @@
 package design;
 
-import Outils.FileFreq;
 import processing.core.PApplet;
 import sound.Fourier;
+import utils.FileFreq;
 
 public abstract class Design {
 

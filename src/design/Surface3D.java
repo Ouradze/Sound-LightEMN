@@ -1,9 +1,9 @@
 package design;
 
-import Outils.FileFreq;
 import processing.core.*;
 import processing.opengl.*;
 import sound.*;
+import utils.FileFreq;
 
 public class Surface3D extends Design {
 

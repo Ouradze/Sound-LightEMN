@@ -2,10 +2,10 @@ package processing;
 
 import java.awt.*;
 
-import Outils.Equalizer;
 import processing.core.PApplet;
 import processing.core.PShape;
 import sound.*;
+import utils.Equalizer;
 import ddf.minim.*;
 import design.*;
 
@@ -48,9 +48,9 @@ public class MainProcessing extends PApplet {
 
 		switch (s) {
 		case "1":
-<<<<<<< HEAD
+
 			
-			form = new Surface3D(this, this.width / 2, this.height / 2, 0);
+			form = new Surface(this, this.width / 2, this.height / 2, 0);
 
 			break;
 		case "2":
@@ -60,23 +60,13 @@ public class MainProcessing extends PApplet {
 		case "3":
 			
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
-=======
-			this.troisD = true;
-			form = new Surface(this, this.width/2 , (int) (this.height *0.8), -200);
 
-			break;
-		case "2":
 			this.troisD = true;
-			form = new Stripes3D(this, this.width / 2, this.height / 2, -300);
+			
 			break;
-		case "3":
-			this.troisD = true;
-			form = new Hypercube(this, this.width / 2, this.height / 2, -400);
->>>>>>> c2f9fe691b5bfbce38dc6a72c76ca22bd06a17a8
-			break;
+		
 		case "4":
 			
-			form = new Rond(this, this.width / 2, this.height / 2);
 			break;
 		case "5":
 			form = new Stripe(this, this.width / 2, this.height / 2);
