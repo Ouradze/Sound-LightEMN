@@ -37,6 +37,8 @@ public class ControlButtonForms implements Observer, ActionListener{
 			case "Cercles" : p.majForme("6");
 				break;
 			case "StripeAnal" : p.majForme("7");
+			break;
+			case "Spectre" : p.majForme("8");
 		} 
 		
 	}

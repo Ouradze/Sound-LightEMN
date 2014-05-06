@@ -57,6 +57,9 @@ public class FormsWindow extends JFrame{
 		JButton FormButton7 = new JButton("StripeAnal");
 		FormButton7.addActionListener(controlFormButtons);
 		panelForm.add(FormButton7);
+		JButton FormButton8 = new JButton("Spectre");
+		FormButton8.addActionListener(controlFormButtons);
+		panelForm.add(FormButton8);
 
 		mainPanel.add(panelForm);
 	}

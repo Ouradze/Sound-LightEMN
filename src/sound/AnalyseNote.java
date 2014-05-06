@@ -63,4 +63,10 @@ public class AnalyseNote {
 	public float[] getFFTepure(){
 		return this.fregbrute;
 	}
+	
+	public float[][] getMatrice(){
+		float[][] f =  new float[12][50];
+		f[6][25] = 1;
+		return f;
+	}
 }

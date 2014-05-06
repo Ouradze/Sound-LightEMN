@@ -9,7 +9,6 @@ public class Lumieres {
 	int bleu;
 	PApplet parent;
 
-
 	public Lumieres(PApplet p) {
 		this.parent = p;
 	}
@@ -54,5 +53,10 @@ public class Lumieres {
 
 	}
 
+	public void blanc() {
+		parent.pointLight(255, 255, 255, parent.width / 2, parent.height / 2,
+				400);
+
+	}
 
 }
