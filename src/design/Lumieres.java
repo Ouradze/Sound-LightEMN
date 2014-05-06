@@ -35,7 +35,7 @@ public class Lumieres {
 
 		parent.pointLight(rouge, vert, bleu, parent.width / 2,
 				parent.height / 2, 400);
-
+		
 	}
 
 	public void rouge() {
