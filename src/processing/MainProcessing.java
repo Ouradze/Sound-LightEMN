@@ -30,7 +30,6 @@ public class MainProcessing extends PApplet {
 	}
 
 	public void majSong(String path) {
-		// System.out.println("AUDIO : " + audio.bufferSize());
 		audio.majSong(path);
 		audio.switchToSong();
 		System.out.println(audio.toString());
@@ -91,7 +90,6 @@ public class MainProcessing extends PApplet {
 		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
 
 		audio = new AudioHandler(this);
-		// System.out.println(audio.toString());
 
 		fourier = new Fourier(audio);
 		fourier.maj();
@@ -99,31 +97,24 @@ public class MainProcessing extends PApplet {
 
 		i = 0;
 		timer = 0;
-		// eq = new Equalizer(this, 10, 100, 0, fourier);
 
 	}
 
 	public void draw() {
 		i++;
 
-		// long tps = System.currentTimeMillis() - this.timer;
-		// System.out.println((float) 1000 / (float) tps);
 
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
-		l.blanc();
+		l.alterne(i);
 		background(0);
 		fourier.maj();
-		// eq.display();
-		// fourier.appliCoefs();
-		// System.out.println(eq.toString());
 		if (form != null) {
 			fourier.setCoefs(form.getCoefs());
 			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
 
-		// this.timer = System.currentTimeMillis();
 
 	}
 

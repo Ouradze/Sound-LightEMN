@@ -27,22 +27,24 @@ public class Stripe extends Design {
 	public void display() {
 
 		espace = (float) 0.5;
-
+		parent.rectMode(PApplet.CENTER);
+	
 		largeur = (float) (parent.getWidth() / (2 * this.freqcentre.length))
 				+ espace;
 		parent.pushMatrix();
-		parent.translate(positionX, positionY, -100);
+		parent.translate(positionX, positionY, -400);
+		parent.fill(255);
 		for (int i = 1; i < this.freqcentre.length; i++) {
-
-			parent.fill(0);
+			
+			
 			parent.stroke(255);
-			parent.rect(i * (largeur + espace), -freqcentre[i], largeur,
-					2 * freqcentre[i] + 2);
+			parent.rect(i * (largeur + espace), 0, largeur,
+					3+2 * freqcentre[i] + 2);
 
-			parent.fill(255);
+			
 			parent.stroke(255);
-			parent.rect(-i * (largeur + espace), -freqcentre[i], largeur,
-					2 * freqcentre[i] + 2);
+			parent.rect(-i * (largeur + espace), 0, largeur,
+					3+2 * freqcentre[i] + 2);
 
 		}
 		parent.popMatrix();

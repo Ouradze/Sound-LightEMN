@@ -118,11 +118,13 @@ public class Surface extends Design {
 			Point b = mat.getPoint(j + 1, i);
 			ligne.vertex(b.x, b.y, b.z);
 		}
-
+		
+		//ligne.specular(255);
 		ligne.endShape();
+		
 
 		this.surface.addChild(ligne);
-		
+		//this.surface.specular(255);
 		if (surface.getChildCount() == this.file.getsizeMax()) {
 			complet = true;
 		}
