@@ -22,19 +22,23 @@ public class Cercles extends Design {
 		
 		
 		
-		parent.beginShape(PApplet.LINE);
+		parent.beginShape();
+		parent.noFill();
 		parent.stroke(255);
 		for (int k = 0; k < 100; k++) {
-			double R = this.freqcentre[5] * 4;
+			double R = 10 + this.freqcentre[5] * 4;
 			float alpha = (float) (k * 2 * Math.PI) / 100;
 			parent.vertex((float) R * PApplet.cos(alpha),
 					(float) R * PApplet.sin(alpha));
 			
 			
+			
 		}
-		parent.endShape();
+		parent.endShape(PApplet.CLOSE);
 		parent.popMatrix();
 	}
+	
+	
 
 	@Override
 	public void scale() {
