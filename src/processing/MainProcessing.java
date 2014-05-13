@@ -3,10 +3,22 @@ package processing;
 import java.awt.Container;
 
 import processing.core.PApplet;
+import processing.core.PShape;
 import sound.AudioHandler;
 import sound.Fourier;
 import utils.Equalizer;
-import design.*;
+import design.Barre;
+import design.Cercles;
+import design.Design;
+import design.Hypercube;
+import design.Lumieres;
+import design.Rond;
+import design.Shape;
+import design.Spectre;
+import design.Stripe;
+import design.StripeAnal;
+import design.Stripes3D;
+import design.Surface;
 
 public class MainProcessing extends PApplet {
 
@@ -42,7 +54,7 @@ public class MainProcessing extends PApplet {
 
 	}
 
-	public void majForme(String s) {
+	public void majForme(String s, String path) {
 
 		switch (s) {
 		case "1":
@@ -80,7 +92,12 @@ public class MainProcessing extends PApplet {
 			break;
 
 		case "8":
-			form = new Spectre(this, this.width / 2, this.height / 2,0);
+			form = new Spectre(this, this.width / 2, this.height / 2, 0);
+			break;
+		case "9":
+			PShape p = new PShape();
+			Shape form = new Shape(this, this.width / 2, this.height / 2, 0, p);
+			// form = loadShape(path);
 			break;
 		}
 	}
@@ -103,7 +120,6 @@ public class MainProcessing extends PApplet {
 	public void draw() {
 		i++;
 
-
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		l.alterne(i);
@@ -114,7 +130,6 @@ public class MainProcessing extends PApplet {
 			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
-
 
 	}
 
