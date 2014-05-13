@@ -35,7 +35,7 @@ public class ControlChooseSvg implements Observer, ActionListener {
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
 
-				p.majForme(file.getPath(), file.getName());
+				p.majForme("Import", file.getPath());
 			} else {
 				// log.append("Open command cancelled by user." + newline);
 			}

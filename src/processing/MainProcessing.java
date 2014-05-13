@@ -3,7 +3,6 @@ package processing;
 import java.awt.Container;
 
 import processing.core.PApplet;
-import processing.core.PShape;
 import sound.AudioHandler;
 import sound.Fourier;
 import utils.Equalizer;
@@ -94,10 +93,8 @@ public class MainProcessing extends PApplet {
 		case "8":
 			form = new Spectre(this, this.width / 2, this.height / 2, 0);
 			break;
-		case "9":
-			PShape p = new PShape();
-			Shape form = new Shape(this, this.width / 2, this.height / 2, 0, p);
-			// form = loadShape(path);
+		case "Import":
+			form = new Shape(this, this.width / 2, this.height / 2, 0, path);
 			break;
 		}
 	}

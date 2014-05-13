@@ -1,29 +1,25 @@
 package design;
 
 import processing.core.PApplet;
-import processing.core.PShape;
 
 public class Shape extends Design {
-	PShape shape;
-	
-	public Shape(PApplet p, int x, int y, int z, PShape ps ) {
+	String shape;
+
+	public Shape(PApplet p, int x, int y, int z, String s) {
 		super(p, x, y, z);
-		this.shape = ps;
-		
+		this.shape = s;
+
 	}
 
-	
 	public void scale() {
-		
-		
+
 	}
 
 	@Override
 	public void display() {
-		
-		parent.loadShape(shape.getName());
-		
-		
+
+		parent.loadShape(shape);
+
 	}
 
 }
