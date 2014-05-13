@@ -1,13 +1,11 @@
 package controller;
 
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 
 import processing.MainProcessing;
 
@@ -26,16 +24,21 @@ public class ControlButtonForms implements Observer, ActionListener{
 		String command = ((JButton) e.getSource()).getActionCommand();
 		
 		switch(command){
-			case "1": p.majForme("1");
+			case "Surface": p.majForme("1");
 				break;
-			case "2": p.majForme("2");
+			case "Stripes3D": p.majForme("2");
 				break;
-			case "3": p.majForme("3");
+			case "Hypercube": p.majForme("3");
 				break;
-			case "4": p.majForme("4");
+			case "Cercle": p.majForme("4");
 				break;
-			case "5": p.majForme("5");
+			case "Stripe": p.majForme("5");
 				break;
+			case "Cercles" : p.majForme("6");
+				break;
+			case "StripeAnal" : p.majForme("7");
+			break;
+			case "Spectre" : p.majForme("8");
 		} 
 		
 	}

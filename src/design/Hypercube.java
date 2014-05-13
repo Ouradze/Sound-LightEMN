@@ -2,6 +2,7 @@ package design;
 
 import processing.core.PApplet;
 import sound.*;
+import utils.MatriceFreq;
 
 
 public class Hypercube extends Design {
@@ -9,14 +10,15 @@ public class Hypercube extends Design {
 	public int cote;
 	public int coteElem;
 	public int profondeur;
-	public Matrice mat;
+	public MatriceFreq mat;
 
 	public Hypercube(PApplet p, int x, int y, int z) {
 		super(p, x, y, z);
 		cote = 400;
 		coteElem = (int) (cote / (float) (n));
 		profondeur = coteElem;
-	
+		this.coefs = new double[]{0.58,0.58,0.57,0.57,0.58,0.58,0.6,0.61,0.62,0.62,0.62,0.62,0.63,0.67,0.7,0.73,0.77,0.82,0.86,0.9,0.93,0.96,0.96,0.96,0.96,0.93,0.9,0.86,0.83,0.8,0.77,0.74,0.7,0.67,0.64,0.6,0.56,0.54,0.51,0.48,0.46,0.46,0.46,0.46,0.44,0.44,0.42,0.4,0.4,0.39,0.39,0.39,0.39,0.39,0.39,0.39,0.39,0.41,0.42,0.43,0.44,0.45,0.47,0.49,0.5,0.5,0.51,0.51,0.54,0.55,0.56,0.59,0.6,0.63,0.66,0.68,0.7,0.75,0.77,0.81,0.81,0.84,0.86,0.88,0.89,0.92,0.93,0.96,0.98,0.99};
+
 
 	}
 
@@ -57,6 +59,8 @@ public class Hypercube extends Design {
 				parent.noStroke();
 				parent.fill(255);
 				
+				
+				
 				parent.box(coteElem, coteElem, profondeur+this.mat.get(i,j)*2);
 
 				
@@ -89,7 +93,6 @@ public class Hypercube extends Design {
 			parent.noStroke();
 
 			
-
 			parent.box(coteElem, coteElem+this.mat.get(i,j)*2, profondeur);
 
 			
@@ -140,7 +143,7 @@ public class Hypercube extends Design {
 	}
 	
 	public void majMatrice(){
-		this.mat = new Matrice(this.freqcentre,n);
+		this.mat = new MatriceFreq(this.freqcentre,n);
 	}
 
 	

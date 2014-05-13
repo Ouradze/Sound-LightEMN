@@ -7,7 +7,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import view.MainWindow;
 import controller.ControlJButtonDefinedForm;
 import controller.ControlJButtonFile;
 import controller.ControlJButtonStream;

@@ -1,9 +1,8 @@
 package sound;
 
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-
-import processing.core.PApplet;
+import ddf.minim.AudioBuffer;
+import ddf.minim.AudioSource;
+import ddf.minim.analysis.FFT;
 
 public class CalculFourier {
 
@@ -16,6 +15,7 @@ public class CalculFourier {
 	public static final int CENTRE = 0;
 	public static final int GAUCHE = -1;
 	public float valmax;
+	
 
 	
 
@@ -36,10 +36,10 @@ public class CalculFourier {
 
 	}
 
-	public float[] getFreq(int sortie) {
+	public float[] getFreqAv(int sortie) {
 		FFT fourier = new FFT(buffersize, samplerate);
 		fourier.window(FFT.HAMMING);
-		fourier.logAverages(60, 10);
+		fourier.logAverages(70, 12);
 
 		switch (sortie) {
 		case CalculFourier.GAUCHE:
@@ -63,28 +63,36 @@ public class CalculFourier {
 		return freq;
 
 	}
-
-	// Diminue les "pics" d'intensité : si l'amplitude dépasse a*moyenne,
-	// celle-ci est amortie de b fois la distance à la moyenne
-	// Par conséquent : a>=1 et 0 <= b <=1 pour rester cohérent
-	public static float[] scaling(float[] f, double a, double b) {
-		float[] nf = new float[f.length];
-
-		float moyenne = moyenne(f);
-
-		for (int i = 0; i < f.length; i++) {
-			if (f[i] > a * moyenne) {
-				float nbr = f[i] - moyenne;
-				nf[i] = (float) ((f[i] - b * nbr));
-			} else {
-				nf[i] = f[i];
-			}
-
+	
+	public float[] getFreqBrut(int sortie){
+		FFT fourier = new FFT(buffersize, samplerate);
+		fourier.window(FFT.HAMMING);
+		fourier.logAverages(22, 12);
+		switch (sortie) {
+		case CalculFourier.GAUCHE:
+			fourier.forward(this.gauche);
+			break;
+		case CalculFourier.CENTRE:
+			fourier.forward(this.centre);
+			break;
+		case CalculFourier.DROITE:
+			fourier.forward(this.droite);
+			break;
 		}
 
-		return nf;
+		float[] freq = new float[fourier.avgSize()];
 
+		for (int i = 0; i < fourier.avgSize(); i++) {
+			freq[i] = fourier.getAvg(i);
+
+		}
+		
+		return freq;
 	}
+	
+	
+
+	
 
 	// Rapporte les amplitudes en fontion de la racine carrée de leur position
 	// sur le spectre (amortissement des basses, cf courbe de la fction)
@@ -100,17 +108,7 @@ public class CalculFourier {
 		return nf;
 	}
 
-	// public static float[] ExpScaling(float[] f) {
-	// float[] nf = new float[f.length];
-	//
-	// for (int i = 0; i < f.length; i++) {
-	// float quot = (float) ((float) (i) / (float) (f.length));
-	//
-	// nf[i] = (float) (f[i] * (1 - Math.exp(-quot)));
-	//
-	// }
-	// return nf;
-	// }
+	
 
 	public static float[] CutScaling(float[] f, float a) {
 		float[] nf = new float[f.length];
@@ -129,28 +127,10 @@ public class CalculFourier {
 		return nf;
 	}
 
-	public static float[] StandardScaling(float[] f, double a, double b,
-			boolean quad) {
-		float[] nf = new float[f.length];
-		float moyenne = moyenne(f);
-		for (int i = 0; i < f.length; i++) {
-			if (f[i] > a * moyenne) {
-				nf[i] = (float) ((f[i] - a * moyenne) * b);
-			} else {
-				nf[i] = 0;
-			}
-			if (quad) {
-				float quot = (float) ((float) (i) / (float) (f.length));
-
-				nf[i] = (float) (nf[i] * (Math.sqrt(quot)));
-			}
-
-		}
-		return nf;
-	}
+	
 
 	public static float[] regrouper(float[] f, int n) {
-		// R�duit la taille du tableau � f � un tableau de taille n comportant
+		// R�duit la taille du tableau � f � un tableau de taille n comportant
 		// les moyennes des n sections de f.
 		int l = f.length / n;
 		float[] freq = new float[n];
@@ -174,6 +154,23 @@ public class CalculFourier {
 		return moyenne;
 	}
 	
+	public static float[] moyennelocale(float[] f, int n){
+		float[] moyennes =  new float[f.length];
+		
+		for(int i = n; i<f.length;i++){
+			float moyenne = 0;
+			for(int j=0; j<n;j++){
+				moyenne+=f[i-n+j];
+			}
+			moyenne = moyenne/(float)(n);
+			moyennes[i] = moyenne;
+		}
+		
+		
+		
+		return moyennes;
+	}
+	
 	public void max(float[] f){
 		
 		
@@ -183,6 +180,8 @@ public class CalculFourier {
 		System.out.println(""+this.valmax);
 		
 	}
+	
+	
 
 	
 }
