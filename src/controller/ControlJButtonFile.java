@@ -36,11 +36,9 @@ public class ControlJButtonFile implements Observer, ActionListener {
 
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
-				// This is where a real application would open the file.
-				// log.append("Opening: " + file.getName() + "." + newline);
-				
+
 				p.majSong(file.getPath());
-				
+
 				file.getName();
 			} else {
 				// log.append("Open command cancelled by user." + newline);

@@ -24,7 +24,8 @@ public class ControlChooseSvg implements Observer, ActionListener {
 		this.p = p;
 		File dir = new File("./Music/");
 		fc.setCurrentDirectory(dir);
-		fc.setFileFilter(new FileNameExtensionFilter("Vector Image", "svg"));
+		fc.setFileFilter(new FileNameExtensionFilter("Vector Image", "svg",
+				"obj"));
 	}
 
 	@Override

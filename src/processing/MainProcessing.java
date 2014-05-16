@@ -41,16 +41,15 @@ public class MainProcessing extends PApplet {
 	}
 
 	public void majSong(String path) {
+
 		audio.majSong(path);
 		audio.switchToSong();
 		System.out.println(audio.toString());
 	}
 
 	public void majInput() {
-		// System.out.println("SONG : " + song.bufferSize());
 		audio.switchToInput();
 		System.out.println(audio.toString());
-
 	}
 
 	public void majForme(String s, String path) {
@@ -101,7 +100,9 @@ public class MainProcessing extends PApplet {
 
 	public void setup() {
 
-		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+		// size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+
+		size(1500, 900, P3D);
 
 		audio = new AudioHandler(this);
 
