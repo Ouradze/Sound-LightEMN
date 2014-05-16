@@ -11,11 +11,13 @@ public class CustomDesign extends Design {
 
 	private ArrayList<Point> points;
 	private boolean complete;
+	private int color;
 
 	public CustomDesign(PApplet parent) {
 		super(parent, 0, 0, 0);
 		this.points = new ArrayList<Point>();
 		this.complete = false;
+		this.color = 255;
 
 	}
 
@@ -36,8 +38,8 @@ public class CustomDesign extends Design {
 
 				Point p = points.get(i);
 
-				s.fill(255);
-				s.stroke(255);
+				s.fill(this.color);
+				s.stroke(this.color);
 				s.vertex(p.x, p.y);
 			}
 
@@ -67,6 +69,10 @@ public class CustomDesign extends Design {
 		} else {
 			return false;
 		}
+	}
+
+	public void setColor(int x) {
+		this.color = x;
 	}
 
 	public ArrayList<Point> getPoints() {

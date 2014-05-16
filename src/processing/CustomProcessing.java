@@ -4,12 +4,12 @@ import java.awt.Container;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import model.CustomDesign;
 import model.ListShapes;
 import processing.core.PApplet;
+import view.ControlCustomFormWindow;
 
 public class CustomProcessing extends PApplet {
 
@@ -73,8 +73,20 @@ public class CustomProcessing extends PApplet {
 			}
 		}
 		if (SwingUtilities.isRightMouseButton(e)) {
-			JFrame window = new JFrame();
-			window.setVisible(true);
+
+			for (int i = 0; i < allShapes.size(); i++) {
+				ArrayList<Point> list = allShapes.get(i).getPoints();
+				for (int j = 0; j < list.size(); j++) {
+					if (list.get(j).distance(e.getPoint()) < 10) {
+						CustomDesign p = allShapes.get(i);
+
+						ControlCustomFormWindow c = new ControlCustomFormWindow(
+								p);
+						c.setVisible(true);
+
+					}
+				}
+			}
 		}
 
 	}
