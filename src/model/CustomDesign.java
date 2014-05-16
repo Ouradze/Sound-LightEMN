@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -11,13 +12,13 @@ public class CustomDesign extends Design {
 
 	private ArrayList<Point> points;
 	private boolean complete;
-	private int color;
+	private Color color;
 
 	public CustomDesign(PApplet parent) {
 		super(parent, 0, 0, 0);
 		this.points = new ArrayList<Point>();
 		this.complete = false;
-		this.color = 255;
+		this.color = new Color(255, 255, 255);
 
 	}
 
@@ -38,8 +39,10 @@ public class CustomDesign extends Design {
 
 				Point p = points.get(i);
 
-				s.fill(this.color);
-				s.stroke(this.color);
+				s.fill(this.color.getRed(), this.color.getGreen(),
+						this.color.getBlue());
+				s.stroke(this.color.getRed(), this.color.getGreen(),
+						this.color.getBlue());
 				s.vertex(p.x, p.y);
 			}
 
@@ -71,8 +74,12 @@ public class CustomDesign extends Design {
 		}
 	}
 
-	public void setColor(int x) {
+	public void setColor(Color x) {
 		this.color = x;
+	}
+
+	public Color getColor() {
+		return this.color;
 	}
 
 	public ArrayList<Point> getPoints() {

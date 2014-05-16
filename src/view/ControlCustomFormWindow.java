@@ -21,10 +21,25 @@ public class ControlCustomFormWindow extends JFrame {
 
 		panel.add(new JLabel("Choisissez votre couleur"));
 
-		JTextField text = new JTextField(20);
-		text.addActionListener(new ColorControl(this.shape));
+		panel.add(new JLabel("R"));
+		panel.add(new JLabel("G"));
+		panel.add(new JLabel("B"));
 
-		panel.add(text);
+		JTextField red = new JTextField(20);
+		red.addActionListener(new ColorControl(this.shape));
+		red.setName("Red");
+
+		JTextField green = new JTextField(20);
+		green.setName("Green");
+		green.addActionListener(new ColorControl(this.shape));
+
+		JTextField blue = new JTextField(20);
+		blue.addActionListener(new ColorControl(this.shape));
+		blue.setName("Blue");
+
+		panel.add(red);
+		panel.add(green);
+		panel.add(blue);
 
 		this.add(panel);
 
