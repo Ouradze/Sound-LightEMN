@@ -6,7 +6,18 @@ import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
 import utils.Equalizer;
-import design.*;
+import design.Barre;
+import design.Cercles;
+import design.Design;
+import design.Hypercube;
+import design.Lumieres;
+import design.Rond;
+import design.Shape;
+import design.Spectre;
+import design.Stripe;
+import design.StripeAnal;
+import design.Stripes3D;
+import design.Surface;
 
 public class MainProcessing extends PApplet {
 
@@ -30,101 +41,93 @@ public class MainProcessing extends PApplet {
 	}
 
 	public void majSong(String path) {
-		// System.out.println("AUDIO : " + audio.bufferSize());
+
 		audio.majSong(path);
 		audio.switchToSong();
 		System.out.println(audio.toString());
 	}
 
 	public void majInput() {
-		// System.out.println("SONG : " + song.bufferSize());
 		audio.switchToInput();
 		System.out.println(audio.toString());
-
 	}
 
-	public void majForme(String s) {
+	public void majForme(String s, String path) {
 
 		switch (s) {
 		case "1":
 
-			
 			form = new Surface(this, this.width / 2, this.height / 2, 0);
 
 			break;
 		case "2":
-			
+
 			form = new Stripes3D(this, this.width / 2, this.height / 2, 0);
 			break;
 		case "3":
-			
+
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
 
 			this.troisD = true;
-			
+
 			break;
-		
+
 		case "4":
-			form = new Rond(this, this.width/2, this.height/2);
+			form = new Rond(this, this.width / 2, this.height / 2);
 			break;
 		case "5":
 			form = new Stripe(this, this.width / 2, this.height / 2);
-			
-			break;
-			
-		case "6":
-			form = new Cercles(this, this.width/2, this.height/2);
-			
+
 			break;
 
-		
-		case "7" :
-			form = new StripeAnal(this, this.width/2,this.height/2);
+		case "6":
+			form = new Cercles(this, this.width / 2, this.height / 2);
+
+			break;
+
+		case "7":
+			form = new StripeAnal(this, this.width / 2, this.height / 2);
+			break;
+
+		case "8":
+			form = new Spectre(this, this.width / 2, this.height / 2, 0);
+			break;
+		case "Import":
+			form = new Shape(this, this.width / 2, this.height / 2, 0, path);
 			break;
 		}
 	}
 
 	public void setup() {
-	
-		size(this.parent.getWidth(), this.parent.getHeight()-50, P3D);
+
+		// size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+
+		size(1500, 900, P3D);
 
 		audio = new AudioHandler(this);
-		//System.out.println(audio.toString());
 
 		fourier = new Fourier(audio);
 		fourier.maj();
 		l = new Lumieres(this);
-		
 
 		i = 0;
 		timer = 0;
-		//eq =  new Equalizer(this, 10, 100, 0, fourier);
 
 	}
 
 	public void draw() {
 		i++;
 
-//		long tps = System.currentTimeMillis() - this.timer;
-//		System.out.println((float) 1000 / (float) tps);
-
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
-		
-		
-		
+
 		l.alterne(i);
 		background(0);
 		fourier.maj();
-		//eq.display();
-		//fourier.appliCoefs();
-		//System.out.println(eq.toString());
 		if (form != null) {
 			fourier.setCoefs(form.getCoefs());
 			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
-
-//		this.timer = System.currentTimeMillis();
 
 	}
 

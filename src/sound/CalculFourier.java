@@ -22,6 +22,7 @@ public class CalculFourier {
 	public CalculFourier(AudioSource s) {
 		this.samplerate = s.sampleRate();
 		this.buffersize = s.bufferSize();
+	
 		this.gauche = s.left;
 		this.droite = s.right;
 		this.centre = s.mix;
@@ -40,7 +41,8 @@ public class CalculFourier {
 		FFT fourier = new FFT(buffersize, samplerate);
 		fourier.window(FFT.HAMMING);
 		fourier.logAverages(70, 12);
-
+		
+		
 		switch (sortie) {
 		case CalculFourier.GAUCHE:
 			fourier.forward(this.gauche);
@@ -62,10 +64,6 @@ public class CalculFourier {
 		//this.max(freq);
 		return freq;
 
-	}
-	
-	public float[] getSignal(){
-		return this.centre.toArray();
 	}
 	
 	public float[] getFreqBrut(int sortie){

@@ -4,10 +4,12 @@ import java.awt.Container;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import javax.swing.SwingUtilities;
+
 import model.CustomDesign;
 import model.ListShapes;
 import processing.core.PApplet;
-import processing.core.PShape;
+import view.ControlCustomFormWindow;
 
 public class CustomProcessing extends PApplet {
 
@@ -35,16 +37,6 @@ public class CustomProcessing extends PApplet {
 		this.background(0);
 
 		if (allShapes != null) {
-
-			PShape a = new PShape();
-
-			/*
-			 * a = createShape(); a.beginShape(); a.fill(0, 0, 255);
-			 * a.noStroke(); a.vertex(0, 0); a.vertex(0, 50); a.vertex(50, 50);
-			 * a.vertex(50, 0); a.endShape(CLOSE);
-			 */
-
-			// this.shape(a);
 			for (int i = 0; i < allShapes.size(); i++) {
 				allShapes.get(i).display();
 			}
@@ -70,6 +62,32 @@ public class CustomProcessing extends PApplet {
 
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e) {
+		if (SwingUtilities.isLeftMouseButton(e)) {
+			if (currentShape.getPoints().size() != 0
+					&& currentShape.detect(e.getPoint(), 10)) {
+				currentShape.add(e.getX(), e.getY());
+				this.currentShape = new CustomDesign(this);
+				allShapes.add(currentShape);
+			} else {
+				currentShape.add(e.getX(), e.getY());
+			}
+		}
+		if (SwingUtilities.isRightMouseButton(e)) {
+
+			for (int i = 0; i < allShapes.size(); i++) {
+				ArrayList<Point> list = allShapes.get(i).getPoints();
+				for (int j = 0; j < list.size(); j++) {
+					if (list.get(j).distance(e.getPoint()) < 10) {
+						CustomDesign p = allShapes.get(i);
+
+						ControlCustomFormWindow c = new ControlCustomFormWindow(
+								p);
+						c.setVisible(true);
+
+					}
+				}
+			}
+		}
 
 	}
 
@@ -85,15 +103,7 @@ public class CustomProcessing extends PApplet {
 
 	@Override
 	public void mousePressed(java.awt.event.MouseEvent e) {
-		if (currentShape.getPoints().size() != 0
-				&& currentShape.detect(e.getPoint(), 10)) {
-			currentShape.add(e.getX(), e.getY());
-			this.currentShape = new CustomDesign(this);
-			allShapes.add(currentShape);
-		} else {
-			currentShape.add(e.getX(), e.getY());
-		}
-		System.out.println("Added, X " + e.getX() + " Y " + e.getY());
+
 	}
 
 	@Override
