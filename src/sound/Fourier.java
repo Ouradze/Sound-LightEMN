@@ -8,6 +8,7 @@ public class Fourier {
 	private float[] freqgauche;
 	private float[] freqcentre;
 	private float[] freqdroite;
+	private float[] signal;
 	private float[] fregbrute;
 	private double[] coefs;
 

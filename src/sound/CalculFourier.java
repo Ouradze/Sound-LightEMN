@@ -64,6 +64,10 @@ public class CalculFourier {
 
 	}
 	
+	public float[] getSignal(){
+		return this.centre.toArray();
+	}
+	
 	public float[] getFreqBrut(int sortie){
 		FFT fourier = new FFT(buffersize, samplerate);
 		fourier.window(FFT.HAMMING);

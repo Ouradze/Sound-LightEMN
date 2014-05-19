@@ -31,7 +31,7 @@ public class Stripe extends Design {
 		largeur = (float) (parent.getWidth() / (2 * this.freqcentre.length))
 				+ espace;
 		parent.pushMatrix();
-		parent.translate(positionX, positionY, -100);
+		parent.translate(positionX, positionY);
 		for (int i = 1; i < this.freqcentre.length; i++) {
 
 			parent.fill(0);
