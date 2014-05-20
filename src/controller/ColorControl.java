@@ -20,7 +20,7 @@ public class ColorControl implements Observer, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-
+		//
 		JTextField text = (JTextField) arg0.getSource();
 
 		String command = text.getName();
