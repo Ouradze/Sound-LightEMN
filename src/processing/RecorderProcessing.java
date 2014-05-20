@@ -35,7 +35,7 @@ public class RecorderProcessing extends AbstractProcessing {
 		if (!(model instanceof RecorderProcessing)) {
 			this.model = model;
 			p = model.recorder;
-			//
+
 		}
 
 	}
