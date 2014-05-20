@@ -47,9 +47,7 @@ public class FullWindow extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-<<<<<<< HEAD
-		AbstractProcessing test = new MainProcessing(panel);
-=======
+
 		Dimension preferredSize = new Dimension(1500, 900);
 
 		panel = new JPanel();
@@ -59,7 +57,7 @@ public class FullWindow extends JFrame {
 		System.out.println(panel.getSize());
 
 		AbstractProcessing test = new CustomProcessing(panel);
->>>>>>> e1d46e85d9d20dcf075e37146e156ff017b8fe1d
+
 		this.test = test;
 		System.out.println(test.getPar());
 		System.out.println(test.getPar().getWidth());
