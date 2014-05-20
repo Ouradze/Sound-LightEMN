@@ -6,17 +6,33 @@ import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
 import utils.Equalizer;
-import design.*;
+import design.Barre;
+import design.Cercles;
+import design.Design;
+import design.Hypercube;
+import design.Lumieres;
+import design.Rond;
+import design.Shape;
+import design.Spectre;
+import design.Stripe;
+import design.StripeAnal;
+import design.Stripes3D;
+import design.Surface;
 
-public class MainProcessing extends PApplet {
+public class MainProcessing extends AbstractProcessing {
+
+	public MainProcessing(Container parent) {
+		super(parent);
+		
+	}
 
 	private static final long serialVersionUID = 1L;
-	private Container parent;
+	
 
-	AudioHandler audio;
+	
 
-	protected boolean troisD;
-	Fourier fourier;
+	
+
 	Design form;
 	Equalizer eq;
 	Lumieres l;
@@ -24,25 +40,21 @@ public class MainProcessing extends PApplet {
 	Barre b;
 	long timer;
 
-	public MainProcessing(Container parent) {
-		super();
-		this.parent = parent;
-	}
+	
 
 	public void majSong(String path) {
+
 		audio.majSong(path);
 		audio.switchToSong();
 		System.out.println(audio.toString());
 	}
 
 	public void majInput() {
-		// System.out.println("SONG : " + song.bufferSize());
 		audio.switchToInput();
 		System.out.println(audio.toString());
-
 	}
 
-	public void majForme(String s) {
+	public void majForme(String s, String path) {
 
 		switch (s) {
 		case "1":
@@ -58,7 +70,7 @@ public class MainProcessing extends PApplet {
 
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
 
-			this.troisD = true;
+			
 
 			break;
 
@@ -80,14 +92,19 @@ public class MainProcessing extends PApplet {
 			break;
 
 		case "8":
-			form = new Spectre(this, this.width / 2, this.height / 2,0);
+			form = new Spectre(this, this.width / 2, this.height / 2, 0);
+			break;
+		case "Import":
+			form = new Shape(this, this.width / 2, this.height / 2, 0, path);
 			break;
 		}
 	}
 
 	public void setup() {
 
-		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+		// size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+
+		size(1500, 900, P3D);
 
 		audio = new AudioHandler(this);
 
@@ -103,7 +120,6 @@ public class MainProcessing extends PApplet {
 	public void draw() {
 		i++;
 
-
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		l.alterne(i);
@@ -115,7 +131,8 @@ public class MainProcessing extends PApplet {
 			form.display();
 		}
 
-
 	}
+
+
 
 }

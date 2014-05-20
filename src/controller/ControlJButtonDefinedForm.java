@@ -5,14 +5,14 @@ import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 import view.FormsWindow;
 
 public class ControlJButtonDefinedForm implements Observer, ActionListener {
 
-	public MainProcessing p;
+	public AbstractProcessing p;
 
-	public ControlJButtonDefinedForm(MainProcessing p) {
+	public ControlJButtonDefinedForm(AbstractProcessing p) {
 		this.p = p;
 	}
 	

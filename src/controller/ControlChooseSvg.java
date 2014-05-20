@@ -11,35 +11,33 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import processing.AbstractProcessing;
+import processing.MainProcessing;
 
-public class ControlJButtonFile implements Observer, ActionListener {
+public class ControlChooseSvg implements Observer, ActionListener {
 
 	private Frame parent;
 	public AbstractProcessing p;
 
 	final JFileChooser fc = new JFileChooser();
 
-	public ControlJButtonFile(Frame parent, AbstractProcessing p) {
+	public ControlChooseSvg(Frame parent, AbstractProcessing p) {
 		this.parent = parent;
 		this.p = p;
 		File dir = new File("./Music/");
 		fc.setCurrentDirectory(dir);
-		fc.setFileFilter(new FileNameExtensionFilter("MPEG-Layer 3 file", "mp3"));
+		fc.setFileFilter(new FileNameExtensionFilter("Vector Image", "svg",
+				"obj"));
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		// Handle open button action.
 		if (true) {
 			int returnVal = fc.showOpenDialog(this.parent);
 
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
 
-				p.majSong(file.getPath());
-
-				file.getName();
+				p.majForme("Import", file.getPath());
 			} else {
 				// log.append("Open command cancelled by user." + newline);
 			}

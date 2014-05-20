@@ -4,16 +4,21 @@ import java.awt.Container;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import model.CustomDesign;
 import model.ListShapes;
 import processing.core.PApplet;
+import view.ControlCustomFormWindow;
 
-public class CustomProcessing extends PApplet {
+public class CustomProcessing extends AbstractProcessing {
 
-	private Container parent;
+	public CustomProcessing(Container parent) {
+		super(parent);
+		
+	}
+
+
 
 	CustomDesign currentShape = new CustomDesign(this);
 
@@ -21,10 +26,7 @@ public class CustomProcessing extends PApplet {
 
 	private CustomDesign s = new CustomDesign(this);
 
-	public CustomProcessing(Container parent) {
-		super();
-		this.parent = parent;
-	}
+	
 
 	public void setup() {
 		size(this.parent.getWidth(), this.parent.getHeight(), P2D);
@@ -73,8 +75,20 @@ public class CustomProcessing extends PApplet {
 			}
 		}
 		if (SwingUtilities.isRightMouseButton(e)) {
-			JFrame window = new JFrame();
-			window.setVisible(true);
+
+			for (int i = 0; i < allShapes.size(); i++) {
+				ArrayList<Point> list = allShapes.get(i).getPoints();
+				for (int j = 0; j < list.size(); j++) {
+					if (list.get(j).distance(e.getPoint()) < 10) {
+						CustomDesign p = allShapes.get(i);
+
+						ControlCustomFormWindow c = new ControlCustomFormWindow(
+								p);
+						c.setVisible(true);
+
+					}
+				}
+			}
 		}
 
 	}
@@ -98,5 +112,15 @@ public class CustomProcessing extends PApplet {
 	public void mouseReleased(java.awt.event.MouseEvent e) {
 
 	}
+
+	@Override
+	public void majForme(String s, String path) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+	
 
 }

@@ -6,15 +6,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 import controller.ControlButtonForms;
+import controller.ControlChooseSvg;
 
 public class FormsWindow extends JFrame {
 
-	private MainProcessing window;
+	private AbstractProcessing window;
 	JPanel mainPanel = new JPanel(new GridLayout(4, 1));
 
-	public FormsWindow(MainProcessing window) {
+	public FormsWindow(AbstractProcessing window) {
 		super("Sound & Light-Control");
 
 		this.window = window;
@@ -58,9 +59,16 @@ public class FormsWindow extends JFrame {
 		JButton FormButton7 = new JButton("StripeAnal");
 		FormButton7.addActionListener(controlFormButtons);
 		panelForm.add(FormButton7);
+
 		JButton FormButton8 = new JButton("Spectre");
 		FormButton8.addActionListener(controlFormButtons);
 		panelForm.add(FormButton8);
+
+		ControlChooseSvg controlSvg = new ControlChooseSvg(this, this.window);
+
+		JButton FormButton9 = new JButton("Import Form");
+		FormButton9.addActionListener(controlSvg);
+		panelForm.add(FormButton9);
 
 		mainPanel.add(panelForm);
 	}
