@@ -8,17 +8,11 @@ import javax.swing.SwingUtilities;
 
 import model.CustomDesign;
 import model.ListShapes;
-import processing.core.PApplet;
+import sound.AudioHandler;
+import sound.Fourier;
 import view.ControlCustomFormWindow;
 
 public class CustomProcessing extends AbstractProcessing {
-
-	public CustomProcessing(Container parent) {
-		super(parent);
-		
-	}
-
-
 
 	CustomDesign currentShape = new CustomDesign(this);
 
@@ -26,9 +20,19 @@ public class CustomProcessing extends AbstractProcessing {
 
 	private CustomDesign s = new CustomDesign(this);
 
-	
+	public CustomProcessing(Container parent) {
+		super(parent);
+
+	}
 
 	public void setup() {
+		size(this.parent.getWidth(), this.parent.getHeight(), P2D);
+
+		audio = new AudioHandler(this);
+
+		fourier = new Fourier(audio);
+		fourier.maj();
+
 		size(900, 900, P2D);
 	}
 
@@ -116,11 +120,7 @@ public class CustomProcessing extends AbstractProcessing {
 	@Override
 	public void majForme(String s, String path) {
 		// TODO Auto-generated method stub
-		
-	}
-	
-	
 
-	
+	}
 
 }

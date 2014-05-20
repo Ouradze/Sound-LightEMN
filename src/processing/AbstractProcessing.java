@@ -5,9 +5,6 @@ import java.awt.Container;
 import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
-import design.Barre;
-import design.Design;
-import design.Lumieres;
 
 public abstract class AbstractProcessing extends PApplet {
 
@@ -16,19 +13,18 @@ public abstract class AbstractProcessing extends PApplet {
 
 	AudioHandler audio;
 
-
 	Fourier fourier;
-	
-	
+
 	int i;
-	
+
 	long timer;
 
 	public AbstractProcessing(Container parent) {
 		super();
 		this.parent = parent;
+
 		audio = new AudioHandler(this);
-		
+
 	}
 
 	public void majSong(String path) {
@@ -42,11 +38,15 @@ public abstract class AbstractProcessing extends PApplet {
 		audio.switchToInput();
 		System.out.println(audio.toString());
 	}
-	
+
 	public abstract void majForme(String s, String path);
 
 	public abstract void setup();
 
 	public abstract void draw();
+
+	public Container getPar() {
+		return this.parent;
+	}
 
 }

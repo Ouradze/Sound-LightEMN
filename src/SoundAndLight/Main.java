@@ -1,14 +1,10 @@
 package SoundAndLight;
 
-import view.CustomWindow;
 import view.FullWindow;
 
 public class Main {
 
 	public static void main(final String[] args) {
-
-		//CustomWindow custom = new CustomWindow();
-		//custom.setVisible(true);
 
 		// MainWindow window = new MainWindow();
 		// window.setVisible(true);
@@ -16,8 +12,8 @@ public class Main {
 		// ControlWindow controlWin = new ControlWindow(window);
 		// controlWin.setVisible(true);
 
-		 FullWindow mainWindow = new FullWindow();
-		 mainWindow.setVisible(true);
+		FullWindow mainWindow = new FullWindow();
+		mainWindow.setVisible(true);
 
 	}
 }

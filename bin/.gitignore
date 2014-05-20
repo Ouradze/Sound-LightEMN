@@ -1,4 +1,3 @@
-/SoundAndLight/
-/processing/
-/controller/
-/view/
+/processing
+/view
+/controller

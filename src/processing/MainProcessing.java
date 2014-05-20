@@ -2,8 +2,6 @@ package processing;
 
 import java.awt.Container;
 
-import processing.core.PApplet;
-import sound.AudioHandler;
 import sound.Fourier;
 import utils.Equalizer;
 import design.Barre;
@@ -21,17 +19,7 @@ import design.Surface;
 
 public class MainProcessing extends AbstractProcessing {
 
-	public MainProcessing(Container parent) {
-		super(parent);
-		
-	}
-
 	private static final long serialVersionUID = 1L;
-	
-
-	
-
-	
 
 	Design form;
 	Equalizer eq;
@@ -40,18 +28,9 @@ public class MainProcessing extends AbstractProcessing {
 	Barre b;
 	long timer;
 
-	
+	public MainProcessing(Container parent) {
+		super(parent);
 
-	public void majSong(String path) {
-
-		audio.majSong(path);
-		audio.switchToSong();
-		System.out.println(audio.toString());
-	}
-
-	public void majInput() {
-		audio.switchToInput();
-		System.out.println(audio.toString());
 	}
 
 	public void majForme(String s, String path) {
@@ -69,8 +48,6 @@ public class MainProcessing extends AbstractProcessing {
 		case "3":
 
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
-
-			
 
 			break;
 
@@ -102,11 +79,9 @@ public class MainProcessing extends AbstractProcessing {
 
 	public void setup() {
 
-		// size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
 
-		size(1500, 900, P3D);
-
-		
+		// size(1500, 900, P3D);
 
 		fourier = new Fourier(audio);
 		fourier.maj();
@@ -132,7 +107,5 @@ public class MainProcessing extends AbstractProcessing {
 		}
 
 	}
-
-
 
 }

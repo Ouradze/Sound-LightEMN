@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
@@ -19,7 +20,8 @@ public class FormsWindow extends JFrame {
 		super("Sound & Light-Control");
 
 		this.window = window;
-		this.setSize(100, 400);
+		Dimension d = new Dimension(100, 400);
+		this.setPreferredSize(d);
 
 		this.createForm();
 

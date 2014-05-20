@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -21,7 +22,6 @@ import javax.swing.KeyStroke;
 
 import processing.AbstractProcessing;
 import processing.CustomProcessing;
-import processing.MainProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
 import controller.ControlJButtonFile;
@@ -47,8 +47,25 @@ public class FullWindow extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+<<<<<<< HEAD
 		AbstractProcessing test = new MainProcessing(panel);
+=======
+		Dimension preferredSize = new Dimension(1500, 900);
+
+		panel = new JPanel();
+		panel.setPreferredSize(preferredSize);
+		panel.setSize(preferredSize);
+
+		System.out.println(panel.getSize());
+
+		AbstractProcessing test = new CustomProcessing(panel);
+>>>>>>> e1d46e85d9d20dcf075e37146e156ff017b8fe1d
 		this.test = test;
+		System.out.println(test.getPar());
+		System.out.println(test.getPar().getWidth());
+
+		test.init();
+
 		panel.add(test);
 
 		conteneur.add(panel, BorderLayout.CENTER);
@@ -65,8 +82,6 @@ public class FullWindow extends JFrame {
 		panel = new JPanel();
 		this.createWest();
 		conteneur.add(panel, BorderLayout.WEST);
-
-		test.init();
 	}
 
 	public AbstractProcessing getApplet() {
@@ -235,12 +250,12 @@ public class FullWindow extends JFrame {
 		menu.getAccessibleContext().setAccessibleDescription(
 				"This menu does nothing");
 
-		menuItem = new JMenuItem("Retro", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Show Retro", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4,
 				ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Show window");
 
-		menuItem.addActionListener(new ControlMenu());
+		menuItem.addActionListener(new ControlMenu(this.test));
 
 		menu.add(menuItem);
 
