@@ -20,6 +20,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 import processing.AbstractProcessing;
+import processing.CustomProcessing;
 import processing.MainProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
@@ -46,7 +47,7 @@ public class FullWindow extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		AbstractProcessing test = new MainProcessing(panel);
+		AbstractProcessing test = new CustomProcessing(panel);
 		this.test = test;
 		panel.add(test);
 

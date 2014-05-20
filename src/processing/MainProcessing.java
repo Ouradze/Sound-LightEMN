@@ -106,7 +106,7 @@ public class MainProcessing extends AbstractProcessing {
 
 		size(1500, 900, P3D);
 
-		audio = new AudioHandler(this);
+		
 
 		fourier = new Fourier(audio);
 		fourier.maj();

@@ -16,7 +16,7 @@ public abstract class AbstractProcessing extends PApplet {
 
 	AudioHandler audio;
 
-	
+
 	Fourier fourier;
 	
 	
@@ -27,6 +27,7 @@ public abstract class AbstractProcessing extends PApplet {
 	public AbstractProcessing(Container parent) {
 		super();
 		this.parent = parent;
+		audio = new AudioHandler(this);
 		
 	}
 

@@ -29,7 +29,7 @@ public class CustomProcessing extends AbstractProcessing {
 	
 
 	public void setup() {
-		size(this.parent.getWidth(), this.parent.getHeight(), P2D);
+		size(900, 900, P2D);
 	}
 
 	public void draw() {
