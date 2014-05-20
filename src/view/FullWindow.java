@@ -47,7 +47,7 @@ public class FullWindow extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		AbstractProcessing test = new CustomProcessing(panel);
+		AbstractProcessing test = new MainProcessing(panel);
 		this.test = test;
 		panel.add(test);
 
