@@ -6,9 +6,6 @@ public class Main {
 
 	public static void main(final String[] args) {
 
-		// CustomWindow custom = new CustomWindow();
-		// custom.setVisible(true);
-
 		// MainWindow window = new MainWindow();
 		// window.setVisible(true);
 

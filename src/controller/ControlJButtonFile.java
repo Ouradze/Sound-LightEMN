@@ -10,16 +10,16 @@ import java.util.Observer;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 
 public class ControlJButtonFile implements Observer, ActionListener {
 
 	private Frame parent;
-	public MainProcessing p;
+	public AbstractProcessing p;
 
 	final JFileChooser fc = new JFileChooser();
 
-	public ControlJButtonFile(Frame parent, MainProcessing p) {
+	public ControlJButtonFile(Frame parent, AbstractProcessing p) {
 		this.parent = parent;
 		this.p = p;
 		File dir = new File("./Music/");

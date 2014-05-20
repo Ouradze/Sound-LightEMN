@@ -20,8 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
+import processing.AbstractProcessing;
 import processing.CustomProcessing;
-import processing.MainProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
 import controller.ControlJButtonFile;
@@ -30,8 +30,7 @@ import controller.ControlMenu;
 
 public class FullWindow extends JFrame {
 
-	private MainProcessing test;
-	private CustomProcessing customTest;
+	private AbstractProcessing test;
 
 	JMenuBar menuBar;
 	JMenu menu, submenu;
@@ -56,13 +55,12 @@ public class FullWindow extends JFrame {
 
 		System.out.println(panel.getSize());
 
-		MainProcessing test = new MainProcessing(panel);
-
-		test.init();
-
+		AbstractProcessing test = new CustomProcessing(panel);
 		this.test = test;
 		System.out.println(test.getPar());
 		System.out.println(test.getPar().getWidth());
+
+		test.init();
 
 		panel.add(test);
 
@@ -82,7 +80,7 @@ public class FullWindow extends JFrame {
 		conteneur.add(panel, BorderLayout.WEST);
 	}
 
-	public MainProcessing getApplet() {
+	public AbstractProcessing getApplet() {
 		return this.test;
 	}
 

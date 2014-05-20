@@ -8,16 +8,16 @@ import java.util.Observer;
 
 import javax.swing.JFileChooser;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 
 public class ControlJButtonStream implements Observer, ActionListener{
 
 	private Frame parent;
-	public MainProcessing p;
+	public AbstractProcessing p;
 
 	final JFileChooser fc = new JFileChooser();
 
-	public ControlJButtonStream(Frame parent, MainProcessing p) {
+	public ControlJButtonStream(Frame parent, AbstractProcessing p) {
 		this.parent = parent;
 		this.p = p;
 	}

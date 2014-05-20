@@ -8,18 +8,11 @@ import javax.swing.SwingUtilities;
 
 import model.CustomDesign;
 import model.ListShapes;
-import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
-import utils.Equalizer;
 import view.ControlCustomFormWindow;
-import design.Barre;
-import design.Design;
-import design.Lumieres;
 
-public class CustomProcessing extends PApplet {
-
-	private Container parent;
+public class CustomProcessing extends AbstractProcessing {
 
 	CustomDesign currentShape = new CustomDesign(this);
 
@@ -27,32 +20,9 @@ public class CustomProcessing extends PApplet {
 
 	private CustomDesign s = new CustomDesign(this);
 
-	AudioHandler audio;
-
-	protected boolean troisD;
-	Fourier fourier;
-	Design form;
-	Equalizer eq;
-	Lumieres l;
-	int i;
-	Barre b;
-	long timer;
-
 	public CustomProcessing(Container parent) {
-		super();
-		this.parent = parent;
-	}
+		super(parent);
 
-	public void majSong(String path) {
-
-		audio.majSong(path);
-		audio.switchToSong();
-		System.out.println(audio.toString());
-	}
-
-	public void majInput() {
-		audio.switchToInput();
-		System.out.println(audio.toString());
 	}
 
 	public void setup() {
@@ -62,10 +32,8 @@ public class CustomProcessing extends PApplet {
 
 		fourier = new Fourier(audio);
 		fourier.maj();
-		l = new Lumieres(this);
 
-		i = 0;
-		timer = 0;
+		size(900, 900, P2D);
 	}
 
 	public void draw() {
@@ -146,6 +114,12 @@ public class CustomProcessing extends PApplet {
 
 	@Override
 	public void mouseReleased(java.awt.event.MouseEvent e) {
+
+	}
+
+	@Override
+	public void majForme(String s, String path) {
+		// TODO Auto-generated method stub
 
 	}
 

@@ -2,8 +2,6 @@ package processing;
 
 import java.awt.Container;
 
-import processing.core.PApplet;
-import sound.AudioHandler;
 import sound.Fourier;
 import utils.Equalizer;
 import design.Barre;
@@ -19,15 +17,10 @@ import design.StripeAnal;
 import design.Stripes3D;
 import design.Surface;
 
-public class MainProcessing extends PApplet {
+public class MainProcessing extends AbstractProcessing {
 
 	private static final long serialVersionUID = 1L;
-	private Container parent;
 
-	AudioHandler audio;
-
-	protected boolean troisD;
-	Fourier fourier;
 	Design form;
 	Equalizer eq;
 	Lumieres l;
@@ -36,25 +29,8 @@ public class MainProcessing extends PApplet {
 	long timer;
 
 	public MainProcessing(Container parent) {
-		super();
-		this.parent = parent;
+		super(parent);
 
-	}
-
-	public Container getPar() {
-		return this.parent;
-	}
-
-	public void majSong(String path) {
-
-		audio.majSong(path);
-		audio.switchToSong();
-		System.out.println(audio.toString());
-	}
-
-	public void majInput() {
-		audio.switchToInput();
-		System.out.println(audio.toString());
 	}
 
 	public void majForme(String s, String path) {
@@ -72,8 +48,6 @@ public class MainProcessing extends PApplet {
 		case "3":
 
 			form = new Hypercube(this, this.width / 2, this.height / 2, 0);
-
-			this.troisD = true;
 
 			break;
 
@@ -108,8 +82,6 @@ public class MainProcessing extends PApplet {
 		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
 
 		// size(1500, 900, P3D);
-
-		audio = new AudioHandler(this);
 
 		fourier = new Fourier(audio);
 		fourier.maj();

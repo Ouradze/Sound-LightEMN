@@ -3,25 +3,25 @@ package view;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 
 public class RetroView extends JFrame {
 
-	private MainProcessing test;
+	private AbstractProcessing test;
 
-	public RetroView(MainProcessing test) {
+	public RetroView(AbstractProcessing test2) {
 		super("Sound & Light");
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.test = test;
+		this.test = test2;
 
 		JPanel panel = new JPanel();
 
-		panel.add(test);
+		panel.add(test2);
 		this.add(panel);
-		test.init();
+		test2.init();
 	}
 
-	public MainProcessing getApplet() {
+	public AbstractProcessing getApplet() {
 		return this.test;
 	}
 }

@@ -7,15 +7,15 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JMenuItem;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 import view.RetroView;
 
 public class ControlMenu implements ActionListener, ItemListener {
 
-	private MainProcessing test;
+	private AbstractProcessing test;
 
-	public ControlMenu(MainProcessing test) {
-		this.test = test;
+	public ControlMenu(AbstractProcessing test2) {
+		this.test = test2;
 	}
 
 	@Override

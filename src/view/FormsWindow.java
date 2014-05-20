@@ -7,16 +7,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
 
 public class FormsWindow extends JFrame {
 
-	private MainProcessing window;
+	private AbstractProcessing window;
 	JPanel mainPanel = new JPanel(new GridLayout(4, 1));
 
-	public FormsWindow(MainProcessing window) {
+	public FormsWindow(AbstractProcessing window) {
+		super("Sound & Light-Control");
 
 		this.window = window;
 		Dimension d = new Dimension(100, 400);
