@@ -21,7 +21,7 @@ public class FormsWindow extends JFrame {
 
 		this.window = window;
 		Dimension d = new Dimension(100, 400);
-		this.setPreferredSize(d);
+		this.setSize(d);
 
 		this.createForm();
 

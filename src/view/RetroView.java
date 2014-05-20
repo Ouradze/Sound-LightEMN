@@ -1,9 +1,13 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import processing.AbstractProcessing;
+import processing.RecorderProcessing;
 
 public class RetroView extends JFrame {
 
@@ -14,11 +18,22 @@ public class RetroView extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.test = test2;
 
-		JPanel panel = new JPanel();
+		System.out.println("Jframe : " + this.getWidth());
 
-		panel.add(test2);
+		JPanel panel = new JPanel();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		panel.setSize(screenSize);
+
+		System.out.println("Retro : " + panel.getWidth());
+
+		RecorderProcessing recorder = new RecorderProcessing(panel);
+
+		recorder.setModel(this.test);
+
+		recorder.init();
+
+		panel.add(recorder);
 		this.add(panel);
-		test2.init();
 	}
 
 	public AbstractProcessing getApplet() {

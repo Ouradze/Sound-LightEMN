@@ -1,6 +1,8 @@
 package processing;
 
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import processing.core.PGraphics;
 
@@ -11,7 +13,7 @@ public class RecorderProcessing extends AbstractProcessing {
 
 	public RecorderProcessing(Container parent) {
 		super(parent);
-
+		System.out.println("Recorder : " + parent.getWidth());
 	}
 
 	public void majForme(String s, String path) {
@@ -20,24 +22,23 @@ public class RecorderProcessing extends AbstractProcessing {
 
 	@Override
 	public void setup() {
-		p = model.recorder;
+		System.out.println("Setup : " + parent.getWidth());
+		p = new PGraphics();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		p = createGraphics((int) screenSize.getWidth(),
+				(int) screenSize.getHeight());
 	}
 
 	@Override
 	public void draw() {
-
 		p.beginDraw();
 		p.endDraw();
-
 	}
 
 	public void setModel(AbstractProcessing model) {
 		if (!(model instanceof RecorderProcessing)) {
 			this.model = model;
 			p = model.recorder;
-
 		}
-
 	}
-
 }

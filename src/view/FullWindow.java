@@ -21,7 +21,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
 import processing.AbstractProcessing;
-import processing.CustomProcessing;
+import processing.MainProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
 import controller.ControlJButtonFile;
@@ -37,6 +37,7 @@ public class FullWindow extends JFrame {
 	JMenuItem menuItem;
 	JRadioButtonMenuItem rbMenuItem;
 	JCheckBoxMenuItem cbMenuItem;
+	MainWindow window;
 
 	Container conteneur = this.getContentPane();
 
@@ -47,7 +48,6 @@ public class FullWindow extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
 		Dimension preferredSize = new Dimension(1500, 900);
 
 		panel = new JPanel();
@@ -56,11 +56,9 @@ public class FullWindow extends JFrame {
 
 		System.out.println(panel.getSize());
 
-		AbstractProcessing test = new CustomProcessing(panel);
+		AbstractProcessing test = new MainProcessing(panel);
 
 		this.test = test;
-		System.out.println(test.getPar());
-		System.out.println(test.getPar().getWidth());
 
 		test.init();
 
