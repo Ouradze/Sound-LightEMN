@@ -38,6 +38,11 @@ public class MainProcessing extends PApplet {
 	public MainProcessing(Container parent) {
 		super();
 		this.parent = parent;
+
+	}
+
+	public Container getPar() {
+		return this.parent;
 	}
 
 	public void majSong(String path) {
@@ -100,9 +105,9 @@ public class MainProcessing extends PApplet {
 
 	public void setup() {
 
-		// size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
+		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
 
-		size(1500, 900, P3D);
+		// size(1500, 900, P3D);
 
 		audio = new AudioHandler(this);
 

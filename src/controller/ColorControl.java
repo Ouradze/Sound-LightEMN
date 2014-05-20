@@ -25,8 +25,6 @@ public class ColorControl implements Observer, ActionListener {
 
 		String command = text.getName();
 
-		System.out.println(command);
-
 		int red = this.shape.getColor().getRed();
 		int green = this.shape.getColor().getGreen();
 		int blue = this.shape.getColor().getBlue();
