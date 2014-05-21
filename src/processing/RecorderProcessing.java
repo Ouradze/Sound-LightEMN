@@ -6,9 +6,20 @@ import java.awt.Toolkit;
 
 import processing.core.PGraphics;
 
+/**
+ * 
+ * @author mehdi & guillaume
+ * 
+ *         Class which record the current image in the full Window, and display
+ *         it on a second screen '/!\ Not yet functional
+ * 
+ */
 public class RecorderProcessing extends AbstractProcessing {
 
 	PGraphics p;
+	/**
+	 * ProcessingSketch Recorded
+	 */
 	AbstractProcessing model;
 
 	public RecorderProcessing(Container parent) {

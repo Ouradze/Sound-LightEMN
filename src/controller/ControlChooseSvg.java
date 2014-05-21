@@ -11,8 +11,12 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import processing.AbstractProcessing;
-import processing.MainProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlChooseSvg implements Observer, ActionListener {
 
 	private Frame parent;

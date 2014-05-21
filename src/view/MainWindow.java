@@ -9,6 +9,13 @@ import javax.swing.JPanel;
 import processing.AbstractProcessing;
 import processing.MainProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         Window which display predefined form.
+ * 
+ */
 public class MainWindow extends JFrame {
 
 	private AbstractProcessing test;

@@ -8,12 +8,33 @@ import processing.core.PApplet;
 import processing.core.PShape;
 import design.Design;
 
+/**
+ * @author mehdi
+ * 
+ *         Represents the shapes used to draw the form in the Class
+ *         CustomProcessing
+ * 
+ */
 public class CustomDesign extends Design {
-
+	/**
+	 * All the point contained in the shape
+	 */
 	private ArrayList<Point> points;
+	/**
+	 * true if the shape is completed
+	 */
 	private boolean complete;
+	/**
+	 * shape color to display on the screen
+	 */
 	private Color color;
 
+	/**
+	 * @param parent
+	 *            PApplet parent, where the shape will be displayed
+	 * 
+	 *            Create a custom shape with white color, not completed
+	 */
 	public CustomDesign(PApplet parent) {
 		super(parent, 0, 0, 0);
 		this.points = new ArrayList<Point>();
@@ -28,6 +49,9 @@ public class CustomDesign extends Design {
 
 	}
 
+	/**
+	 * Method called to display the shape
+	 */
 	@Override
 	public void display() {
 		if (this.complete) {
@@ -63,6 +87,14 @@ public class CustomDesign extends Design {
 
 	}
 
+	/**
+	 * 
+	 * @param p
+	 *            Point in the shape
+	 * @param d
+	 *            Distance maximum between this and p
+	 * @return true if p is closer to this than d
+	 */
 	public boolean detect(Point p, int d) {
 		Point first = this.points.get(0);
 
@@ -94,6 +126,15 @@ public class CustomDesign extends Design {
 		this.complete = true;
 	}
 
+	/**
+	 * 
+	 * @param x
+	 *            axis
+	 * @param y
+	 *            axis
+	 * 
+	 *            Add a point to the shape
+	 */
 	public void add(int x, int y) {
 		points.add(new Point(x, y));
 	}

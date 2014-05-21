@@ -10,7 +10,12 @@ import javax.swing.JFileChooser;
 
 import processing.AbstractProcessing;
 
-public class ControlJButtonStream implements Observer, ActionListener{
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
+public class ControlJButtonStream implements Observer, ActionListener {
 
 	private Frame parent;
 	public AbstractProcessing p;
@@ -21,16 +26,16 @@ public class ControlJButtonStream implements Observer, ActionListener{
 		this.parent = parent;
 		this.p = p;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-						p.majInput();		
+		p.majInput();
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

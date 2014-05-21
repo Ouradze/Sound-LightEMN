@@ -11,8 +11,20 @@ import processing.AbstractProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         JFrame containing the button controling the form, useless if you use
+ *         the full window in the main, usefull if you want to project on a
+ *         second screen as the FullWindow class does not yet support the second
+ *         screen
+ * 
+ */
 public class FormsWindow extends JFrame {
-
+	/**
+	 * ProcessingSketch to be displayed
+	 */
 	private AbstractProcessing window;
 	JPanel mainPanel = new JPanel(new GridLayout(4, 1));
 
@@ -28,6 +40,9 @@ public class FormsWindow extends JFrame {
 		this.add(mainPanel);
 	}
 
+	/**
+	 * Create the button and add them to the panel
+	 */
 	public void createForm() {
 		JPanel panelForm = new JPanel();
 

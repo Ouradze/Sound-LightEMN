@@ -3,6 +3,10 @@ package SoundAndLight;
 import view.ControlWindow;
 import view.MainWindow;
 
+/**
+ * 
+ * @author mehdi Main class, the application is lunched from here
+ */
 public class Main {
 
 	public static void main(final String[] args) {

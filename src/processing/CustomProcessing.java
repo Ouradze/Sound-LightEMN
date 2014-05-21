@@ -12,6 +12,11 @@ import sound.AudioHandler;
 import sound.Fourier;
 import view.ControlCustomFormWindow;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class CustomProcessing extends AbstractProcessing {
 
 	CustomDesign currentShape = new CustomDesign(this);

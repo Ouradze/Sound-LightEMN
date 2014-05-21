@@ -28,8 +28,20 @@ import controller.ControlJButtonFile;
 import controller.ControlJButtonStream;
 import controller.ControlMenu;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         MainWindow, you can choose in the code between a CustomPorcessing or
+ *         a MainProcessing object but the interface change between the two is
+ *         not yet implemented
+ * 
+ */
 public class FullWindow extends JFrame {
 
+	/**
+	 * ProcessingSketch to be displayed
+	 */
 	private AbstractProcessing test;
 
 	JMenuBar menuBar;
@@ -88,9 +100,14 @@ public class FullWindow extends JFrame {
 
 	}
 
+	/**
+	 * Create the East part of the border layout, buttons which control the
+	 * predefined forms
+	 */
 	public void createEast() {
 		JPanel panelForm = new JPanel();
 
+		// Controler for the following form buttons
 		ControlButtonForms controlFormButtons = new ControlButtonForms(
 				this.test);
 
@@ -137,6 +154,10 @@ public class FullWindow extends JFrame {
 		panel.add(panelForm);
 	}
 
+	/**
+	 * Create the West part of the border layout, buttons which control the
+	 * predefined forms
+	 */
 	public void createWest() {
 		JPanel panelSound = new JPanel();
 
@@ -165,6 +186,9 @@ public class FullWindow extends JFrame {
 
 	}
 
+	/**
+	 * Create the menu of the class
+	 */
 	public void menu() {
 		/* -- Menu -- */
 

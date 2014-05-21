@@ -4,8 +4,14 @@ import java.util.ArrayList;
 
 import design.Design;
 
+/**
+ * 
+ * @author mehdi Class containing all the shapes used in the class CustomDesign
+ */
 public class ListShapes extends ArrayList<CustomDesign> {
-
+	/**
+	 * Shape currently created
+	 */
 	private CustomDesign currentShape;
 
 	public ListShapes() {

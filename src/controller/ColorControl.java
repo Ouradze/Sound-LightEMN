@@ -10,6 +10,11 @@ import javax.swing.JTextField;
 
 import model.CustomDesign;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ColorControl implements Observer, ActionListener {
 
 	private CustomDesign shape;

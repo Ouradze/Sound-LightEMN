@@ -9,6 +9,11 @@ import javax.swing.JButton;
 
 import processing.AbstractProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlButtonForms implements Observer, ActionListener {
 
 	public AbstractProcessing p;

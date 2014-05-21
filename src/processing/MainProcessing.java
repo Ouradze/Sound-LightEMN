@@ -17,6 +17,11 @@ import design.StripeAnal;
 import design.Stripes3D;
 import design.Surface;
 
+/**
+ * 
+ * @author Guillaume Facchini
+ * 
+ */
 public class MainProcessing extends AbstractProcessing {
 
 	public MainProcessing(Container parent) {

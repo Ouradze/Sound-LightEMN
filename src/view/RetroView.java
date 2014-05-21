@@ -9,8 +9,19 @@ import javax.swing.JPanel;
 import processing.AbstractProcessing;
 import processing.RecorderProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         Class which display on the retroprojector screen. Fonctionnal but not
+ *         yet implemented in the rest of the project
+ * 
+ */
 public class RetroView extends JFrame {
 
+	/**
+	 * ProcessingSketch to be displayed
+	 */
 	private AbstractProcessing test;
 
 	public RetroView(AbstractProcessing test2) {

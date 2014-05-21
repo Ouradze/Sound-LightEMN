@@ -8,6 +8,11 @@ import java.util.Observer;
 import processing.AbstractProcessing;
 import view.FormsWindow;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlJButtonDefinedForm implements Observer, ActionListener {
 
 	public AbstractProcessing p;
@@ -15,7 +20,7 @@ public class ControlJButtonDefinedForm implements Observer, ActionListener {
 	public ControlJButtonDefinedForm(AbstractProcessing p) {
 		this.p = p;
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		FormsWindow window = new FormsWindow(this.p);

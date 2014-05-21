@@ -12,6 +12,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import processing.AbstractProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlJButtonFile implements Observer, ActionListener {
 
 	private Frame parent;

@@ -11,6 +11,14 @@ import controller.ControlJButtonDefinedForm;
 import controller.ControlJButtonFile;
 import controller.ControlJButtonStream;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         Main Controller Window, open the forms control window and enable the
+ *         user to choose between a stream or an mp3 file
+ * 
+ */
 public class ControlWindow extends JFrame {
 
 	private MainWindow window;

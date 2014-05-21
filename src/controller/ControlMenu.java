@@ -10,6 +10,11 @@ import javax.swing.JMenuItem;
 import processing.AbstractProcessing;
 import view.RetroView;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlMenu implements ActionListener, ItemListener {
 
 	private AbstractProcessing test;

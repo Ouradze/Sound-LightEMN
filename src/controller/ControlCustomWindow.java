@@ -8,6 +8,11 @@ import model.ListShapes;
 import processing.core.PApplet;
 import processing.core.PVector;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlCustomWindow implements MouseListener, MouseMotionListener {
 
 	private PApplet parent;

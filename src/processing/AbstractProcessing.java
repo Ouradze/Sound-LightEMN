@@ -6,6 +6,13 @@ import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
 
+/**
+ * 
+ * @author Guillaume Facchini & Mehdi Raddadi
+ * 
+ *         Abstract class which enable us to inject either a predefined
+ *         processing sketch or one created by the user
+ */
 public abstract class AbstractProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +34,10 @@ public abstract class AbstractProcessing extends PApplet {
 
 	}
 
+	/**
+	 * 
+	 * @param path
+	 */
 	public void majSong(String path) {
 
 		audio.majSong(path);
@@ -34,17 +45,35 @@ public abstract class AbstractProcessing extends PApplet {
 		System.out.println(audio.toString());
 	}
 
+	/**
+	 * 
+	 */
 	public void majInput() {
 		audio.switchToInput();
 		System.out.println(audio.toString());
 	}
 
+	/**
+	 * 
+	 * @param s
+	 * @param path
+	 */
 	public abstract void majForme(String s, String path);
 
+	/**
+	 * 
+	 */
 	public abstract void setup();
 
+	/**
+	 * 
+	 */
 	public abstract void draw();
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Container getPar() {
 		return this.parent;
 	}
