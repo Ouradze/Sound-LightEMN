@@ -8,6 +8,13 @@ import javax.swing.JTextField;
 import model.CustomDesign;
 import controller.ColorControl;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         Window where the user can choose the color of the customShape with
+ *         RGB code
+ */
 public class ControlCustomFormWindow extends JFrame {
 
 	private CustomDesign shape;

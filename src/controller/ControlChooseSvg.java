@@ -10,16 +10,21 @@ import java.util.Observer;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlChooseSvg implements Observer, ActionListener {
 
 	private Frame parent;
-	public MainProcessing p;
+	public AbstractProcessing p;
 
 	final JFileChooser fc = new JFileChooser();
 
-	public ControlChooseSvg(Frame parent, MainProcessing p) {
+	public ControlChooseSvg(Frame parent, AbstractProcessing p) {
 		this.parent = parent;
 		this.p = p;
 		File dir = new File("./Music/");

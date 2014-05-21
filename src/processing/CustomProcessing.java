@@ -8,12 +8,16 @@ import javax.swing.SwingUtilities;
 
 import model.CustomDesign;
 import model.ListShapes;
-import processing.core.PApplet;
+import sound.AudioHandler;
+import sound.Fourier;
 import view.ControlCustomFormWindow;
 
-public class CustomProcessing extends PApplet {
-
-	private Container parent;
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
+public class CustomProcessing extends AbstractProcessing {
 
 	CustomDesign currentShape = new CustomDesign(this);
 
@@ -22,12 +26,19 @@ public class CustomProcessing extends PApplet {
 	private CustomDesign s = new CustomDesign(this);
 
 	public CustomProcessing(Container parent) {
-		super();
-		this.parent = parent;
+		super(parent);
+
 	}
 
 	public void setup() {
 		size(this.parent.getWidth(), this.parent.getHeight(), P2D);
+
+		audio = new AudioHandler(this);
+
+		fourier = new Fourier(audio);
+		fourier.maj();
+
+		size(900, 900, P2D);
 	}
 
 	public void draw() {
@@ -108,6 +119,12 @@ public class CustomProcessing extends PApplet {
 
 	@Override
 	public void mouseReleased(java.awt.event.MouseEvent e) {
+
+	}
+
+	@Override
+	public void majForme(String s, String path) {
+		// TODO Auto-generated method stub
 
 	}
 

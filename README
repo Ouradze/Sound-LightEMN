@@ -1,0 +1,7 @@
+README :
+
+In order to lunch this application, please run the SoundAndLight.Main.
+
+For know two modes are implemented, one where you can use predefined forms and one where you can create your own.
+In order to switch from one to another, please open the view.FullWindow class and change the AbstractProcessing
+object from MainProcessing to Custom Processing.

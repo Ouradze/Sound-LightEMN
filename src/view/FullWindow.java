@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
+import processing.AbstractProcessing;
 import processing.MainProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
@@ -26,15 +28,28 @@ import controller.ControlJButtonFile;
 import controller.ControlJButtonStream;
 import controller.ControlMenu;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         MainWindow, you can choose in the code between a CustomPorcessing or
+ *         a MainProcessing object but the interface change between the two is
+ *         not yet implemented
+ * 
+ */
 public class FullWindow extends JFrame {
 
-	private MainProcessing test;
+	/**
+	 * ProcessingSketch to be displayed
+	 */
+	private AbstractProcessing test;
 
 	JMenuBar menuBar;
 	JMenu menu, submenu;
 	JMenuItem menuItem;
 	JRadioButtonMenuItem rbMenuItem;
 	JCheckBoxMenuItem cbMenuItem;
+	MainWindow window;
 
 	Container conteneur = this.getContentPane();
 
@@ -45,8 +60,20 @@ public class FullWindow extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		MainProcessing test = new MainProcessing(panel);
+		Dimension preferredSize = new Dimension(1500, 900);
+
+		panel = new JPanel();
+		panel.setPreferredSize(preferredSize);
+		panel.setSize(preferredSize);
+
+		System.out.println(panel.getSize());
+
+		AbstractProcessing test = new MainProcessing(panel);
+
 		this.test = test;
+
+		test.init();
+
 		panel.add(test);
 
 		conteneur.add(panel, BorderLayout.CENTER);
@@ -63,11 +90,9 @@ public class FullWindow extends JFrame {
 		panel = new JPanel();
 		this.createWest();
 		conteneur.add(panel, BorderLayout.WEST);
-
-		test.init();
 	}
 
-	public MainProcessing getApplet() {
+	public AbstractProcessing getApplet() {
 		return this.test;
 	}
 
@@ -75,9 +100,14 @@ public class FullWindow extends JFrame {
 
 	}
 
+	/**
+	 * Create the East part of the border layout, buttons which control the
+	 * predefined forms
+	 */
 	public void createEast() {
 		JPanel panelForm = new JPanel();
 
+		// Controler for the following form buttons
 		ControlButtonForms controlFormButtons = new ControlButtonForms(
 				this.test);
 
@@ -124,6 +154,10 @@ public class FullWindow extends JFrame {
 		panel.add(panelForm);
 	}
 
+	/**
+	 * Create the West part of the border layout, buttons which control the
+	 * predefined forms
+	 */
 	public void createWest() {
 		JPanel panelSound = new JPanel();
 
@@ -152,6 +186,9 @@ public class FullWindow extends JFrame {
 
 	}
 
+	/**
+	 * Create the menu of the class
+	 */
 	public void menu() {
 		/* -- Menu -- */
 
@@ -233,12 +270,12 @@ public class FullWindow extends JFrame {
 		menu.getAccessibleContext().setAccessibleDescription(
 				"This menu does nothing");
 
-		menuItem = new JMenuItem("Retro", KeyEvent.VK_T);
+		menuItem = new JMenuItem("Show Retro", KeyEvent.VK_T);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4,
 				ActionEvent.ALT_MASK));
 		menuItem.getAccessibleContext().setAccessibleDescription("Show window");
 
-		menuItem.addActionListener(new ControlMenu());
+		menuItem.addActionListener(new ControlMenu(this.test));
 
 		menu.add(menuItem);
 

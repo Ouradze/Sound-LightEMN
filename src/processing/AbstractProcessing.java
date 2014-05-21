@@ -5,70 +5,77 @@ import java.awt.Container;
 import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
-import design.Barre;
-import design.Design;
-import design.Lumieres;
 
+/**
+ * 
+ * @author Guillaume Facchini & Mehdi Raddadi
+ * 
+ *         Abstract class which enable us to inject either a predefined
+ *         processing sketch or one created by the user
+ */
 public abstract class AbstractProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
-	private Container parent;
+	protected Container parent;
 
 	AudioHandler audio;
 
-	protected boolean troisD;
 	Fourier fourier;
-	Design form;
-	Lumieres l;
+
 	int i;
-	Barre b;
+
 	long timer;
 
 	public AbstractProcessing(Container parent) {
 		super();
 		this.parent = parent;
-	}
-
-	public abstract void majSong(String path);
-
-	public abstract void majInput();
-
-	public abstract void majForme(String s);
-
-	public void setup() {
-		this.troisD = true;
-		size(this.parent.getWidth(), this.parent.getHeight() - 50, P3D);
 
 		audio = new AudioHandler(this);
 
-		fourier = new Fourier(audio);
-
-		l = new Lumieres(this);
-
-		i = 0;
-		timer = 0;
-
 	}
 
-	public void draw() {
-		i++;
+	/**
+	 * 
+	 * @param path
+	 */
+	public void majSong(String path) {
 
-		long tps = System.currentTimeMillis() - this.timer;
-		System.out.println((float) 1000 / (float) tps);
+		audio.majSong(path);
+		audio.switchToSong();
+		System.out.println(audio.toString());
+	}
 
-		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
+	/**
+	 * 
+	 */
+	public void majInput() {
+		audio.switchToInput();
+		System.out.println(audio.toString());
+	}
 
-		l.alterne(i);
-		background(0);
-		fourier.maj();
+	/**
+	 * 
+	 * @param s
+	 * @param path
+	 */
+	public abstract void majForme(String s, String path);
 
-		if (form != null) {
-			form.maj(fourier, this.width / 2, this.height / 2, -500);
-			form.display();
-		}
+	/**
+	 * 
+	 */
+	public abstract void setup();
 
-		this.timer = System.currentTimeMillis();
+	/**
+	 * 
+	 */
+	public abstract void draw();
 
+	/**
+	 * 
+	 * @return
+	 */
+	public Container getPar() {
+		return this.parent;
 	}
 
 }

@@ -3,6 +3,13 @@ package design;
 import processing.core.PApplet;
 import sound.Fourier;
 
+/**
+ * 
+ * @author guillaume
+ * 
+ *         Design abstract class, every forms inherit from this class Enable to
+ *         inject whatever we want into the window
+ */
 public abstract class Design {
 
 	public float[] freqgauche;
@@ -16,6 +23,13 @@ public abstract class Design {
 	public int positionZ;
 	public double[] coefs;
 
+	/**
+	 * 
+	 * @param p
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public Design(PApplet p, int x, int y, int z) {
 
 		this.parent = p;
@@ -36,6 +50,13 @@ public abstract class Design {
 
 	public abstract void scale();
 
+	/**
+	 * 
+	 * @param f
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public void maj(Fourier f, int x, int y, int z) {
 		this.freqcentre = f.getCentre();
 		this.freqgauche = f.getGauche();
@@ -50,6 +71,10 @@ public abstract class Design {
 
 	public abstract void display();
 
+	/**
+	 * 
+	 * @return
+	 */
 	public double[] getCoefs() {
 		if (this.coefs != null) {
 			return this.coefs;

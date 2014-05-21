@@ -1,31 +1,48 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 import controller.ControlButtonForms;
 import controller.ControlChooseSvg;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         JFrame containing the button controling the form, useless if you use
+ *         the full window in the main, usefull if you want to project on a
+ *         second screen as the FullWindow class does not yet support the second
+ *         screen
+ * 
+ */
 public class FormsWindow extends JFrame {
-
-	private MainProcessing window;
+	/**
+	 * ProcessingSketch to be displayed
+	 */
+	private AbstractProcessing window;
 	JPanel mainPanel = new JPanel(new GridLayout(4, 1));
 
-	public FormsWindow(MainProcessing window) {
+	public FormsWindow(AbstractProcessing window) {
 		super("Sound & Light-Control");
 
 		this.window = window;
-		this.setSize(100, 400);
+		Dimension d = new Dimension(100, 400);
+		this.setSize(d);
 
 		this.createForm();
 
 		this.add(mainPanel);
 	}
 
+	/**
+	 * Create the button and add them to the panel
+	 */
 	public void createForm() {
 		JPanel panelForm = new JPanel();
 

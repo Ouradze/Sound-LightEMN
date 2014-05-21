@@ -3,6 +3,10 @@ package design;
 import processing.core.PApplet;
 import ddf.minim.AudioPlayer;
 
+/**
+ * @author guillaume
+ * 
+ */
 public class Barre {
 
 	AudioPlayer song;
@@ -10,12 +14,19 @@ public class Barre {
 	float h;
 	float x;
 
+	/**
+	 * @param p
+	 * @param song
+	 */
 	public Barre(PApplet p, AudioPlayer song) {
 		this.song = song;
 		this.parent = p;
 		this.x = 0;
 	}
 
+	/**
+	 * 
+	 */
 	public void display() {
 		h = 30;
 		int l = song.length();

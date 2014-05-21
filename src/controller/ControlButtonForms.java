@@ -7,13 +7,18 @@ import java.util.Observer;
 
 import javax.swing.JButton;
 
-import processing.MainProcessing;
+import processing.AbstractProcessing;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ControlButtonForms implements Observer, ActionListener {
 
-	public MainProcessing p;
+	public AbstractProcessing p;
 
-	public ControlButtonForms(MainProcessing p) {
+	public ControlButtonForms(AbstractProcessing p) {
 		this.p = p;
 	}
 

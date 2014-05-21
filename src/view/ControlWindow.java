@@ -11,6 +11,14 @@ import controller.ControlJButtonDefinedForm;
 import controller.ControlJButtonFile;
 import controller.ControlJButtonStream;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ *         Main Controller Window, open the forms control window and enable the
+ *         user to choose between a stream or an mp3 file
+ * 
+ */
 public class ControlWindow extends JFrame {
 
 	private MainWindow window;
@@ -22,7 +30,7 @@ public class ControlWindow extends JFrame {
 
 		this.window = window;
 
-		this.setSize(100, 400);
+		this.setSize(400, 400);
 		// this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		this.createForm();
@@ -35,7 +43,8 @@ public class ControlWindow extends JFrame {
 		JPanel panelForm = new JPanel();
 
 		JButton definedForm = new JButton("Defined");
-		ControlJButtonDefinedForm controlDefinedForm = new ControlJButtonDefinedForm(this.window.getApplet());
+		ControlJButtonDefinedForm controlDefinedForm = new ControlJButtonDefinedForm(
+				this.window.getApplet());
 		definedForm.addActionListener(controlDefinedForm);
 		panelForm.add(definedForm);
 
@@ -46,12 +55,14 @@ public class ControlWindow extends JFrame {
 		JPanel panelSound = new JPanel();
 
 		JCheckBox file = new JCheckBox("File");
-		ControlJButtonFile controlFile = new ControlJButtonFile(this,this.window.getApplet());
-		
+		ControlJButtonFile controlFile = new ControlJButtonFile(this,
+				this.window.getApplet());
+
 		file.addActionListener(controlFile);
 
 		JCheckBox stream = new JCheckBox("Stream");
-		ControlJButtonStream controlStream = new ControlJButtonStream(this,this.window.getApplet());
+		ControlJButtonStream controlStream = new ControlJButtonStream(this,
+				this.window.getApplet());
 		stream.addActionListener(controlStream);
 
 		panelSound.add(file);

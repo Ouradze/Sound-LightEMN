@@ -10,6 +10,11 @@ import javax.swing.JTextField;
 
 import model.CustomDesign;
 
+/**
+ * 
+ * @author Mehdi Raddadi
+ * 
+ */
 public class ColorControl implements Observer, ActionListener {
 
 	private CustomDesign shape;
@@ -20,12 +25,10 @@ public class ColorControl implements Observer, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-
+		//
 		JTextField text = (JTextField) arg0.getSource();
 
 		String command = text.getName();
-
-		System.out.println(command);
 
 		int red = this.shape.getColor().getRed();
 		int green = this.shape.getColor().getGreen();
