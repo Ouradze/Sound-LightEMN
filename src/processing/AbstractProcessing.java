@@ -3,6 +3,7 @@ package processing;
 import java.awt.Container;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 import sound.AudioHandler;
 import sound.Fourier;
 
@@ -16,6 +17,7 @@ import sound.Fourier;
 public abstract class AbstractProcessing extends PApplet {
 
 	private static final long serialVersionUID = 1L;
+	protected PImage mFrame;
 	protected Container parent;
 
 	AudioHandler audio;
@@ -69,6 +71,14 @@ public abstract class AbstractProcessing extends PApplet {
 	 * 
 	 */
 	public abstract void draw();
+
+	protected void setFrame(PImage frame) {
+		mFrame = frame;
+	}
+
+	public PImage getFrame() {
+		return mFrame;
+	}
 
 	/**
 	 * 

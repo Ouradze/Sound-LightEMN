@@ -121,7 +121,6 @@ public class MainProcessing extends AbstractProcessing {
 			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
-
 	}
 
 }
