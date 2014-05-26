@@ -2,6 +2,8 @@ package processing;
 
 import java.awt.Container;
 
+import com.sun.istack.internal.logging.Logger;
+
 import processing.core.PApplet;
 import sound.AudioHandler;
 import sound.Fourier;
@@ -25,11 +27,12 @@ public abstract class AbstractProcessing extends PApplet {
 	int i;
 
 	long timer;
+	boolean debug;
 
 	public AbstractProcessing(Container parent) {
 		super();
 		this.parent = parent;
-
+		debug = false;
 		audio = new AudioHandler(this);
 
 	}
@@ -76,6 +79,17 @@ public abstract class AbstractProcessing extends PApplet {
 	 */
 	public Container getPar() {
 		return this.parent;
+	}
+	
+	public void debug(){
+		if(debug){
+			if(this.frameRate>61 || this.frameRate<59 ){
+			System.out.println();
+			System.out.println("FPS : "+this.frameRate +" /s");
+			
+		
+			}
+		}
 	}
 
 }

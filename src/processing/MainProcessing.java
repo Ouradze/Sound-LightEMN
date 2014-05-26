@@ -110,7 +110,7 @@ public class MainProcessing extends AbstractProcessing {
 
 	public void draw() {
 		i++;
-
+		this.debug();
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		l.alterne(i);
