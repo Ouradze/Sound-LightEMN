@@ -110,7 +110,7 @@ public class MainProcessing extends AbstractProcessing {
 
 	public void draw() {
 		i++;
-		this.debug();
+
 		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 
 		l.alterne(i);
@@ -121,7 +121,6 @@ public class MainProcessing extends AbstractProcessing {
 			form.maj(fourier, this.width / 2, this.height / 2, 0);
 			form.display();
 		}
-
 	}
 
 }

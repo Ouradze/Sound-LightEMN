@@ -29,11 +29,14 @@ public class RetroView extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.test = test2;
 
+		this.setSize(test2.displayWidth, test2.displayHeight);
 		System.out.println("Jframe : " + this.getWidth());
 
 		JPanel panel = new JPanel();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
 		panel.setSize(screenSize);
+		panel.setSize(test2.displayWidth, test2.displayHeight);
 
 		System.out.println("Retro : " + panel.getWidth());
 
@@ -44,7 +47,11 @@ public class RetroView extends JFrame {
 		recorder.init();
 
 		panel.add(recorder);
+
 		this.add(panel);
+
+		panel.repaint();
+		this.repaint();
 	}
 
 	public AbstractProcessing getApplet() {

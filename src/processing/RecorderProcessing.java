@@ -17,6 +17,7 @@ import processing.core.PGraphics;
 public class RecorderProcessing extends AbstractProcessing {
 
 	PGraphics p;
+
 	/**
 	 * ProcessingSketch Recorded
 	 */
@@ -33,17 +34,22 @@ public class RecorderProcessing extends AbstractProcessing {
 
 	@Override
 	public void setup() {
-		System.out.println("Setup : " + parent.getWidth());
+
 		p = new PGraphics();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		p = createGraphics((int) screenSize.getWidth(),
-				(int) screenSize.getHeight());
+		parent.setSize(screenSize.width, screenSize.height);
+		p = createGraphics(model.displayWidth, model.displayHeight);
+		System.out.println("Setup : " + parent.getWidth());
+
+		size(this.parent.getWidth(), this.parent.getHeight(), P3D);
 	}
 
 	@Override
 	public void draw() {
-		p.beginDraw();
-		p.endDraw();
+		model.loadPixels();
+		copy(model.get(), 0, 0, model.displayWidth, model.displayHeight, 0, 0,
+				this.displayWidth, this.displayHeight);
+		model.updatePixels();
 	}
 
 	public void setModel(AbstractProcessing model) {
