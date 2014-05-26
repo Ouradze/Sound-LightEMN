@@ -1,6 +1,7 @@
 package processing;
 
 import java.awt.Container;
+import java.io.IOException;
 
 import sound.Fourier;
 import utils.Equalizer;
@@ -79,11 +80,21 @@ public class MainProcessing extends AbstractProcessing {
 			break;
 
 		case "7":
-			form = new StripeAnal(this, this.width / 2, this.height / 2);
+			try {
+				form = new StripeAnal(this, this.width / 2, this.height / 2, 0);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 
 		case "8":
-			form = new Spectre(this, this.width / 2, this.height / 2, 0);
+			try {
+				form = new Spectre(this, this.width / 2, this.height / 2, 0);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case "Import":
 			form = new Shape(this, this.width / 2, this.height / 2, 0, path);

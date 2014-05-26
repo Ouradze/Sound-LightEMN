@@ -1,8 +1,7 @@
 package processing;
 
 import java.awt.Container;
-
-import com.sun.istack.internal.logging.Logger;
+import java.io.IOException;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -62,6 +61,7 @@ public abstract class AbstractProcessing extends PApplet {
 	 * 
 	 * @param s
 	 * @param path
+	 * @throws IOException
 	 */
 	public abstract void majForme(String s, String path);
 
@@ -90,14 +90,13 @@ public abstract class AbstractProcessing extends PApplet {
 	public Container getPar() {
 		return this.parent;
 	}
-	
-	public void debug(){
-		if(debug){
-			if(this.frameRate>61 || this.frameRate<59 ){
-			System.out.println();
-			System.out.println("FPS : "+this.frameRate +" /s");
-			
-		
+
+	public void debug() {
+		if (debug) {
+			if (this.frameRate > 61 || this.frameRate < 59) {
+				System.out.println();
+				System.out.println("FPS : " + this.frameRate + " /s");
+
 			}
 		}
 	}

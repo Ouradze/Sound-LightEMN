@@ -1,6 +1,5 @@
-/processing
-/controller
 /view
-/SoundAndLight
 /design
-/model
+/processing
+/sound
+/controller
