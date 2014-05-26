@@ -136,9 +136,9 @@ public class Surface extends Design {
 			for (int j = 0; j < surface.getChildCount()-1; j++) {
 
 				PShapeOpenGL ligne = (PShapeOpenGL) surface.getChild(j);
-
-				surface.removeChild(j);
 				surface.addChild(this.modifLigne(ligne, j), j);
+				surface.removeChild(j+1);
+				
 
 			}
 		
